@@ -1,3 +1,7 @@
+.darkModeBackground-dark {
+    @apply bg-gray-800
+}
+
 .darkModeSwitchBorder-dark {
     @apply rounded-full border-gray-300 border-2 w-10 bg-transparent flex flex-row-reverse;
 }

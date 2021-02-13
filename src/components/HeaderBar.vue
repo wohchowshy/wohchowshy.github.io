@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-between py-4 px-2">
+    <div class="flex justify-between py-4 px-2 darkModeBackground-dark">
         <!-- Logo -->
         <div id="Logo" class="">
         </div>
