@@ -3,24 +3,32 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     isDark: true,
+    navigations: ['About', 'Educations', 'Experiments', 'Skills', 'Projects', 'Contact'],
+    nowPage: 'About',
     // numbers: [1,3,5,7,9],
   },
   mutations: {
     CHANGE_DARK_MODE(state){
-      state.isDark = !state.isDark;
+      state.isDark = !state.isDark
     },
-    // ADD_NUMBER(state,payload) {
-    //   state.numbers.push(payload)
-    // },
+    CHANGE_PAGE(state, navigation) {
+      state.nowPage = navigation
+    }
   },
   actions: {
     changeDarkMode({commit}){
       commit("CHANGE_DARK_MODE");
     },
+    changePage({commit}, page){
+      let nowPage = page || 'about'
+      console.log('FUCK')
+      nowPage = nowPage.charAt(0).toUpperCase() + nowPage.slice(1)
+      commit("CHANGE_PAGE", nowPage)
+    }
     // addNumber(context,number) {
     //   context.commit("ADD_NUMBER", number)
     // },
   },
   modules: {
-  }
+  },
 })

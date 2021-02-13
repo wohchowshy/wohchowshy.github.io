@@ -1,6 +1,9 @@
 <template>
   <div>
     <header-bar></header-bar>
+      <div class="text-gray-500 text-center text-3xl mt-10">
+          Now you see me !
+      </div>
   </div>
 </template>
 

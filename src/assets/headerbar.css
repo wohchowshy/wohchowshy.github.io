@@ -1,0 +1,15 @@
+.headerBar {
+    @apply flex justify-between pt-6 pb-1 px-2 ;
+}
+
+.headerBarNavStyle {
+    @apply text-gray-300 text-xl mx-2 tracking-wider h-full font-medium;
+}
+
+.headerBarNavStyle-notNow {
+    @apply cursor-pointer transition duration-500 text-xl transform hover:opacity-75 hover:-translate-y-1;
+}
+
+.headerBarNavStyle-now {
+    @apply border-b-2 pb-3;
+}

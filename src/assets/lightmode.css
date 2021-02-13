@@ -7,5 +7,5 @@
 }
 
 .darkModeSwitchInner {
-    @apply rounded-full bg-white w-5 h-5 mr-0;
+    @apply rounded-full bg-gray-300 w-5 h-5 transition duration-500 transform hover:bg-white;
 }
