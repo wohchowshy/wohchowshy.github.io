@@ -1,0 +1,7 @@
+.darkModeSwitchBorder-dark {
+    @apply rounded-full border-gray-300 border-2 w-10 bg-transparent flex flex-row-reverse;
+}
+
+.darkModeSwitchInner-dark {
+    @apply rounded-full bg-white w-5 h-5 mr-0;
+}
