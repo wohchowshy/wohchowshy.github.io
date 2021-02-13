@@ -13,7 +13,4 @@
 </script>
 
 <style>
-/* body {
-  background-color: #F3F4F6;
-} */
 </style>

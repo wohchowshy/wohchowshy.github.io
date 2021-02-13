@@ -1,5 +1,5 @@
 <template>
-    <div class="headerBar darkModeBackground-dark">
+    <div class="headerBar darkModeBackground-dark fixed">
         <!-- Logo -->
         <div id="Logo" class="">
             <!-- {{this.$router.currentRoute._rawValue.fullPath}} -->
