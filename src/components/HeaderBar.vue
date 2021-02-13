@@ -6,8 +6,8 @@
         <!-- dark mode button -->
         <div id="darkButton" class="order-last" @click="changeDark">
             <!-- class in darkmode.css/lightmode.css -->
-            <div class="flex justify-between" :class="[isDark? 'darkModeSwitchBorder-dark': 'darkModeSwitchBorder']">
-                <div class="order-last" :class="[isDark? 'darkModeSwitchInner-dark': 'darkModeSwitchInner']">
+            <div :class="[isDark? 'darkModeSwitchBorder-dark': 'darkModeSwitchBorder']">
+                <div :class="[isDark? 'darkModeSwitchInner-dark': 'darkModeSwitchInner']">
                 </div>
             </div>
         </div>
