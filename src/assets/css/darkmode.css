@@ -1,11 +1,17 @@
 .darkModeBackground-dark {
-    @apply bg-gray-800;
+    @apply transform bg-gray-800;
 }
 
 .darkModeSwitchBorder-dark {
-    @apply rounded-full border-gray-300 border-2 w-10 bg-green-500 flex justify-between;
+    /* @apply bg-green-500 flex justify-between; */
+    @apply transform bg-green-500;
 }
 
 .darkModeSwitchInner-dark {
-    @apply rounded-full bg-white w-5 h-5 order-last transition duration-500 transform hover:bg-gray-300 ;
+    /* @apply bg-white order-last transform hover:bg-gray-300 ; */
+    @apply bg-white transform hover:bg-gray-300 translate-x-4;
+}
+
+.darkModeSwitchMoon-dark {
+    @apply transform text-yellow-500;
 }

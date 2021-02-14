@@ -1,11 +1,11 @@
 <template>
-  <div class="headerBar darkModeBackground-dark fixed">
+  <div class="headerBar fixed">
     <!-- Logo -->
     <div id="Logo" class="">
       <!-- {{this.$router.currentRoute._rawValue.fullPath}} -->
     </div>
     <!-- Navi -->
-    <!-- > 768px -->
+    <!-- Larger than 768px (md) -->
     <div class="md:flex justify-end flex-grow hidden">
       <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)">
         <div class="headerBarNavStyle relative" :class="[isNowPage(nowPage, nav, ProxyToList(subNav)) ? 'headerBarNavStyle-now' : 'headerBarNavStyle-notNow',]" >
@@ -33,9 +33,13 @@
     <!-- dark mode button -->
     <div id="darkButton" class="order-last mx-2 self-center md:self-start" @click="changeDark">
       <!-- class in darkmode.css/lightmode.css -->
-      <div :class="[isDark ? 'darkModeSwitchBorder-dark' : 'darkModeSwitchBorder']">
+      <div class="darkModeSwitchBorder-Common" :class="[isDark ? 'darkModeSwitchBorder-dark' : '']">
         <div></div>
-        <div :class="[isDark ? 'darkModeSwitchInner-dark' : 'darkModeSwitchInner']"></div>
+        <div class="darkModeSwitchInner-Common" :class="[isDark ? 'darkModeSwitchInner-dark' : 'darkModeSwitchInner']">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="[isDark ? 'darkModeSwitchMoon-dark' : 'darkModeSwitchMoon']" class="darkModeSwitchMoon-Common">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+          </svg>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full" :class="[$store.state.isDark? 'darkModeBackground-dark':'darkModeBackground']">
+  <div class="darkModeBackground-Common" :class="[$store.state.isDark? 'darkModeBackground-dark':'darkModeBackground']">
     <header-bar></header-bar>
     <!-- <div id="nav"> -->
       <!-- <router-link to="/">Home</router-link> | -->

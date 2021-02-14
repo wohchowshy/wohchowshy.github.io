@@ -1,9 +1,9 @@
 .headerBar {
-    @apply flex justify-between md:pt-6 md:pb-1 py-4 px-2 w-full top-0;
+    @apply flex justify-between md:pt-6 md:pb-1 py-4 px-2 w-full top-0 bg-gray-800;
 }
 
 .headerBarNavStyle {
-    @apply text-gray-300 text-xl mx-2 tracking-wider font-medium cursor-pointer transition duration-500 transform hover:text-gray-400 hover:-translate-y-1;
+    @apply text-gray-300 text-xl mx-2 tracking-wider font-medium cursor-pointer transition duration-300 transform hover:text-gray-400 hover:-translate-y-1;
 }
 
 /* .headerBarNavStyle::after {

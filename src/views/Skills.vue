@@ -1,6 +1,6 @@
 <template>
     <div class="h-full w-full">
-        <div class="pt-20 text-gray-500 text-center text-3xl mt-10">
+        <div class="pt-40 text-gray-500 text-center text-3xl">
             Now you see my skills !
         </div>
     </div>
