@@ -21,7 +21,6 @@ export default createStore({
     },
     changePage({commit}, page){
       let nowPage = page || 'about'
-      console.log('FUCK')
       nowPage = nowPage.charAt(0).toUpperCase() + nowPage.slice(1)
       commit("CHANGE_PAGE", nowPage)
     }
