@@ -24,7 +24,7 @@ export default {
               name: "Yi Dong, Wu", 
               degree: "MS in Computer Science", 
               school: "National TsingHua University", 
-              scope: "Natural Language Process Lab"
+              scope: "Natural Language Processing Lab"
           }
       }
   },

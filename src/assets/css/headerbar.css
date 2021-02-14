@@ -6,10 +6,31 @@
     @apply text-gray-300 text-xl mx-2 tracking-wider font-medium;
 }
 
+/* .headerBarNavStyle::after {
+    content: '\007C';
+    color: white;
+} */
+
 .headerBarNavStyle-notNow {
-    @apply cursor-pointer transition duration-500 text-xl transform hover:opacity-75 hover:-translate-y-1;
+    @apply cursor-pointer h-full transition duration-500 text-xl transform hover:text-gray-400 hover:-translate-y-1;
 }
 
 .headerBarNavStyle-now {
-    @apply border-b-2 pb-3;
+    @apply cursor-pointer border-b-2 pb-3;
+}
+
+.subNavStyle {
+    @apply hidden right-0 leading-loose text-gray-300 bg-gray-800 px-4 pt-6 pb-0  min-w-full shadow-md rounded-b-md;
+}
+
+.subNavStyle-text {
+    @apply py-1 text-center transform hover:scale-110;
+}
+
+div.headerBarNavStyle.relative:hover > div.absolute.subNavStyle {
+    display: block;
+}
+
+.SubNavStyle-now {
+    @apply bg-gray-300 text-gray-800 ;
 }

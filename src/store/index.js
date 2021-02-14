@@ -3,7 +3,14 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     isDark: true,
-    navigations: ['About', 'Educations', 'Experiments', 'Skills', 'Projects', 'Contact'],
+    navigations: {
+      'About': [], 
+      'Educations': [], 
+      'Experiments': [], 
+      'Skills': ['Programming', 'Leisure', 'Other'], 
+      'Projects': ['Bachelor', 'Master'], 
+      'Contact': []
+    },
     nowPage: 'About',
     // numbers: [1,3,5,7,9],
   },
