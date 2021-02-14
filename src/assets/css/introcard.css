@@ -11,7 +11,7 @@
 }
 
 .introCard-col2 {
-    @apply justify-self-center md:justify-self-start self-start md:self-center text-center md:text-left list-none text-gray-400;
+    @apply justify-self-center md:justify-self-start self-start md:self-center text-center md:text-left list-none text-gray-500;
 }
 
 .introCard-col2-text {
