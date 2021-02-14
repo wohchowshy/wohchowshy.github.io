@@ -31,7 +31,7 @@
       </div>
     </div>
     <!-- dark mode button -->
-    <div id="darkButton" class="order-last mx-2 sm:self-center md:self-start" @click="changeDark">
+    <div id="darkButton" class="order-last mx-2 self-center md:self-start" @click="changeDark">
       <!-- class in darkmode.css/lightmode.css -->
       <div :class="[isDark ? 'darkModeSwitchBorder-dark' : 'darkModeSwitchBorder']">
         <div></div>
@@ -92,7 +92,6 @@ export default {
               this.$router.currentRoute._rawValue.fullPath.split("/").pop()
             )
         }, 
-        deep: true,
         immediate: true,
     }
   },
