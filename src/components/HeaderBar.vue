@@ -57,6 +57,6 @@ export default {
   @apply transition duration-500 transform bg-gray-900 shadow-2xl;
 }
 .smallNav {
-  @apply transition delay-300 duration-300 transform bg-gray-800;
+  @apply transition delay-150 duration-75 transform bg-gray-800;
 }
 </style>

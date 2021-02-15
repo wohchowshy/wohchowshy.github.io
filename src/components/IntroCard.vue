@@ -11,12 +11,17 @@
         <ul v-for="(item, key, idx) in introCard" :key="idx">
             <li class="introCard-col2-text" :class="fontSize(item, key)">{{ item }}</li>
         </ul>
+        <contact-icon class="mt-10"/>
     </div>
   </div>
 </template>
 
 <script>
+import ContactIcon from '@/components/ContactIcon.vue'
 export default {
+  components:{
+    ContactIcon,
+  },
   name: "IntroCard",
   data() {
       return {
@@ -32,9 +37,9 @@ export default {
       fontSize(item, key){
         switch(key){
             case "name":
-                return ["text-4xl", "pb-2"]
+                return ["text-2xl", "pb-2"]
             default:
-                return "text-xl"
+                return ["md:text-base","text-xs", "font-light"]
         }
       }
   }
@@ -52,7 +57,7 @@ export default {
 }
 
 .introCard-img {
-    @apply w-52 object-cover rounded-full;
+    @apply w-32 md:w-52 object-cover rounded-full;
 }
 
 .introCard-col2 {
@@ -60,6 +65,6 @@ export default {
 }
 
 .introCard-col2-text {
-    @apply tracking-wider leading-loose;
+    @apply leading-loose tracking-normal;
 }
 </style>

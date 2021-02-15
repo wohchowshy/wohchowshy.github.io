@@ -149,10 +149,10 @@ div.NavStyle-small:hover div.subNavStyle-small {
 
 
 .scale-enter-active {
-  animation: bounce-in .5s;
+  animation: bounce-in .8s;
 }
 .scale-leave-active {
-  animation: bounce-in .5s reverse;
+  animation: bounce-in .2s reverse;
 }
 @keyframes bounce-in {
   0% {
