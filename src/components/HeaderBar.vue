@@ -1,11 +1,11 @@
 <template>
-  <div class="headerBar responsiveHeaderBar-pbm fixed">
+  <div class="headerBar responsiveHeaderBar-pbm fixed" :class="[isDark? '':'HeaderBar', showNav && isDark? 'smallNavBg':'']">
     <!-- Logo -->
     <div id="Logo" class="hidden md:flex">
       <!-- {{this.$router.currentRoute._rawValue.fullPath}} -->
     </div>
     <!-- Navi -->
-    <navigation/>
+    <navigation />
     <!-- dark mode button -->
     <dark-mode-switch/>
   </div>
@@ -20,6 +20,14 @@ export default {
     DarkModeSwitch
   },
   name: "HeaderBar",
+  computed: {
+    showNav() {
+      return this.$store.state.showNavSmall;
+    },
+    isDark() {
+      return this.$store.state.isDark;
+    }
+  },
   watch: {
     $route: {
         handler: function(){
@@ -42,5 +50,10 @@ export default {
 .responsiveHeaderBar-pbm {
     @apply py-3 px-2 md:pt-6 md:pb-1;
 }
-
+.HeaderBar {
+  @apply shadow-lg;
+}
+.smallNavBg {
+  @apply transition duration-500 origin-center transform bg-gray-900 scale-y-100 shadow-lg;
+}
 </style>

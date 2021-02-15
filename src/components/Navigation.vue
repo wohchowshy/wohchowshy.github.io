@@ -23,9 +23,9 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-10 h-10 block" @click.stop="changeNavStatSmall">
       <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
     </svg>
-    <div v-if="NavStatSmall" class="NavTypesetting-small">
-      <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" class="flex">
-        <div class="NavStyle-small" :class="[isNowPage(nowPage, nav, ProxyToList(subNav)) ? 'NavStyle-now-small' : '']">
+    <div v-if="showNav" class="NavTypesetting-small">
+      <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" class="flex animate__animated animate__slideInDown">
+        <div class="NavStyle-small " :class="[isNowPage(nowPage, nav, ProxyToList(subNav)) ? 'NavStyle-now-small' : '']">
           {{ nav }}
           <!-- arrow svg -->
           <svg v-if="subNav.length" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline">
@@ -46,11 +46,6 @@
 <script>
 export default {
   name: "Navigation",
-  data() {
-      return {
-          NavStatSmall: false
-      }
-  },
   computed: {
     nowPage() {
       return this.$store.state.nowPage;
@@ -58,6 +53,9 @@ export default {
     navigations() {
       return this.$store.state.navigations;
     },
+    showNav() {
+      return this.$store.state.showNavSmall;
+    }
   },
   methods: {
     isNowPage(nowPage, nav, subNav) {
@@ -81,13 +79,13 @@ export default {
       this.$router.push(newPage);
     },
     changeNavStatSmall() {
-        this.NavStatSmall = !this.NavStatSmall;
+      this.$store.dispatch("ChangeNavSmall", '')
     }
   },
   watch: {
-      "$store.state.nowPage": function(){
-          this.NavStatSmall = false;
-      }
+    "$store.state.nowPage": function(){
+      this.$store.dispatch("ChangeNavSmall", false)
+    },
   }
 };
 </script>
@@ -119,7 +117,7 @@ div.NavStyle-large.relative:hover > div.absolute.subNavStyle-large {
 
 /* Small Style */
 .NavTypesetting-small-extra {
-  @apply justify-start flex flex-col md:hidden text-gray-300 leading-10 text-sm ml-4;
+  @apply justify-start flex flex-col md:hidden text-gray-300 leading-10 text-sm ml-4 w-full;
 }
 .NavTypesetting-small {
   @apply ml-1 mt-5 relative;
@@ -144,6 +142,11 @@ div.NavStyle-small:hover div.subNavStyle-small {
 }
 .subNavStyle-now-small {
   @apply text-white font-medium;
+}
+
+
+.animate__animated.animate__slideInDown {
+  --animate-duration: 0.5s;
 }
 
 </style>

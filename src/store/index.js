@@ -12,7 +12,7 @@ export default createStore({
       'Contact': []
     },
     nowPage: 'About',
-    // numbers: [1,3,5,7,9],
+    showNavSmall: false,
   },
   mutations: {
     CHANGE_DARK_MODE(state){
@@ -20,7 +20,15 @@ export default createStore({
     },
     CHANGE_PAGE(state, navigation) {
       state.nowPage = navigation
-    }
+    },
+    CHANGE_NAV_SMALL(state, status) {
+      if (status === false) {
+        state.showNavSmall = false
+      }
+      else{
+        state.showNavSmall = !state.showNavSmall
+      }
+    },
   },
   actions: {
     changeDarkMode({commit}){
@@ -30,7 +38,10 @@ export default createStore({
       let nowPage = page || 'about'
       nowPage = nowPage.charAt(0).toUpperCase() + nowPage.slice(1)
       commit("CHANGE_PAGE", nowPage)
-    }
+    },
+    ChangeNavSmall({commit}, status) {
+      commit("CHANGE_NAV_SMALL", status);
+    },
     // addNumber(context,number) {
     //   context.commit("ADD_NUMBER", number)
     // },
