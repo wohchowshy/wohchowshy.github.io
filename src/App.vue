@@ -20,5 +20,16 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+.darkModeBackground-Common {
+    @apply w-full h-full relative transition duration-500;
+}
+
+.darkModeBackground-dark {
+    @apply transform bg-gray-800;
+}
+
+.darkModeBackground {
+    @apply transform bg-gray-100;
+}
 </style>
