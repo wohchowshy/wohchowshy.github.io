@@ -1,5 +1,5 @@
 <template>
-  <div class="headerBar responsiveHeaderBar-pbm fixed" :class="[isDark? '':'HeaderBar', showNav && isDark? 'smallNavBg':'']">
+  <div class="headerBar responsiveHeaderBar-pbm fixed" :class="[isDark? '':'HeaderBar', showNav && isDark? 'smallNavBg':'smallNav']">
     <!-- Logo -->
     <div id="Logo" class="hidden md:flex">
       <!-- {{this.$router.currentRoute._rawValue.fullPath}} -->
@@ -51,9 +51,12 @@ export default {
     @apply py-3 px-2 md:pt-6 md:pb-1;
 }
 .HeaderBar {
-  @apply shadow-lg;
+  @apply shadow-2xl;
 }
 .smallNavBg {
-  @apply transition duration-500 origin-center transform bg-gray-900 scale-y-100 shadow-lg;
+  @apply transition duration-500 transform bg-gray-900 shadow-2xl;
+}
+.smallNav {
+  @apply transition delay-300 duration-300 transform bg-gray-800;
 }
 </style>

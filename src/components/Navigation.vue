@@ -23,8 +23,9 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-10 h-10 block" @click.stop="changeNavStatSmall">
       <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
     </svg>
+    <transition name="scale">
     <div v-if="showNav" class="NavTypesetting-small">
-      <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" class="flex animate__animated animate__slideInDown">
+      <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" class="flex">
         <div class="NavStyle-small " :class="[isNowPage(nowPage, nav, ProxyToList(subNav)) ? 'NavStyle-now-small' : '']">
           {{ nav }}
           <!-- arrow svg -->
@@ -40,6 +41,7 @@
         </div>
       </div>
     </div>
+    </transition>
   </div>
 </template>
 
@@ -120,12 +122,13 @@ div.NavStyle-large.relative:hover > div.absolute.subNavStyle-large {
   @apply justify-start flex flex-col md:hidden text-gray-300 leading-10 text-sm ml-4 w-full;
 }
 .NavTypesetting-small {
-  @apply ml-1 mt-5 relative;
+  @apply ml-1 mt-5 relative overflow-hidden;
 }
 /* div.NavTypesetting-small-extra:hover > div.NavTypesetting-small {
   @apply block;
 } */
 .NavStyle-small {
+  -webkit-tap-highlight-color: transparent;
   @apply text-gray-300 mx-2 w-20 tracking-wide font-light cursor-pointer hover:text-gray-400;
 }
 .NavStyle-now-small {
@@ -145,8 +148,23 @@ div.NavStyle-small:hover div.subNavStyle-small {
 }
 
 
-.animate__animated.animate__slideInDown {
-  --animate-duration: 0.5s;
+.scale-enter-active {
+  animation: bounce-in .5s;
 }
+.scale-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    /* transform: translateY(-30%) scaleY(0.8); */
+    max-height: 0;
+    overflow: hidden;
+  }
+  100% {
+    /* transform: translateY(0) scaleY(1); */
+    max-height: 300px;
+  }
+}
+
 
 </style>
