@@ -20,10 +20,10 @@
 
   <!-- small than 768px -->
   <div class="NavTypesetting-small-extra">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-10 h-10 block">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-10 h-10 block" @click.stop="changeNavStatSmall">
       <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
     </svg>
-    <div class="NavTypesetting-small">
+    <div v-if="NavStatSmall" class="NavTypesetting-small">
       <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" class="flex">
         <div class="NavStyle-small" :class="[isNowPage(nowPage, nav, ProxyToList(subNav)) ? 'NavStyle-now-small' : '']">
           {{ nav }}
@@ -46,6 +46,11 @@
 <script>
 export default {
   name: "Navigation",
+  data() {
+      return {
+          NavStatSmall: false
+      }
+  },
   computed: {
     nowPage() {
       return this.$store.state.nowPage;
@@ -75,7 +80,15 @@ export default {
       }
       this.$router.push(newPage);
     },
+    changeNavStatSmall() {
+        this.NavStatSmall = !this.NavStatSmall;
+    }
   },
+  watch: {
+      "$store.state.nowPage": function(){
+          this.NavStatSmall = false;
+      }
+  }
 };
 </script>
 
@@ -109,11 +122,11 @@ div.NavStyle-large.relative:hover > div.absolute.subNavStyle-large {
   @apply justify-start flex flex-col md:hidden text-gray-300 leading-10 text-sm ml-4;
 }
 .NavTypesetting-small {
-  @apply ml-1 mt-5 relative hidden;
+  @apply ml-1 mt-5 relative;
 }
-div.NavTypesetting-small-extra:hover > div.NavTypesetting-small {
+/* div.NavTypesetting-small-extra:hover > div.NavTypesetting-small {
   @apply block;
-}
+} */
 .NavStyle-small {
   @apply text-gray-300 mx-2 w-20 tracking-wide font-light cursor-pointer hover:text-gray-400;
 }
