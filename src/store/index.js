@@ -7,9 +7,10 @@ export default createStore({
       'About': [], 
       'Educations': [], 
       'Experience': [], 
+      'Blog': [],
       'Skills': ['Programming', 'Leisure', 'Other'], 
       'Projects': ['Bachelor', 'Master'], 
-      'Contact': []
+      'Contact': [],
     },
     nowPage: 'About',
     showNavSmall: false,

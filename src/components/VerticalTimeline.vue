@@ -65,7 +65,7 @@ export default {
   @apply m-auto list-none relative pl-16 pr-4 py-1 max-w-max;
   
 }
-.outerBorder:before {
+.outerBorder::before {
   content: "";
   border-color: var(--realLineColor);
   transition: border-color 0.5s;
@@ -77,6 +77,7 @@ export default {
   margin-left: var(--space);
   @apply relative bg-blue-300 bg-opacity-20 p-4 rounded-lg shadow-lg ;
 }
+
 .eachBlock:not(:first-child) {
   @apply mt-16;
 }
@@ -89,8 +90,8 @@ export default {
   transition: background-color 0.5s;
   @apply h-full top-0 absolute;
 }
-.realLine:before,
-.realLine:after {
+.realLine::before,
+.realLine::after {
   content: "";
   width: var(--dotSize);
   height: var(--dotSize);
