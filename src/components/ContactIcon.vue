@@ -12,6 +12,10 @@
     <a href="https://www.facebook.com/profile.php?id=100009646023619" target="_blank">
         <i class="fab fa-facebook-square pbm-inner common"></i>
     </a>
+    <!-- instagram -->
+    <a href="https://www.instagram.com/yizzy.exe/" target="_blank">
+      <i class="fab fa-instagram pbm-inner common"></i>    
+    </a>
     <!-- email -->
     <a href="mailto:chsh110768@gmail.com" target="_blank">
         <i class="fas fa-envelope pbm-end common"></i>
