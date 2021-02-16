@@ -6,7 +6,7 @@
         class="introCard-img"
         alt="Oops, picture flies out.."
       />
-      <contact-icon />
+      <contact-icon class="justify-center mt-5 md:mt-8"/>
     </div>
     <div class="introCard-col2" ref="introCard-col2">
       <ul v-for="(item, key, idx) in introCard" :key="idx">
@@ -71,5 +71,4 @@ export default {
 .introCard-col2-text {
   @apply leading-loose tracking-normal;
 }
-
 </style>

@@ -10,7 +10,7 @@ export default createStore({
       'Blog': [],
       'Skills': ['Programming', 'Leisure', 'Other'], 
       'Projects': ['Bachelor', 'Master'], 
-      'Contact': [],
+      // 'Contact': [],
     },
     nowPage: 'About',
     showNavSmall: false,

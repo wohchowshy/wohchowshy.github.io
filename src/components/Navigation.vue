@@ -1,6 +1,7 @@
 <template>
   <!-- larger than 768px -->
   <div class="NavTypesetting-large">
+    <div class="flex">
     <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" >
       <div class="NavStyle-large relative" :class="[isNowPage(nowPage, nav, ProxyToList(subNav)) ? 'NavStyle-now-large' : '']">
         {{ nav }}
@@ -16,6 +17,8 @@
         </div>
       </div>
     </div>
+    </div>
+    <contact-icon class="justify-center h-full text-gray-300"/>
   </div>
 
   <!-- small than 768px -->
@@ -40,14 +43,19 @@
            </div>
         </div>
       </div>
+      <contact-icon class="justify-start m-2"/>
     </div>
     </transition>
   </div>
 </template>
 
 <script>
+import ContactIcon from "@/components/ContactIcon.vue"
 export default {
   name: "Navigation",
+  components:{
+    ContactIcon,
+  },
   computed: {
     nowPage() {
       return this.$store.state.nowPage;
@@ -95,7 +103,7 @@ export default {
 <style scoped>
 /* Large Style */
 .NavTypesetting-large {
-  @apply justify-end flex-grow hidden md:flex;
+  @apply justify-between flex-grow hidden md:flex items-center mx-5;
 }
 .NavStyle-large {
   @apply text-gray-300 px-2 py-4 font-light cursor-pointer transition duration-300 transform hover:text-gray-400 hover:-translate-y-1;
@@ -107,7 +115,7 @@ div.NavStyle-large.relative:hover > div.absolute.subNavStyle-large {
   @apply block;
 }
 .subNavStyle-large {
-  @apply hidden right-0 leading-10 text-gray-300 bg-gray-800 px-4 pt-6 pb-2 min-w-full shadow-md rounded-b-md; /**/
+  @apply hidden left-0 leading-10 text-gray-300 bg-gray-800 px-4 pt-6 pb-2 min-w-full shadow-md rounded-b-md; /**/
 }
 .subNavStyle-text-large {
   @apply text-center font-light transform hover:scale-105;

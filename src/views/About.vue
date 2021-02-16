@@ -1,6 +1,6 @@
 <template>
   <div class="m-auto w-full">
-    <intro-card />
+    <intro-card/>
   </div>
 </template>
 
