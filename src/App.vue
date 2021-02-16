@@ -15,14 +15,20 @@ import HeaderBar from '@/components/HeaderBar.vue'
 export default {
   components:{
     HeaderBar
+  },
+  watch: {
+    "$store.state.isDark": function(){
+    }
   }
 }
 
 </script>
 
+
 <style scoped>
 .darkModeBackground-Common {
-    @apply w-full h-full relative transition duration-500;
+    overflow: scroll;
+    @apply w-full h-full relative transition duration-500 flex flex-col;
 }
 
 .darkModeBackground-dark {
@@ -31,5 +37,16 @@ export default {
 
 .darkModeBackground {
     @apply transform bg-gray-100;
+}
+</style>
+
+
+<style>
+.textLightMode {
+  @apply transition duration-500 transform text-gray-500
+}
+
+.textDarkMode {
+  @apply transition duration-500 transform text-gray-400
 }
 </style>

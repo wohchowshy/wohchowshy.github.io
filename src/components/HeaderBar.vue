@@ -1,5 +1,5 @@
 <template>
-  <div class="headerBar responsiveHeaderBar-pbm fixed" :class="[isDark? '':'HeaderBar', showNav && isDark? 'smallNavBg':'smallNav']">
+  <div class="headerBar responsiveHeaderBar-pbm sticky" :class="[isDark? '':'HeaderBar', showNav && isDark? 'smallNavBg':'smallNav']">
     <!-- Logo -->
     <div id="Logo" class="hidden md:flex">
       <!-- {{this.$router.currentRoute._rawValue.fullPath}} -->
@@ -45,10 +45,10 @@ export default {
 
 <style scoped>
 .headerBar {
-    @apply flex justify-between w-full top-0 bg-gray-800;
+    @apply flex justify-between md:items-center items-start w-full top-0 bg-gray-800 z-50 ;
 }
 .responsiveHeaderBar-pbm {
-    @apply py-3 px-2 md:pt-6 md:pb-1;
+    @apply py-3 md:py-1 px-2;
 }
 .HeaderBar {
   @apply shadow-2xl;

@@ -1,16 +1,15 @@
 <template>
-  <div class="h-full w-full">
-    <intro-card></intro-card>
+  <div class="m-auto w-full">
+    <intro-card />
   </div>
 </template>
 
 <script>
-import IntroCard from "@/components/IntroCard.vue"
+import IntroCard from "@/components/IntroCard.vue";
 
 export default {
   components: {
-    IntroCard
+    IntroCard,
   },
-
-}
+};
 </script>

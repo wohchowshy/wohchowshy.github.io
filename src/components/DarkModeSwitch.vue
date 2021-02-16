@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .darkModeButton-Common {
-    @apply order-last mx-2 self-start w-10 h-10 flex items-center md:items-start;
+    @apply order-last mx-2 w-10 h-10 flex justify-center items-center;
 }
 
 .darkModeBackground-Common {

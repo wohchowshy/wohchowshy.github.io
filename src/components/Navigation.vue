@@ -98,7 +98,7 @@ export default {
   @apply justify-end flex-grow hidden md:flex;
 }
 .NavStyle-large {
-  @apply text-gray-300 mx-2 tracking-wide font-light cursor-pointer transition duration-300 transform hover:text-gray-400 hover:-translate-y-1;
+  @apply text-gray-300 px-2 py-4 font-light cursor-pointer transition duration-300 transform hover:text-gray-400 hover:-translate-y-1;
 }
 .NavStyle-now-large {
   @apply border-b-2 pb-3 text-white font-medium;

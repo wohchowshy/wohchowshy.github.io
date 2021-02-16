@@ -27,7 +27,7 @@ export default {
 
 <style scoped>
 .contactIcon {
-  @apply flex justify-center md:justify-start items-center text-xl;
+  @apply flex justify-center items-center text-xl mt-5 md:mt-8;
   -webkit-tap-highlight-color: transparent;
 }
 .pbm-inner {
