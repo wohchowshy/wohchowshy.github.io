@@ -57,11 +57,11 @@ export default {
 }
 
 .introCard-col1 {
-  @apply self-end md:self-center pb-10 md:pb-0;
+  @apply self-end md:self-center pb-10 md:pb-0 ;
 }
 
 .introCard-img {
-  @apply w-32 md:w-52 object-cover rounded-full;
+  @apply w-32 md:w-52 object-cover rounded-full m-auto;
 }
 
 .introCard-col2 {
