@@ -1,16 +1,12 @@
 <template>
-  <div
-    :style="userStyle"
-    class="verticalTimeline"
-    :class="[isDark ? 'textDarkMode' : 'textLightMode']"
-  >
+  <div :style="userStyle" class="verticalTimeline" :class="[isDark ? 'textDarkMode' : 'textLightMode']">
     <ul class="outerBorder">
       <li class="eachBlock" v-for="item in info" :key="item">
         <div class="blockDiv">
           <span class="realLine"></span>
           <div class="flex justify-between items-start">
-            <div class="school">{{ item.School }}</div>
-            <div class="degree">{{ item.Degree }}</div>
+            <div class="title">{{ item.School }}</div>
+            <div class="status">{{ item.Degree }}</div>
           </div>
           <div class="otherContent">
             <div class="department">{{ item.Department }}</div>
@@ -58,7 +54,7 @@ export default {
 <style scoped>
 .verticalTimeline {
   @apply relative flex justify-center items-center;
-  @apply max-w-screen-lg h-full m-auto px-5;
+  @apply max-w-screen-lg h-full m-auto px-2 py-10;
 }
 
 .outerBorder {
@@ -127,16 +123,16 @@ export default {
   top: calc(100% - 10px);
 }
 
-.school {
-    @apply text-base md:text-lg font-semibold mr-3;
+.title {
+    @apply text-sm md:text-lg font-semibold mr-3;
 }
 
-.degree {
-    @apply text-xs;
+.status {
+    @apply text-xs text-right opacity-50;
 }
 
 .otherContent {
-    @apply mt-5 font-light text-sm md:text-base;
+    @apply mt-5 font-light text-xs md:text-base;
 }
 
 .department {

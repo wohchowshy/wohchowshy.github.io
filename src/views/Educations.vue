@@ -1,7 +1,6 @@
 <template>
   <div class="h-full w-full">
     <vertical-timeline :info="Info"/>
-    
   </div>
 </template>
 

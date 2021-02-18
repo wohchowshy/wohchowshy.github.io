@@ -53,11 +53,11 @@ export default {
 
 <style scoped>
 .introCard {
-  @apply grid grid-cols-1 md:grid-cols-2 h-full max-w-screen-lg items-center justify-items-center m-auto;
+  @apply grid grid-cols-1 md:grid-cols-2 h-full max-w-screen-lg items-center justify-items-center md:justify-items-end m-auto;
 }
 
 .introCard-col1 {
-  @apply self-end md:self-center pb-10 md:pb-0 ;
+  @apply self-end md:self-center p-10;
 }
 
 .introCard-img {
@@ -65,7 +65,7 @@ export default {
 }
 
 .introCard-col2 {
-  @apply justify-self-center md:justify-self-start self-start md:self-center text-center md:text-left list-none;
+  @apply justify-self-center md:justify-self-start self-start md:self-center text-center md:text-left list-none pb-10 md:p-0;
 }
 
 .introCard-col2-text {
