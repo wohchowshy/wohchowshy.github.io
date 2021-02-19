@@ -5,12 +5,13 @@
         <div class="blockDiv">
           <span class="realLine"></span>
           <div class="flex justify-between items-start">
-            <div class="title">{{ item.School }}</div>
-            <div class="status">{{ item.Degree }}</div>
+            <div class="title">{{ item.Title }}</div>
+            <div class="status">{{ item.Status }}</div>
           </div>
           <div class="otherContent">
-            <div class="department">{{ item.Department }}</div>
-            <div class="major">{{ item.Major }}</div>
+            <div v-for="(content, key) in filterContent(item)" :key="content" :class="key">
+              {{ content }}
+            </div>
           </div>
         </div>
         <span class="contentNumber">
@@ -28,6 +29,22 @@ export default {
     info: {
       type: Array,
     },
+    timeLength: {
+      type: Number, 
+    }
+  },
+  methods: {
+    filterContent(item) {
+      let content = Object()
+      for (let key in item) {
+        if (key == 'Title' || key == 'Status' || key == 'EndTime' || key == 'StartTime') {
+          continue
+        } else {
+          content[key] = item[key];
+        }
+      }
+      return content
+    },
   },
   computed: {
     isDark() {
@@ -36,14 +53,16 @@ export default {
     userStyle() {
       if (this.isDark) {
         return {
-          "--space": "80px",
+          "--space": "60px",
           "--dotSize": "16px",
+          "--timeLength" : this.timeLength,
           "--realLineColor": "white",
         };
       }
       return {
-        "--space": "80px",
+        "--space": "60px",
         "--dotSize": "16px",
+        "--timeLength" : this.timeLength,
         "--realLineColor": "#6B7280",
       };
     },
@@ -58,8 +77,8 @@ export default {
 }
 
 .outerBorder {
-  @apply m-auto list-none relative pl-16 pr-4 py-1 max-w-max;
-  
+  padding-left: calc(10px * var(--timeLength) + 16px);
+  @apply m-auto list-none relative pr-4 py-1 max-w-max;
 }
 .outerBorder::before {
   content: "";
@@ -111,8 +130,8 @@ export default {
 }
 
 .contentNumber > span {
-  left: calc(-1 * var(--space) - 60px);
-  @apply absolute text-sm font-bold;
+  left: calc(-1 * var(--space) - (10px * var(--timeLength)));
+  @apply absolute text-xs font-bold;
 }
 
 .startTime {
@@ -123,6 +142,7 @@ export default {
   top: calc(100% - 10px);
 }
 
+/* customized text css*/
 .title {
     @apply text-sm md:text-lg font-semibold mr-3;
 }
@@ -135,12 +155,6 @@ export default {
     @apply mt-5 font-light text-xs md:text-base;
 }
 
-.department {
-}
-
-.major {
-}
-
 .startTime {
 }
 
@@ -148,12 +162,12 @@ export default {
 }
 
 /* RWD */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .eachBlock {
-    margin-left: calc(0.3 * var(--space));
+    margin-left: calc(0.5 * var(--space));
   }
   .realLine {
-    left: calc(-1 * 0.3 * var(--space));
+    left: calc(-1 * 0.5 * var(--space));
   }
   .realLine:before,
   .realLine:after {
@@ -165,7 +179,7 @@ export default {
     @apply top-full;
   }
   .contentNumber > span {
-    left: calc(-1 * var(--space));
+    left: calc( -1 * 0.5 * var(--space) - (10px * var(--timeLength)) );
   }
 }
 </style>
