@@ -6,7 +6,7 @@ export default createStore({
     navigations: {
       'About': [], 
       'Educations': [], 
-      'Experience': [], 
+      // 'Experience': [], 
       'Blog': [],
       'Skills': ['Programming', 'Leisure', 'Other'], 
       'Projects': ['Bachelor', 'Master'], 

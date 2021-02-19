@@ -144,11 +144,11 @@ export default {
 
 /* customized text css*/
 .title {
-    @apply text-sm md:text-lg font-semibold mr-3;
+    @apply text-sm md:text-lg font-semibold mr-1 md:mr-4;
 }
 
 .status {
-    @apply text-xs text-right opacity-50;
+    @apply text-xs text-right opacity-50 ml-1 md:ml-4;
 }
 
 .otherContent {
