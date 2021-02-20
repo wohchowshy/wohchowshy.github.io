@@ -13,8 +13,14 @@
           </div>
           <div class="otherContent">
             <div v-for="(content, key) in filterContent(item)" :key="content" :class="key" class="mt-2">
-              <pre class="textCommon">{{ content }}</pre>
+              <pre v-if="key.includes('nowrap')" class="textCommon">{{ content }}</pre>
+              <pre v-else class="textWrap">{{ content }}</pre>
             </div>
+          </div>
+        </div>
+        <div v-if="item.Links" class="showLinks">
+          <div v-for="(link, key) in item.Links" :key="key" class="eachLink">
+            <a :href="link" target="_blank" >{{ key }}</a>
           </div>
         </div>
         <span class="contentNumber">
@@ -40,7 +46,7 @@ export default {
     filterContent(item) {
       let content = Object()
       for (let key in item) {
-        if (key == 'Title' || key == 'Status' || key == 'EndTime' || key == 'StartTime' || key == 'Img') {
+        if (key == 'Title' || key == 'Status' || key == 'EndTime' || key == 'StartTime' || key == 'Img' || key == 'Links') {
           continue
         } else {
           content[key] = item[key];
@@ -80,8 +86,8 @@ export default {
 }
 
 .outerBorder {
-  padding-left: calc(10px * var(--timeLength) + 16px);
-  @apply m-auto list-none relative pr-4 py-1 max-w-full;
+  padding-left: calc(8px * var(--timeLength) + 12px);
+  @apply m-auto list-none relative pr-6 py-1 max-w-full;
 }
 .outerBorder::before {
   content: "";
@@ -126,16 +132,17 @@ export default {
 }
 
 .backgroundImg {
-  @apply border-b border-gray-800 px-4 pb-2 pt-4;
+  @apply opacity-70 px-4 pb-2 pt-4;
 }
 
 .optionImg {
   max-width: 300px;
-  @apply m-auto h-auto w-full;
+  filter: drop-shadow(0 0 16px white);
+  @apply m-auto h-auto w-full object-cover rounded;
 }
 
 .blockDiv {
-  @apply leading-normal w-full px-4 pb-4 pt-2 ;
+  @apply leading-normal w-full px-4 pb-4 pt-4 ;
 }
 
 .contentNumber {
@@ -161,7 +168,7 @@ export default {
 }
 
 .status {
-    @apply text-xs text-right opacity-50 ml-1 md:ml-4;
+    @apply text-xs text-right opacity-50 ml-1 md:ml-4 min-w-max;
 }
 
 .otherContent{
@@ -170,6 +177,14 @@ export default {
 
 .textCommon {
   @apply overflow-x-auto;
+}
+
+.showLinks {
+  @apply p-4 border-t border-gray-400 border-opacity-30 text-center;
+}
+
+.eachLink {
+  @apply cursor-pointer font-bold transition duration-300 transform hover:scale-110;
 }
 
 /* RWD */
@@ -193,4 +208,14 @@ export default {
     left: calc( -1 * 0.5 * var(--space) - (10px * var(--timeLength)) );
   }
 }
+
+
+.textWrap {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999*/
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
 </style>
