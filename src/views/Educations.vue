@@ -6,39 +6,16 @@
 
 <script>
 import VerticalTimeline from "@/components/VerticalTimeline.vue";
+import states from "@/assets/data/education.json"
+
 export default {
   components: {
     VerticalTimeline,
   },
-  data() {
-    return {
-      Info: [
-        {
-          Title: "National Tsing Hua University",
-          Status: "Master's student",
-          Department: "Department of CS",
-          Major: "- Natural Language Process",
-          StartTime: "2019",
-          EndTime: "",
-        },
-        {
-          Title: "National Taiwan University",
-          Status: "Bachelor",
-          Department: "Department of CSIE",
-          Major: "- Computer Science",
-          StartTime: "2015",
-          EndTime: "2019",
-        },
-        // {
-        //   Title: "National Changhua Senior High School",
-        //   Status: "Senior High",
-        //   Department: "Normal",
-        //   Major: "Normal",
-        //   StartTime: "2012",
-        //   EndTime: "2015",
-        // },
-      ],
-    };
-  },
+  computed: {
+    Info() {
+      return states.Info
+    }
+  }
 };
 </script>

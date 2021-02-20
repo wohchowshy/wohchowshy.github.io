@@ -12,6 +12,8 @@
 <script>
 import HeaderBar from '@/components/HeaderBar.vue'
 
+// Vue.config.productionTip = false
+
 export default {
   components:{
     HeaderBar

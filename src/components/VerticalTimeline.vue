@@ -2,15 +2,18 @@
   <div :style="userStyle" class="verticalTimeline" :class="[isDark ? 'textDarkMode' : 'textLightMode']">
     <ul class="outerBorder">
       <li class="eachBlock" v-for="item in info" :key="item">
+        <div v-if="item.Img" class="backgroundImg">
+          <img :src="item.Img" alt="Oops, picture flies out.." class="optionImg">
+        </div>
         <div class="blockDiv">
           <span class="realLine"></span>
           <div class="flex justify-between items-start">
-            <div class="title">{{ item.Title }}</div>
-            <div class="status">{{ item.Status }}</div>
+            <div class="title textCommon">{{ item.Title }}</div>
+            <div class="status textCommon">{{ item.Status }}</div>
           </div>
           <div class="otherContent">
-            <div v-for="(content, key) in filterContent(item)" :key="content" :class="key">
-              {{ content }}
+            <div v-for="(content, key) in filterContent(item)" :key="content" :class="key" class="mt-2">
+              <pre class="textCommon">{{ content }}</pre>
             </div>
           </div>
         </div>
@@ -37,7 +40,7 @@ export default {
     filterContent(item) {
       let content = Object()
       for (let key in item) {
-        if (key == 'Title' || key == 'Status' || key == 'EndTime' || key == 'StartTime') {
+        if (key == 'Title' || key == 'Status' || key == 'EndTime' || key == 'StartTime' || key == 'Img') {
           continue
         } else {
           content[key] = item[key];
@@ -78,7 +81,7 @@ export default {
 
 .outerBorder {
   padding-left: calc(10px * var(--timeLength) + 16px);
-  @apply m-auto list-none relative pr-4 py-1 max-w-max;
+  @apply m-auto list-none relative pr-4 py-1 max-w-full;
 }
 .outerBorder::before {
   content: "";
@@ -90,7 +93,8 @@ export default {
 /* if adjust margin-left, must adjust "left" in .realLine */
 .eachBlock {
   margin-left: var(--space);
-  @apply relative bg-blue-300 bg-opacity-20 p-4 rounded-lg shadow-lg ;
+  @apply relative bg-blue-300 bg-opacity-20 rounded-lg shadow-lg ;
+  /* @apply relative bg-blue-300 bg-opacity-20 p-4 rounded-lg shadow-lg ; */
 }
 
 .eachBlock:not(:first-child) {
@@ -121,8 +125,17 @@ export default {
   @apply top-full;
 }
 
+.backgroundImg {
+  @apply border-b border-gray-800 px-4 pb-2 pt-4;
+}
+
+.optionImg {
+  max-width: 300px;
+  @apply m-auto h-auto w-full;
+}
+
 .blockDiv {
-  @apply leading-normal w-full;
+  @apply leading-normal w-full px-4 pb-4 pt-2 ;
 }
 
 .contentNumber {
@@ -151,14 +164,12 @@ export default {
     @apply text-xs text-right opacity-50 ml-1 md:ml-4;
 }
 
-.otherContent {
-    @apply mt-5 font-light text-xs md:text-base;
+.otherContent{
+    @apply mt-5 font-light text-xs md:text-sm;
 }
 
-.startTime {
-}
-
-.endTime {
+.textCommon {
+  @apply overflow-x-auto;
 }
 
 /* RWD */

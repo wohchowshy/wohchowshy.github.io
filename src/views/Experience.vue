@@ -1,16 +1,23 @@
 <template>
+  <div class="h-full w-full">
     <div class="h-full w-full">
-        <div class="pt-40 text-gray-500 text-center text-3xl">
-            To Be Published !
-        </div>
+      <vertical-timeline :info="Info" :timeLength="4" />
     </div>
+  </div>
 </template>
 
 <script>
+import VerticalTimeline from "@/components/VerticalTimeline"
+import states from "@/assets/data/experience.json"
 
 export default {
   components: {
+      VerticalTimeline,
   },
-
-}
+  computed: {
+      Info: function(){
+          return states.Info
+      }
+  }
+};
 </script>
