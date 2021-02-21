@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .skillCard {
-  @apply rounded-lg shadow-lg p-4 bg-blue-300 bg-opacity-20;
+  @apply rounded-lg shadow-lg p-4 bg-blue-300 bg-opacity-20 tracking-wide text-justify;
 }
 
 .skillHeader {
@@ -32,7 +32,7 @@ export default {
 }
 
 .skillContent {
-    @apply text-xs md:text-sm
+    @apply text-xs md:text-sm;
 }
 
 </style>
