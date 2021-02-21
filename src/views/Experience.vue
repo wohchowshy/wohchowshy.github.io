@@ -1,8 +1,6 @@
 <template>
   <div class="h-full w-full">
-    <div class="h-full w-full">
-      <vertical-timeline :info="Info" :timeLength="4" />
-    </div>
+    <vertical-timeline :info="Info" :timeLength="4" />
   </div>
 </template>
 

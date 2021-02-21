@@ -82,7 +82,7 @@ export default {
 <style scoped>
 .verticalTimeline {
   @apply relative flex justify-center items-center;
-  @apply max-w-screen-lg h-full m-auto px-2 py-10;
+  @apply max-w-screen-sm h-full m-auto px-2 py-10;
 }
 
 .outerBorder {
@@ -184,6 +184,7 @@ export default {
 }
 
 .eachLink {
+  -webkit-tap-highlight-color: transparent;
   @apply cursor-pointer font-bold transition duration-300 transform hover:scale-110;
 }
 

@@ -22,7 +22,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Experience.vue')
   },
   {
-    path: '/skills/:skill?',
+    path: '/skills/:skill',
     name: 'Skills',
     component: () => import(/* webpackChunkName: "about" */ '../views/Skills.vue')
   },
@@ -36,11 +36,11 @@ const routes = [
     name: 'Blog',
     component: () => import(/* webpackChunkName: "about" */ '../views/Blog.vue')
   },
-  {
-    path: '/contact',
-    name: 'Contact',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Contact.vue')
-  },
+  // {
+  //   path: '/contact',
+  //   name: 'Contact',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/Contact.vue')
+  // },
   {
     path: '/:pathMatch(.*)*',
     redirect: '/'

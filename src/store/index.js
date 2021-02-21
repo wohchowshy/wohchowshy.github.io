@@ -8,7 +8,7 @@ export default createStore({
       'Educations': [], 
       'Experience': [], 
       'Blog': [],
-      'Skills': ['Programming', 'Leisure', 'Other'], 
+      'Skills': ['All', 'Programming', 'Leisure', 'Other'], 
       'Projects': ['Bachelor', 'Master'], 
       // 'Contact': [],
     },
