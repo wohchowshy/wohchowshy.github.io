@@ -184,7 +184,6 @@ export default {
 }
 
 .eachLink {
-  -webkit-tap-highlight-color: transparent;
   @apply cursor-pointer font-bold transition duration-300 transform hover:scale-110;
 }
 

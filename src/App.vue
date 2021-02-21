@@ -19,8 +19,6 @@ export default {
     HeaderBar
   },
   watch: {
-    "$store.state.isDark": function(){
-    }
   }
 }
 
@@ -45,10 +43,10 @@ export default {
 
 <style>
 .textLightMode {
-  @apply transition duration-500 transform text-gray-500
+  @apply transition duration-500 transform text-gray-500 border-gray-500
 }
 
 .textDarkMode {
-  @apply transition duration-500 transform text-gray-400
+  @apply transition duration-500 transform text-gray-400 border-gray-400
 }
 </style>

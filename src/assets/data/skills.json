@@ -1,0 +1,19 @@
+{
+    "all": [],
+    "programming": [
+        {
+            "header": "C",
+            "content": "My first language"
+        },
+        {
+            "header": "Python",
+            "content": "Most frequent coding tool"
+        },
+        {
+            "header": "Neural Network",
+            "content": "Pytorch, Tensorflow ..."
+        }
+    ],
+    "leisure": [],
+    "other": []
+}
