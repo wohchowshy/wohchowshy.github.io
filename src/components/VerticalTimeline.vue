@@ -136,7 +136,7 @@ export default {
 }
 
 .optionImg {
-  max-width: 300px;
+  max-width: 400px;
   filter: drop-shadow(0 0 16px white);
   @apply m-auto h-auto w-full object-cover rounded;
 }
