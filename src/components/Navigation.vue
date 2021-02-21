@@ -127,7 +127,7 @@ div.NavStyle-large.relative:hover > div.absolute.subNavStyle-large {
 
 /* Small Style */
 .NavTypesetting-small-extra {
-  @apply justify-start flex flex-col md:hidden text-gray-300 leading-10 text-sm ml-4 w-full;
+  @apply justify-start flex flex-col md:hidden text-gray-300 leading-10 text-sm ml-2 w-full;
 }
 .NavTypesetting-small {
   @apply ml-1 mt-5 relative overflow-hidden;

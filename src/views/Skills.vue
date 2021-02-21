@@ -33,10 +33,8 @@ export default {
 
 <style scoped>
 .skillCardContainer {
-  @apply grid grid-cols-1 sm:grid-cols-3 justify-center max-w-screen-lg max-h-full;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center max-w-screen-lg max-h-full;
+  @apply gap-4 px-5;
 }
 
-.skillCard {
-  @apply m-4;
-}
 </style>
