@@ -173,7 +173,7 @@ export default {
 }
 
 .otherContent > div > pre{
-    @apply mt-5 text-xs md:text-sm tracking-tighter;
+    @apply mt-5 text-xs md:text-sm;
 }
 
 .textCommon {
@@ -217,6 +217,11 @@ export default {
  white-space: -pre-wrap;      /* Opera 4-6 */
  white-space: -o-pre-wrap;    /* Opera 7 */
  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+pre {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.5;
 }
 
 </style>
