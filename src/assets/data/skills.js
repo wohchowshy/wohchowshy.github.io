@@ -1,4 +1,4 @@
-export default{
+export default {
     "all": [],
     "programming": [
         {
@@ -8,15 +8,21 @@ export default{
         },
         {
             "header": "Python",
-            "content": "The most commonly used programming language in recent times. Some NLP packages (e.g. NLTK, spaCy)",
+            "content": "The most commonly used programming language in recent times. Some packages are parctical to me a lots in NLP area such as NLTK, spaCy.",
             "hashtags": ["Python", "NLP", "spacy", "nltk"]
         },
         {
+            "header": "Django",
+            "content": "Built database management system and API while participating in MeiChu Hackathon",
+            "hashtags": ["django", "backend"]
+        }
+    ],
+    "other": [
+        {
             "header": "Neural Network",
-            "content": "Pytorch, Tensorflow ...", 
-            "hashatags": [""]
+            "content": "",
+            "hashtags": ["PyTorch", "Tensorflow", "Transformer"]
         }
     ],
     "leisure": [],
-    "other": []
 }

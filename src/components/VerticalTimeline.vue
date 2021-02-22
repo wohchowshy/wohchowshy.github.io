@@ -142,7 +142,7 @@ export default {
 }
 
 .blockDiv {
-  @apply leading-normal w-full px-4 pb-4 pt-4 ;
+  @apply w-full px-4 pb-4 pt-4 ;
 }
 
 .contentNumber {
@@ -164,15 +164,16 @@ export default {
 
 /* customized text css*/
 .title {
-    @apply text-sm md:text-lg font-semibold mr-1 md:mr-4;
+    /* @apply text-sm md:text-lg font-semibold mr-1 md:mr-4; */
+    @apply text-lg md:text-xl font-semibold mr-1 md:mr-4;
 }
 
 .status {
     @apply text-xs text-right opacity-50 ml-1 md:ml-4 min-w-max;
 }
 
-.otherContent{
-    @apply mt-5 font-light text-xs md:text-sm;
+.otherContent > div > pre{
+    @apply mt-5 text-xs md:text-sm tracking-tighter;
 }
 
 .textCommon {

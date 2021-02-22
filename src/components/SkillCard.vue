@@ -1,7 +1,13 @@
 <template>
-  <div class="skillCard" :class="[isDark? 'textDarkMode':'textLightMode']">
+  <div class="skillCard" :class="[isDark ? 'textDarkMode' : 'textLightMode']">
     <div class="skillHeader">
       {{ Info.header }}
+    </div>
+    <div class="hashtag ">
+      <span class="eachHashtag" v-for="item in Info.hashtags" :key="item">
+      {{
+        item
+      }}</span>
     </div>
     <div class="skillContent">
       {{ Info.content }}
@@ -28,11 +34,26 @@ export default {
 }
 
 .skillHeader {
-  @apply font-semibold text-lg md:text-xl mb-2 md:mb-4;
+  @apply font-semibold text-lg md:text-xl mb-2 border-b border-gray-400 pb-2 pl-1;
 }
+
+.hashtag {
+  @apply mb-2
+}
+
+.eachHashtag {
+  padding: 1px 6px 1px 6px;
+  @apply inline-block rounded-full bg-amber-500 text-xs text-gray-100;
+}
+.eachHashtag:not(:first-child) {
+  margin-left: 2px;
+}
+.eachHashtag:not(:last-child) {
+  margin-right: 2px;
+}
+
 
 .skillContent {
-    @apply text-xs md:text-sm;
+  @apply text-xs md:text-sm;
 }
-
 </style>
