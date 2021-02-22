@@ -7,7 +7,7 @@ export default[
         "Major-nowrap": "Courses:\n  Natural Language Processing \n  Massive Data Analysis \n  Cloud Programming \n  Secure Programming \n  Social Network",
         "StartTime": "2019",
         "EndTime": "Now",
-        "Img": "/NTHULogo.png"
+        "Img": require("@/assets/img/NTHULogo.png")
     },
     {
         "Title": "National Taiwan University",
