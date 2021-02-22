@@ -6,7 +6,7 @@
 
 <script>
 import VerticalTimeline from "@/components/VerticalTimeline"
-import states from "@/assets/data/experience.json"
+import Info from "@/assets/data/experience.js"
 
 export default {
   components: {
@@ -14,7 +14,7 @@ export default {
   },
   computed: {
       Info: function(){
-          return states.Info
+          return Info
       }
   }
 };

@@ -36,11 +36,6 @@ const routes = [
     name: 'Blog',
     component: () => import(/* webpackChunkName: "about" */ '../views/Blog.vue')
   },
-  // {
-  //   path: '/contact',
-  //   name: 'Contact',
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/Contact.vue')
-  // },
   {
     path: '/:pathMatch(.*)*',
     redirect: '/'

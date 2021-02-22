@@ -6,7 +6,7 @@
 
 <script>
 import VerticalTimeline from "@/components/VerticalTimeline.vue";
-import states from "@/assets/data/education.json"
+import Info from "@/assets/data/education.js"
 
 export default {
   components: {
@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     Info() {
-      return states.Info
+      return Info
     }
   }
 };

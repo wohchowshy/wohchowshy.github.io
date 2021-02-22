@@ -9,7 +9,7 @@
 
 <script>
 import SkillCard from "@/components/SkillCard.vue";
-import state from "@/assets/data/skills.json";
+import Info from "@/assets/data/skills.js";
 
 export default {
   components: {
@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     Info() {
-      return state[this.skill()];
+      return Info[this.skill()];
     },
   },
 };
