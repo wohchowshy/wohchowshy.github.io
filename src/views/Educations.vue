@@ -70,7 +70,6 @@ export default {
 .card {
   @apply ml-10 p-4;
   @apply rounded-lg bg-white bg-opacity-70 shadow-2xl;
-  /* @apply rounded-lg bg-blue-gray-500 shadow-2xl; */
   @apply text-xs md:text-sm;
 }
 

@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .skillCard {
-  @apply rounded-lg shadow-lg p-4 bg-blue-300 bg-opacity-20 tracking-wide text-justify;
+  @apply rounded-lg shadow-xl p-4 bg-blue-300 bg-opacity-20 tracking-wide text-justify;
 }
 
 .skillHeader {

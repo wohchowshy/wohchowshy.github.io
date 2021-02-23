@@ -22,7 +22,7 @@ export default {};
   content: "";
   border-color: inherit;
   @apply left-0 top-0;
-  @apply absolute h-full w-0 border-2;
+  @apply absolute h-full w-0 border-l-4;
 }
 
 .dotContainer {
