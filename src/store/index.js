@@ -3,6 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     isDark: true,
+    textColor: "textColor-dark",
+    cardBgColor: "cardBgColor-dark",
     navigations: {
       'About': [], 
       'Educations': [], 
@@ -18,6 +20,13 @@ export default createStore({
   mutations: {
     CHANGE_DARK_MODE(state){
       state.isDark = !state.isDark
+      if(state.isDark == true){
+        state.textColor = "textColor-dark"
+        state.cardBgColor = "cardBgColor-dark"
+      }else{
+        state.textColor = "textColor-light"
+        state.cardBgColor = "cardBgColor-light"
+      }
     },
     CHANGE_PAGE(state, navigation) {
       state.nowPage = navigation

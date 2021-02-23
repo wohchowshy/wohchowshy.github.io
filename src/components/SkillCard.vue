@@ -1,5 +1,5 @@
 <template>
-  <div class="skillCard" :class="[isDark ? 'textDarkMode' : 'textLightMode']">
+  <div :class="['skillCard', textColor]">
     <div class="skillHeader">
       {{ Info.header }}
     </div>
@@ -21,9 +21,9 @@ export default {
     Info: Object,
   },
   computed: {
-    isDark: function () {
-      return this.$store.state.isDark;
-    },
+    textColor(){
+      return this.$store.state.textColor
+    }
   },
 };
 </script>

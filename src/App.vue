@@ -40,11 +40,17 @@ export default {
 </style>
 
 <style>
-.textLightMode {
+.textColor-dark {
+  @apply transition duration-500 transform text-gray-400 border-gray-400;
+}
+.textColor-light {
   @apply transition duration-500 transform text-gray-500 border-gray-500;
 }
 
-.textDarkMode {
-  @apply transition duration-500 transform text-gray-400 border-gray-400;
+.cardBgColor-dark {
+  @apply transition duration-500 transform bg-blue-300 bg-opacity-20;
+}
+.cardBgColor-light {
+  @apply transition duration-500 transform bg-blue-300 bg-opacity-20;
 }
 </style>

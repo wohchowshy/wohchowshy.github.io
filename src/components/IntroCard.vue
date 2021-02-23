@@ -1,5 +1,5 @@
 <template>
-  <div class="introCard" :class="[isDark? 'textDarkMode':'textLightMode']">
+  <div :class="['introCard', textColor]">
     <div class="introCard-col1">
       <img
         src="@/assets/img/yizzy.pic.600.jpg"
@@ -44,8 +44,8 @@ export default {
     },
   },
   computed: {
-    isDark: function(){
-      return this.$store.state.isDark;
+    textColor() {
+      return this.$store.state.textColor
     }
   },
 };

@@ -1,21 +1,35 @@
 
 export default[
     {
+        "Img": require("@/assets/img/NTHULogo.png"),
         "Title": "National Tsing Hua University",
-        "Status": "Master's student",
         "Department": "Department of CS",
-        "Major-nowrap": "Courses:\n  Natural Language Processing \n  Massive Data Analysis \n  Cloud Programming \n  Secure Programming \n  Social Network",
+        "Degree": "Master's student",
+        "Courses": `
+**Related Courses:**
+- Natural Language Processing
+- Massive Data Analysis
+- Cloud Programming
+- Secure Programming
+- Social Network
+`,
         "StartTime": "2019",
-        "EndTime": "Now",
-        "Img": require("@/assets/img/NTHULogo.png")
+        "EndTime": "",
     },
     {
+        "Img": require("@/assets/img/NTULogo.png"),
         "Title": "National Taiwan University",
-        "Status": "Bachelor",
         "Department": "Department of CSIE",
-        "Major-nowrap": "Courses:\n  Information Retrieval and Extraction \n  Natural Language Processing \n  Artificial Intelligence \n  Machine Learning and Deep Learning with Python \n  Digital Speech Processing",
+        "Degree": "Bachelor",
+        "Courses": `
+**Related Courses:**
+- Information Retrieval and Extraction
+- Natural Language Processing
+- Artificial Intelligence
+- Machine Learning and Deep Learning with Python
+- Digital Speech Processing
+`,
         "StartTime": "2015",
         "EndTime": "2019",
-        "Img": require("@/assets/img/NTULogo.png")
     }
 ]
