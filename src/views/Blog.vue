@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full max-w-screen-xl m-auto p-10">
+    <div class="h-full w-full max-w-screen-xl m-auto p-4">
         <!-- <div class="pt-40 text-gray-500 text-center text-3xl">
             To Be Published !
         </div> -->

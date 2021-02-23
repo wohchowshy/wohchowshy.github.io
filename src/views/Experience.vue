@@ -1,35 +1,31 @@
 <template>
   <div class="experience">
-    <!-- <div class="text-center text-xl text-gray-400 mt-10"> Rearrange... </div> -->
-    <!-- <Marked :content="Info"/> -->
-    <div class="card">
-      123
-    </div>
+    <ExperienceCard v-for="item in Info" :Info="item" :key="item"/>
   </div>
 </template>
 
 <script>
-// import Marked from "@/components/Marked.vue"
-import Info from "@/assets/data/experience.js"
+import ExperienceCard from "@/components/ExperienceCard.vue";
+import Info from "@/assets/data/experience.js";
 
 export default {
   components: {
-      // Marked,
+    ExperienceCard,
   },
   computed: {
-      Info: function(){
-          return Info
-      }
-  }
+    Info: function () {
+      return Info;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .experience {
-  @apply w-full h-full max-w-screen-lg;
+  /* @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-5; */
+  @apply grid grid-cols-1 sm:auto-cols-auto sm:grid-flow-col gap-5 px-5;
+  @apply max-w-sm sm:max-w-screen-sm lg:max-w-screen-lg justify-center;
+  @apply w-full m-auto;
 }
 
-.card {
-  @apply rounded-lg shadow-xl
-}
 </style>

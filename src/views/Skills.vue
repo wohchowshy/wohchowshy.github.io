@@ -35,7 +35,7 @@ export default {
 .skillCardContainer {
   @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center;
   @apply max-w-sm sm:max-w-screen-sm lg:max-w-screen-lg ;
-  @apply gap-4 px-5;
+  @apply gap-5 px-5;
 }
 
 </style>
