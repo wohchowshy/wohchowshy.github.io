@@ -49,9 +49,9 @@ export default {
     },
     textColor() {
       if (this.isDark) {
-        return ["textColor-dark"];
+        return ["Education-textColor-dark"];
       } else {
-        return ["textColor-light"];
+        return ["Education-textColor-light"];
       }
     }
   },
@@ -117,10 +117,10 @@ export default {
 .borderColor-light {
   @apply transition duration-500 transform border-blue-gray-400;
 }
-.textColor-dark {
+.Education-textColor-dark {
   @apply transition duration-500 transform text-gray-800;
 }
-.textColor-light {
+.Education-textColor-light {
   @apply transition duration-500 transform text-gray-700;
 }
 </style>
