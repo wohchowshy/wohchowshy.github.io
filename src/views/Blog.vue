@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 .blog {
-    @apply max-w-sm md:max-w-screen-md;
+    @apply max-w-sm md:max-w-screen-md lg:max-w-screen-lg;
     @apply h-full m-auto p-4;
 }
 </style>

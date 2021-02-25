@@ -37,7 +37,7 @@ During the master's degree, I have developed and deployed some programs (see lin
         "Links": {
             "Linggle (Multilingual)": "http://jp.linggle.com"
         },
-        "Img": require("@/assets/img/123.png"),
+        "Img": require("@/assets/img/linggleJP.png"),
         "StartTime": "2019.09",
         "EndTime": "Now"
     }

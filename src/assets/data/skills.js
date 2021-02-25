@@ -1,5 +1,8 @@
 export default {
+// ALL
     "all": [],
+
+// Programming
     "programming": [
         {
             "header": "C",
@@ -18,7 +21,6 @@ export default {
         },
         {
             "header": "Python",
-            // "content": "The most commonly used programming language in recent times. Some packages are parctical to me in NLP area such as NLTK, spaCy.",
             "content": `
 - Multiprocessing
 - Neural Network
@@ -39,7 +41,7 @@ export default {
             "header": "HTML",
             "content": `
 - Member System
-- Ngram Query System
+- Ngram Querying System
 `,
             "hashtags": ['HTML']
         },
@@ -67,18 +69,81 @@ export default {
             "hashtags": ["R"]
         },
     ],
+
+
+// Framework
     "framework": [
         {
-            "header": "Django",
-            "content": "Built database management system and API while participating in MeiChu Hackathon",
-            "hashtags": ["django", "backend"]
+            "header": "PyTorch",
+            "content":`
+- LSTM
+- Transformer
+- Sequence To Sequence
+- Byte Pair Encoding
+`,
+            "hashtags": ["PyTorch", "Neural Network", "Python"]
         },
+        {
+            "header": "Tensorflow / Keras",
+            "content":`
+- LSTM
+- Transformer
+- Sequence To Sequence
+- CNN
+`,
+            "hashtags": ["Tensorflow", "Keras", "Neural Network", "Python"]
+        },
+        {
+            "header": "Vue.js",
+            "content":`
+- Build This Website
+- Ngram Querying System
+`,
+            "hashtags": ["Vue.js", "frontend", "JavaScript"]
+        },
+        {
+            "header": "tailwindcss",
+            "content":`
+- CSS styling
+- Animation
+`,
+            "hashtags": ["Vue.js", "frontend", "JavaScript"]
+        },
+        {
+            "header": "Django",
+            "content":`
+- Database Management
+- API to access database
+- MTV structure
+`,
+            "hashtags": ["Django", "backend", "Python", "MTV", "API"]
+        },
+        {
+            "header": "Flask",
+            "content":`
+- API to access database
+`,
+            "hashtags": ["Flask", "backend", "Python", "API"]
+        },
+        
     ],
+
+
+// Leisure
     "leisure": [
         {
-            "header": "Neural Network",
-            "content": "",
-            "hashtags": ["PyTorch", "Tensorflow", "Transformer"]
+            "header": "Bedminton",
+            "content": `
+<img src=`+ require('@/assets/img/bedminton.svg') +` style="display:block; margin: auto; width:50%" />
+`,
+            "hashtags": ["Badminton", "Sport"]
+        },
+        {
+            "header": "Basketball",
+            "content": `
+<img src=`+ require('@/assets/img/basketball.svg') +` style="display:block; margin: auto; width:50%" />
+`,
+            "hashtags": ["Basketball", "Sport"]
         },
     ],
 }

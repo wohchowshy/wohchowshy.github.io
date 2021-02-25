@@ -61,4 +61,8 @@ export default {
 .cardBgColor-light {
   @apply transition duration-500 transform bg-white bg-opacity-100;
 }
+
+body {
+  font-family: 'Cormorant Garamond', serif !important;
+}
 </style>
