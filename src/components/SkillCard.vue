@@ -1,28 +1,40 @@
 <template>
-  <div :class="['skillCard', textColor]">
+  <div :class="['skillCard', textColor, cardBgColor]">
     <div class="skillHeader">
       {{ Info.header }}
     </div>
-    <div class="hashtag ">
-      <span class="eachHashtag" v-for="item in Info.hashtags" :key="item">
-      {{
-        item
-      }}</span>
-    </div>
-    <div class="skillContent">
-      {{ Info.content }}
+    <div class="horizontalLine" />
+    <Marked :content="Info.content" class="markedContent"/>
+    <div class="hashContainer">
+      <Hashtags :hashtags="Info.hashtags"/>
     </div>
   </div>
 </template>
 
 <script>
+import Hashtags from "@/components/Hashtags.vue"
+import Marked from "@/components/Marked.vue"
 export default {
+  components:{
+    Hashtags,
+    Marked,
+  },
   props: {
     Info: Object,
   },
   computed: {
-    textColor(){
-      return this.$store.state.textColor
+    isDark() {
+      return this.$store.state.isDark;
+    },
+    textColor() {
+      if (this.isDark) {
+        return ["card-textColor-dark"];
+      } else {
+        return ["card-textColor-light"];
+      }
+    },
+    cardBgColor() {
+      return this.$store.state.cardBgColor;
     }
   },
 };
@@ -30,30 +42,30 @@ export default {
 
 <style scoped>
 .skillCard {
-  @apply rounded-lg shadow-lg p-4 bg-blue-300 bg-opacity-20 tracking-wide text-justify;
+  /* @apply rounded-lg shadow-lg p-4 bg-blue-300 bg-opacity-20 tracking-wide text-justify; */
+  @apply rounded-lg shadow-lg p-4 pb-2;
+  @apply flex flex-col;
 }
 
 .skillHeader {
-  @apply font-semibold text-lg md:text-xl mb-2 border-b border-gray-400 pb-2 pl-1;
+  @apply font-semibold text-lg md:text-xl pl-1;
 }
 
-.hashtag {
-  @apply mb-2
+.horizontalLine {
+  @apply border-t my-2 border-gray-200
 }
-
-.eachHashtag {
-  padding: 1px 6px 1px 6px;
-  @apply inline-block rounded-full bg-amber-500 text-xs text-gray-100;
-}
-.eachHashtag:not(:first-child) {
-  margin-left: 2px;
-}
-.eachHashtag:not(:last-child) {
-  margin-right: 2px;
-}
-
 
 .skillContent {
   @apply text-xs md:text-sm;
+}
+
+.hashContainer {
+  @apply flex-grow flex content-end flex-wrap
+}
+
+.markedContent {
+  @apply text-xs;
+  @apply md:text-sm;
+  @apply mr-2 md:mr-4
 }
 </style>

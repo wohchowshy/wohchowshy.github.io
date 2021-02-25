@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 .hashtagDiv {
-    @apply text-center
+    /* @apply text-center */
 }
 .hashtag {
     @apply px-1.5 mx-0.5 my-0.5;

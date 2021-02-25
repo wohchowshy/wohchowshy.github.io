@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div :class="['card', cardBgColor]">
     <div class="imgDiv" :style="{ 'background-image': 'url(' + Info.Img + ')' }"></div>
     <div :class="['content', textColor]">
       <div class="title">{{ Info.Title }}</div>
@@ -32,11 +32,14 @@ export default {
     },
     textColor() {
       if (this.isDark) {
-        return ["Experience-textColor-dark"];
+        return ["card-textColor-dark"];
       } else {
-        return ["Experience-textColor-light"];
+        return ["card-textColor-light"];
       }
     },
+    cardBgColor() {
+      return this.$store.state.cardBgColor;
+    }
   },
 };
 </script>
@@ -44,7 +47,7 @@ export default {
 <style scoped>
 .card {
   /* max-width: 300px; */
-  @apply bg-white bg-opacity-70 rounded-lg z-10 justify-self-center;
+  @apply rounded-lg z-10 justify-self-center;
   @apply w-full;
   @apply flex flex-col
 }
@@ -70,17 +73,10 @@ export default {
   @apply italic;
 }
 .horizontalLine {
-  @apply border-t my-2
+  @apply border-t my-2 border-gray-200
 }
 
 .hashtags {
   @apply flex-grow flex content-end flex-wrap;
-}
-
-.Experience-textColor-dark {
-  @apply transition duration-500 transform text-gray-800;
-}
-.Experience-textColor-light {
-  @apply transition duration-500 transform text-gray-700;
 }
 </style>
