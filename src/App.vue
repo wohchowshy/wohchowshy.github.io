@@ -47,10 +47,18 @@ export default {
   @apply transition duration-500 transform text-gray-500 border-gray-500;
 }
 
+.card-textColor-dark {
+  @apply transition duration-500 transform text-gray-800;
+}
+.card-textColor-light {
+  @apply transition duration-500 transform text-gray-700;
+}
+
 .cardBgColor-dark {
-  @apply transition duration-500 transform bg-blue-300 bg-opacity-20;
+  @apply transition duration-500 transform bg-blue-200 bg-opacity-80;
+  /* @apply transition duration-500 transform bg-white bg-opacity-80; */
 }
 .cardBgColor-light {
-  @apply transition duration-500 transform bg-blue-300 bg-opacity-20;
+  @apply transition duration-500 transform bg-white bg-opacity-100;
 }
 </style>

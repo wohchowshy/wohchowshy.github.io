@@ -10,11 +10,12 @@ export default createStore({
       'Educations': [], 
       'Experience': [], 
       'Blog': [],
-      'Skills': ['All', 'Programming', 'Leisure', 'Other'], 
-      'Projects': ['Bachelor', 'Master'], 
+      'Skills': ['All', 'Programming', 'Framework', 'Leisure'], 
+      'Projects': ['All', 'Bachelor', 'Master'], 
       // 'Contact': [],
     },
     nowPage: 'About',
+    nowSubPage: '',
     showNavSmall: false,
   },
   mutations: {
@@ -28,8 +29,9 @@ export default createStore({
         state.cardBgColor = "cardBgColor-light"
       }
     },
-    CHANGE_PAGE(state, navigation) {
-      state.nowPage = navigation
+    CHANGE_PAGE(state, [nowPage, nowSubPage]) {
+      state.nowPage = nowPage
+      state.nowSubPage = nowSubPage
     },
     CHANGE_NAV_SMALL(state, status) {
       if (status === false) {
@@ -44,10 +46,12 @@ export default createStore({
     changeDarkMode({commit}){
       commit("CHANGE_DARK_MODE");
     },
-    changePage({commit}, page){
+    changePage({commit}, [page, subPage]){
       let nowPage = page || 'about'
+      let nowSubPage = subPage || ''
       nowPage = nowPage.charAt(0).toUpperCase() + nowPage.slice(1)
-      commit("CHANGE_PAGE", nowPage)
+      nowSubPage = nowSubPage.charAt(0).toUpperCase() + nowSubPage.slice(1)
+      commit("CHANGE_PAGE", [nowPage, nowSubPage])
     },
     ChangeNavSmall({commit}, status) {
       commit("CHANGE_NAV_SMALL", status);

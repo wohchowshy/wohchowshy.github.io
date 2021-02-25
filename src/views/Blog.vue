@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full w-full max-w-screen-xl m-auto p-4">
+    <div class="blog">
         <!-- <div class="pt-40 text-gray-500 text-center text-3xl">
             To Be Published !
         </div> -->
@@ -22,3 +22,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.blog {
+    @apply max-w-sm md:max-w-screen-md;
+    @apply h-full m-auto p-4;
+}
+</style>

@@ -3,7 +3,7 @@
     <div :class="['education', borderColor]">
       <VerticalTimeline v-for="item in Info" :key="item">
         <template v-slot:card>
-          <div :class="['card', textColor]">
+          <div :class="['card', textColor, cardBgColor]">
             <div class="firstRow">
               <div class="img"> <img :src="item.Img" alt="Oops!"/> </div>
               <div class="headerContent">
@@ -40,6 +40,9 @@ export default {
     isDark() {
       return this.$store.state.isDark;
     },
+    cardBgColor() {
+      return this.$store.state.cardBgColor;
+    },
     borderColor() {
       if (this.isDark) {
         return ["borderColor-dark"];
@@ -49,9 +52,9 @@ export default {
     },
     textColor() {
       if (this.isDark) {
-        return ["Education-textColor-dark"];
+        return ["card-textColor-dark"];
       } else {
-        return ["Education-textColor-light"];
+        return ["card-textColor-light"];
       }
     }
   },
@@ -69,7 +72,7 @@ export default {
 
 .card {
   @apply ml-10 p-4;
-  @apply rounded-lg bg-white bg-opacity-70 shadow-2xl;
+  @apply rounded-lg shadow-2xl;
   @apply text-xs md:text-sm;
 }
 
@@ -116,11 +119,5 @@ export default {
 }
 .borderColor-light {
   @apply transition duration-500 transform border-blue-gray-400;
-}
-.Education-textColor-dark {
-  @apply transition duration-500 transform text-gray-800;
-}
-.Education-textColor-light {
-  @apply transition duration-500 transform text-gray-700;
 }
 </style>
