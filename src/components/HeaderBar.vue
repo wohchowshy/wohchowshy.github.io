@@ -30,13 +30,11 @@ export default {
   },
   watch: {
     $route: {
-        handler: function(){
-            this.$store.dispatch(
-             "changePage",
-              this.$router.currentRoute._rawValue.fullPath.split("/").pop()
-            )
-        }, 
-        immediate: true,
+      handler: function(){
+        let [page, subPage] = this.$router.currentRoute._rawValue.fullPath.split('/').slice(1, 3);
+        this.$store.dispatch("changePage", [page, subPage])
+      }, 
+      immediate: true,
     }
   },
 };

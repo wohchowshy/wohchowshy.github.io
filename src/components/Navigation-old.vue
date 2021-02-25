@@ -3,7 +3,7 @@
   <div class="NavTypesetting-large">
     <div class="flex">
     <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" >
-      <div class="NavStyle-large relative" :class="[nowPage == nav ? 'NavStyle-now-large' : '']">
+      <div class="NavStyle-large relative" :class="[isNowPage(nowPage, nav, ProxyToList(subNav)) ? 'NavStyle-now-large' : '']">
         {{ nav }}
         <!-- arrow svg -->
         <svg v-if="subNav.length" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline">
@@ -11,7 +11,7 @@
         </svg>
         <!-- sub Navigation here (default hidden) -->
         <div v-if="subNav.length" class="absolute subNavStyle-large">
-          <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-large" :class="[nowSubPage == item ? 'subNavStyle-now-large' : '']">
+          <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-large" :class="[nowPage == item ? 'subNavStyle-now-large' : '']">
             {{ item }}
           </div>
         </div>
@@ -29,7 +29,7 @@
     <transition name="scale">
     <div v-if="showNav" class="NavTypesetting-small">
       <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" class="flex">
-        <div class="NavStyle-small " :class="[nowPage == nav ? 'NavStyle-now-small' : '']">
+        <div class="NavStyle-small " :class="[isNowPage(nowPage, nav, ProxyToList(subNav)) ? 'NavStyle-now-small' : '']">
           {{ nav }}
           <!-- arrow svg -->
           <svg v-if="subNav.length" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline">
@@ -37,7 +37,7 @@
           </svg>
           <!-- sub Navigation here (default hidden) -->
           <div v-if="subNav.length" class="subNavStyle-small">
-            <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-small" :class="[nowSubPage == item ? 'subNavStyle-now-small' : '']">
+            <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-small" :class="[nowPage == item ? 'subNavStyle-now-small' : '']">
             {{ item }}
             </div>
            </div>
@@ -59,9 +59,6 @@ export default {
   computed: {
     nowPage() {
       return this.$store.state.nowPage;
-    },
-    nowSubPage() {
-      return this.$store.state.nowSubPage;
     },
     navigations() {
       return this.$store.state.navigations;
