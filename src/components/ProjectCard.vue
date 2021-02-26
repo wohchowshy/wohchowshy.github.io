@@ -115,6 +115,7 @@ export default {
   @apply font-bold bg-gray-100 text-black;
   max-width: 100px;
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .showMore:hover {
   @apply font-light border-opacity-100 bg-transparent text-white;

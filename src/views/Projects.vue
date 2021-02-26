@@ -26,6 +26,11 @@ export default {
       return Info[this.project()];
     },
   },
+  watch:{
+    "$route.params.skill": function() {
+      this.$store.dispatch("ChangeNavSmall", false)
+    }
+  }
 };
 </script>
 
