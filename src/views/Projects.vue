@@ -27,7 +27,7 @@ export default {
     },
   },
   watch:{
-    "$route.params.skill": function() {
+    "$route.params.project": function() {
       this.$store.dispatch("ChangeNavSmall", false)
     }
   }

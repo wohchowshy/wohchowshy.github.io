@@ -107,12 +107,13 @@ export default {
   @apply text-xl font-bold mb-6;
 }
 .introSimple {
-  @apply text-base;
+  @apply text-sm md:text-base;
 }
 .showMore {
   @apply mt-10 m-auto cursor-pointer;
   @apply border-t border-b border-opacity-0;
   @apply font-bold bg-gray-100 text-black;
+  @apply text-sm md:text-base;
   max-width: 100px;
   transition: all 0.3s ease;
   -webkit-tap-highlight-color: transparent;
