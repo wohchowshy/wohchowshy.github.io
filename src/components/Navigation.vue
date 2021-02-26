@@ -11,7 +11,7 @@
         </svg>
         <!-- sub Navigation here (default hidden) -->
         <div v-if="subNav.length" class="absolute subNavStyle-large">
-          <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-large" :class="[nowSubPage == item ? 'subNavStyle-now-large' : '']">
+          <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-large" :class="[nowSubPage == item && nowPage == nav ? 'subNavStyle-now-large' : '']">
             {{ item }}
           </div>
         </div>
@@ -37,7 +37,7 @@
           </svg>
           <!-- sub Navigation here (default hidden) -->
           <div v-if="subNav.length" class="subNavStyle-small">
-            <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-small" :class="[nowSubPage == item ? 'subNavStyle-now-small' : '']">
+            <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-small" :class="[nowSubPage == item && nowPage == nav ? 'subNavStyle-now-small' : '']">
             {{ item }}
             </div>
            </div>

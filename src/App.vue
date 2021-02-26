@@ -27,7 +27,8 @@ export default {
 <style scoped>
 .darkModeBackground-Common {
   overflow: scroll;
-  @apply w-full h-full relative transition duration-500 flex flex-col;
+  @apply w-full h-full flex flex-col;
+  /* @apply w-full h-full relative transition duration-500 flex flex-col; */
 }
 
 .darkModeBackground-dark {
@@ -64,5 +65,6 @@ export default {
 
 body {
   font-family: 'Cormorant Garamond', serif !important;
+  @apply relative;
 }
 </style>
