@@ -32,11 +32,11 @@ export default {
 }
 
 .darkModeBackground-dark {
-  @apply transform bg-gray-800;
+  @apply transition duration-500 transform bg-gray-800;
 }
 
 .darkModeBackground {
-  @apply transform bg-gray-100;
+  @apply transition duration-500 transform bg-gray-100;
 }
 </style>
 
@@ -64,7 +64,9 @@ export default {
 }
 
 body {
-  font-family: 'Cormorant Garamond', serif !important;
+  /* font-family: 'Cormorant Garamond', serif !important; */
+  /* font-family: 'Alegreya Sans', sans-serif; */
+  font-family: 'Roboto', sans-serif !important;
   @apply relative;
 }
 </style>
