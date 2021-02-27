@@ -20,10 +20,7 @@ export default {
   },
   computed: {
     Info: function () {
-      if (this.project() === "all") {
-        return [].concat(...Object.values(Info));
-      }
-      return Info[this.project()];
+      return Info.projects;
     },
   },
   watch:{

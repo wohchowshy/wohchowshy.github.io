@@ -100,10 +100,10 @@ export default {
   transform: translateY(-50%);
 }
 .titleSimple {
-  @apply text-xl font-semibold mb-6;
+  @apply text-2xl font-semibold mb-6;
 }
 .introSimple {
-  @apply text-sm md:text-base leading-relaxed tracking-wide;
+  @apply text-xs md:text-sm leading-relaxed tracking-wide;
 }
 .showMore {
   @apply mt-10 m-auto cursor-pointer;

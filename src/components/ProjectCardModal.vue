@@ -101,7 +101,8 @@ export default {
   background-color: rgba(0, 0, 0, 0.8);
   @apply fixed top-0 left-0 bottom-0 right-0 w-full h-full;
   @apply flex justify-center items-stretch;
-  @apply py-20 md:py-40;
+  @apply py-20 md:px-20 px-4;
+  /* @apply py-20 md:py-40; */
   /* transition: opacity 0.5s ease; */
 }
 
@@ -117,7 +118,8 @@ export default {
 /* Below are CSSs of modal Component */
 .container {
   @apply relative overflow-scroll;
-  @apply mx-5 md:mx-40 my-auto pt-8;
+  /* @apply mx-5 md:mx-40 my-auto pt-8; */
+  @apply pt-8;
   @apply max-w-sm sm:max-w-screen-sm md:max-w-screen-md max-h-full;
   @apply bg-white;
   /* transition: all 0.5s ease; */
@@ -137,7 +139,10 @@ export default {
 /* Img */
 .showImg {
   @apply flex justify-between items-center relative;
-  @apply h-96 bg-gray-100;
+  @apply bg-gray-100;
+  max-height: 500px;
+  height: auto;
+  /* height: 384px; */
 }
 .showIdx {
   @apply absolute bottom-0;
@@ -150,10 +155,23 @@ export default {
 }
 .nowImg {
   @apply h-full w-full object-contain object-center mx-auto;
+  max-height: 500px;
 }
 .arrow {
-  @apply p-4 text-3xl cursor-pointer;
+  @apply p-2 md:p-4 cursor-pointer;
+  @apply text-xl md:text-2xl opacity-20;
+  @apply absolute h-full flex items-center;
   -webkit-tap-highlight-color: transparent;
+  z-index: 5;
+}
+.arrow:hover {
+    @apply transition duration-200 transform opacity-50;
+}
+.arrow.left {
+  @apply left-0;
+}
+.arrow.right {
+  @apply right-0;
 }
 .dots {
   @apply rounded-full border w-2 h-2 border-white mx-1 my-1 shadow bg-gray-200 bg-opacity-50;

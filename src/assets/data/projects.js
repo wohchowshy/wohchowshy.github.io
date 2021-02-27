@@ -1,10 +1,5 @@
 export default {
-// ALL
-    'all': [],
-
-
-// Master
-    'master': [
+    'projects':[
         {
             "Title": "NoMoney",
             "Thumbnail": require("@/assets/img/projects/nomoney/nomoney-thumbnail.jpg"),
@@ -62,13 +57,6 @@ In this project, I am in charge of back-end development and hashtag extraction. 
             "Hashtags": ["IEEE", "GEC", "Big Data"],
             "Link": ""
         },
-        
-
-    ],
-
-
-    // Bachelor
-    'bachelor': [
         {
             "Title": "ETF Price Prediction",
             "Thumbnail": require('@/assets/img/projects/etf/etf-thumbnail.png'),
