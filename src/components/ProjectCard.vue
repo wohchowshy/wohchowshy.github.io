@@ -3,7 +3,7 @@
     </ProjectCardModal>
 
   <div :class="['projectCard', textColor, cardBgColor]">
-    <img class="bgImg" :src="project.Imgs[0]" />
+    <img class="bgImg" :src="project.Thumbnail" />
     <div class="contentSimple">
       <div class="relativeAlign">
         <div class="titleSimple">
@@ -62,7 +62,7 @@ export default {
 <style scoped>
 .projectCard {
   @apply relative rounded-lg shadow-2xl w-full h-full overflow-hidden;
-  max-height: 400px;
+  height: 400px;
 }
 @media (max-width: 767px) {
   .projectCard {
@@ -74,23 +74,20 @@ export default {
 }
 /* .projectCard (max-width:) */
 .projectCard::before {
-  @apply block absolute top-0 left-0 w-full h-full bg-gray-600 bg-opacity-60;
+  @apply block absolute top-0 left-0 w-full h-full bg-gray-500 bg-opacity-60;
   content: "";
   z-index: 1;
 }
 
 .bgImg {
-  /* @apply h-full w-full; */
-  /* min-height: 400px; */
-  width: auto;
-  height: auto;
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
-  /* transition: all 0.5s ease; */
+  @apply object-cover w-full h-full;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  transition: all 0.5s ease;
 }
-/* .projectCard:hover .bgImg {
+.projectCard:hover .bgImg {
   transform: scale(1.1);
-} */
+}
 
 .contentSimple {
   @apply absolute text-center text-white m-auto p-4;
@@ -99,7 +96,6 @@ export default {
 }
 .relativeAlign {
   position: relative;
-  /* bottom: 0px; */
   top: 50%;
   transform: translateY(-50%);
 }

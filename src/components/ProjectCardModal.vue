@@ -101,7 +101,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.8);
   @apply fixed top-0 left-0 bottom-0 right-0 w-full h-full;
   @apply flex justify-center items-stretch;
-  @apply py-40;
+  @apply py-20 md:py-40;
   /* transition: opacity 0.5s ease; */
 }
 

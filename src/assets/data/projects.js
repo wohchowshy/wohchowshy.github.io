@@ -3,21 +3,21 @@ export default {
     'all': [],
 
 
-// Bachelor
-    'bachelor': [
-        
-    ],
-
-
 // Master
     'master': [
         {
             "Title": "NoMoney",
+            "Thumbnail": require("@/assets/img/projects/nomoney/nomoney-thumbnail.jpg"),
             "Imgs": [
-                require('@/assets/img/ssmyc1.png'),
-                require('@/assets/img/ssmyc2.png'),
-                require('@/assets/img/ssmyc3.png'),
-                require('@/assets/img/ssmyc4.png'),
+                require('@/assets/img/projects/nomoney/nomoney1.jpg'),
+                require('@/assets/img/projects/nomoney/nomoney2.png'),
+                require('@/assets/img/projects/nomoney/nomoney3.png'),
+                require('@/assets/img/projects/nomoney/nomoney4.png'),
+                require('@/assets/img/projects/nomoney/nomoney5.png'),
+                require('@/assets/img/projects/nomoney/nomoney6.png'),
+                require('@/assets/img/projects/nomoney/nomoney7.png'),
+                require('@/assets/img/projects/nomoney/nomoney8.png'),
+                require('@/assets/img/projects/nomoney/nomoney9.png'),
             ],
             "ForShort": "An novel application in LINE, gives us more chances to earn extra income in our leisure time. Use Django, Vue.js, LINE-Bot, LIFF, and so on.",
             "Introduction": `
@@ -33,20 +33,52 @@ In this project, I am in charge of back-end development and hashtag extraction. 
             "Link": "https://nomoney.nlplab.cc"
         },
         {
-            "Title": "IEEE BIG DATA 2019 Poster",
+            "Title": "Multilingual Linggle",
+            "Thumbnail": require("@/assets/img/projects/jplinggle/jplinggle-thumbnail.png"),
             "Imgs": [
-                require('@/assets/img/IeeeBigData1.png'),
+                require("@/assets/img/projects/jplinggle/jplinggle1.png"),
+                require("@/assets/img/projects/jplinggle/jplinggle2.png"),
+                require("@/assets/img/projects/jplinggle/jplinggle3.png"),
+            ],
+            "ForShort": "",
+            "Introduction": ``,
+            "Detail": ``,
+            "Hashtags": [""],
+            "Link": ""
+        },
+        {
+            "Title": "IEEE BIG DATA 2019 Poster",
+            "Thumbnail": require("@/assets/img/projects/ieee/ieee-thumbnail.png"),
+            "Imgs": [
+                require('@/assets/img/projects/ieee/ieee1.png'),
+                require('@/assets/img/projects/ieee/ieee2.png'),
+                require('@/assets/img/projects/ieee/ieee3.png'),
+                require('@/assets/img/projects/ieee/ieee4.png'),
+                require('@/assets/img/projects/ieee/ieee5.png'),
             ],
             "ForShort": "The biggest parallel data for Grammatical Error Correction. Generated data can be used in NN models. Use Parallel Processing, MapReduce, and so on.",
-            "Introduction": "",
+            "Introduction": ``,
             "Detail": ``,
             "Hashtags": ["IEEE", "GEC", "Big Data"],
             "Link": ""
         },
+        
+
+    ],
+
+
+    // Bachelor
+    'bachelor': [
         {
             "Title": "ETF Price Prediction",
+            "Thumbnail": require('@/assets/img/projects/etf/etf-thumbnail.png'),
             "Imgs": [
-                require('@/assets/img/ETFPricePrediction1.png'),
+                require('@/assets/img/projects/etf/etf1.svg'),
+                require('@/assets/img/projects/etf/etf2.png'),
+                require('@/assets/img/projects/etf/etf3.png'),
+                require('@/assets/img/projects/etf/etf4.png'),
+                require('@/assets/img/projects/etf/etf5.png'),
+                require('@/assets/img/projects/etf/etf6.png'),
             ],
             "ForShort": "Bi-directional LSTM to predict ETF Prices. Treat Everyday's stock prices as sequential states and train an insteresting model.",
             "Introduction": "",
@@ -54,6 +86,5 @@ In this project, I am in charge of back-end development and hashtag extraction. 
             "Hashtags": [""],
             "Link": ""
         },
-
-    ]
+    ],
 }
