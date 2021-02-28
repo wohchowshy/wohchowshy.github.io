@@ -14,15 +14,18 @@ export default {
                 require('@/assets/img/projects/nomoney/nomoney8.png'),
                 require('@/assets/img/projects/nomoney/nomoney9.png'),
             ],
-            "ForShort": "An novel application in LINE, gives us more chances to earn extra income in our leisure time. Use Django, Vue.js, LINE-Bot, LIFF, and so on.",
+            "ForShort": `
+A novel LINE application, gives us more chances to earn extra income.
+`,
             "Introduction": `
 <big>**NoMoney**</big>, an novel application in LINE, gives us more chances to earn extra income in our leisure time. 
 Besides, NoMoney will notice users either they are accepted in a case or someone applies for your case. 
 On the other hand, NoMoney provides you the most relavant cases according to your county, your introduction and the pay.
 `,
             "Detail": `
-In this project, I am in charge of back-end development and hashtag extraction. The biggest rewards are described below:
-1. 
+My work:
+1. Most parts of backend, using Django!
+2. 
 `,
             "Hashtags": ["LIFF", "Django", "SQL", "backend"],
             "Link": "https://nomoney.nlplab.cc"
@@ -38,8 +41,21 @@ In this project, I am in charge of back-end development and hashtag extraction. 
             "ForShort": "",
             "Introduction": ``,
             "Detail": ``,
-            "Hashtags": [""],
+            "Hashtags": ["Vue.js", "Flask", "PostgreSQL", "JP", "CH", "EN"],
             "Link": ""
+        },
+        {
+            "Title": "LingConc",
+            "Thumbnail": require("@/assets/img/projects/lingconc/lingconc-thumbnail.png"),
+            "Imgs": [
+                require("@/assets/img/projects/lingconc/lingconc1.png"),
+                require("@/assets/img/projects/lingconc/lingconc2.png"),
+            ],
+            "ForShort": "",
+            "Introduction": ``,
+            "Detail": ``,
+            "Hashtags": [""],
+            "Link": "https://zenodo.org/record/3871325#.YDoNh2ozZhE"
         },
         {
             "Title": "IEEE BIG DATA 2019 Poster",
@@ -55,7 +71,7 @@ In this project, I am in charge of back-end development and hashtag extraction. 
             "Introduction": ``,
             "Detail": ``,
             "Hashtags": ["IEEE", "GEC", "Big Data"],
-            "Link": ""
+            "Link": "https://ieeexplore.ieee.org/abstract/document/9005618"
         },
         {
             "Title": "ETF Price Prediction",

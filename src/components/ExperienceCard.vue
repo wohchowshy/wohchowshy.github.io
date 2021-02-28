@@ -5,9 +5,8 @@
       <div class="title">{{ Info.Title }}</div>
       <div class="time">{{ Info.StartTime }} ~ {{ Info.EndTime }}</div>
       <!-- <div class="location">{{ Info.Location }}</div> -->
-      <div class="horizontalLine"></div>
-      <Marked :content="Info.Detail" class="text-left"/>
       <Hashtags :hashtags="Info.Hashtags" class="hashtags"/>
+      <Marked :content="Info.Detail"/>
     </div>
   </div>
 </template>
@@ -63,8 +62,8 @@ export default {
 }
 
 .content {
-  @apply m-4 mb-2 text-xs md:text-sm text-center;
-  @apply flex-grow flex flex-col;
+  @apply m-4 mb-2 text-xs md:text-sm text-center leading-relaxed;
+  @apply flex flex-col;
 }
 .title {
   @apply text-lg md:text-xl font-semibold;
@@ -72,11 +71,7 @@ export default {
 .time {
   @apply italic;
 }
-.horizontalLine {
-  @apply border-t my-2 border-gray-200
-}
-
 .hashtags {
-  @apply flex-grow flex content-end flex-wrap;
+  @apply mx-auto my-2;
 }
 </style>

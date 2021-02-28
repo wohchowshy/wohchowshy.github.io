@@ -7,7 +7,11 @@
       <div class="container">
         <div class="content">
           <!-- Title -->
-          <div class="title">{{ project.Title }}</div>
+          <div class="title">
+            <a :href="project.Link" target="_blank">
+              {{ project.Title }} <i class="fas fa-link text-sm"></i>
+            </a>
+          </div>
           <!-- SplitLine -->
           <div class="splitLine" />
           <!-- Img -->
@@ -42,6 +46,9 @@
             <!-- Detail -->
             <div class="detail">
                 <Marked :content="project.Detail" />
+            </div>
+            <!-- Link -->
+            <div class="link">
             </div>
             <!-- Hashtags -->
             <div class="hashtag">
@@ -127,8 +134,12 @@ export default {
 
 /* Title */
 .title {
+  @apply max-w-max;
   @apply text-2xl md:text-3xl font-bold;
   @apply px-4 md:px-8;
+}
+.title:hover {
+  @apply text-green-600 underline;
 }
 
 /* SplitLine */
@@ -177,7 +188,8 @@ export default {
   @apply rounded-full border w-2 h-2 border-white mx-1 my-1 shadow bg-gray-200 bg-opacity-50;
 }
 .dotNow {
-    @apply transition duration-200 transform bg-white;
+    @apply bg-white;
+    /* @apply transition duration-200 transform bg-white; */
 }
 
 /* Content below image */

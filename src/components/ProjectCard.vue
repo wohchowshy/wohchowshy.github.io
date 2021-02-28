@@ -5,12 +5,17 @@
   <div :class="['projectCard', textColor, cardBgColor]">
     <img class="bgImg" :src="project.Thumbnail" />
     <div class="contentSimple">
-      <div class="relativeAlign">
-        <div class="titleSimple">
-          {{ project.Title }}
-        </div>
-        <div class="introSimple">
-          {{ project.ForShort }}
+      <div class="contentButtonDivSimple">
+        <div class="contentDivSimple">
+          <div class="titleSimple">
+            {{ project.Title }}
+          </div>
+          <div class="hashtagSimple">
+            <Hashtags :hashtags="project.Hashtags"/>
+          </div>
+          <div class="introSimple">
+            {{ project.ForShort }}
+          </div>
         </div>
         <div class="showMore" @click="changeModalStatus">More</div>
       </div>
@@ -20,10 +25,12 @@
 
 <script>
 import ProjectCardModal from "@/components/ProjectCardModal.vue";
+import Hashtags from "@/components/Hashtags.vue"
 
 export default {
   components: {
     ProjectCardModal,
+    Hashtags,
   },
   props: {
     project: {
@@ -83,39 +90,43 @@ export default {
   @apply object-cover w-full h-full;
   filter: blur(2px);
   -webkit-filter: blur(2px);
-  transition: all 0.5s ease;
+  /* transition: all 0.5s ease; */
 }
-.projectCard:hover .bgImg {
+/* .projectCard:hover .bgImg {
   transform: scale(1.1);
-}
+} */
 
 .contentSimple {
-  @apply absolute text-center text-white m-auto p-4;
+  @apply absolute text-center text-white p-4;
   @apply top-0 bottom-0 left-0 right-0;
   z-index: 2;
 }
-.relativeAlign {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+/* Control content and button */
+.contentButtonDivSimple {
+  @apply flex flex-col h-full;
+}
+.contentDivSimple {
+  @apply flex-grow flex flex-col justify-center;
 }
 .titleSimple {
   @apply text-2xl font-semibold mb-6;
 }
+/* .hashtagSimple {
+  @apply mx-auto;
+} */
 .introSimple {
-  @apply text-xs md:text-sm leading-relaxed tracking-wide;
+  @apply text-xs md:text-sm leading-relaxed tracking-wide my-4;
 }
 .showMore {
-  @apply mt-10 m-auto cursor-pointer;
-  @apply border-t border-b border-opacity-0;
-  @apply font-bold bg-gray-100 text-black;
-  @apply text-sm md:text-base;
-  max-width: 100px;
+  @apply cursor-pointer bg-white text-black;
+  @apply border border-white rounded-md;
+  @apply text-sm md:text-base font-semibold;
+  @apply py-2;
   transition: all 0.3s ease;
   -webkit-tap-highlight-color: transparent;
 }
 .showMore:hover {
-  @apply font-light border-opacity-100 bg-transparent text-white;
+  @apply border-opacity-100 bg-transparent text-white border border-white;
 }
 
 
