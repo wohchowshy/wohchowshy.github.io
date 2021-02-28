@@ -85,7 +85,8 @@ export default {
   blockquote, ul,
   fieldset, form,
   ol, dl, dir,
-  menu            { margin: 0.5em 0 }  // customized (orig: 1.12em 0)
+  // menu            { margin: 0.5em 0 }
+  menu            { margin: 1.12em 0 }
   h5              { font-size: .83em; margin: 1.5em 0 }
   h6              { font-size: .75em; margin: 1.67em 0 }
   h1, h2, h3, h4,
@@ -110,7 +111,7 @@ export default {
   s, strike, del  { text-decoration: line-through }
   hr              { border: 1px inset }
   ol, ul, dir,
-  menu, dd        { margin-left: 2em }  // customized (orig: 40px)
+  menu, dd        { margin-left: 40px }
   ol              { list-style-type: decimal }
   ul              { list-style-type: disc }
   ol ul, ul ol,
@@ -145,5 +146,11 @@ export default {
   a:link {
     @apply no-underline	transition duration-300 transform scale-105
   }
+}
+.text-green {
+  @apply text-green-600;
+}
+.emphasis {
+  @apply text-amber-600;
 }
 </style>

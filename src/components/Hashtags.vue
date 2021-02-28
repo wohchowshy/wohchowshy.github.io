@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 .hashtagDiv {
-    @apply flex flex-wrap items-center justify-center;
+    @apply flex flex-wrap items-center;
     /* @apply text-center */
 }
 .hashtag {

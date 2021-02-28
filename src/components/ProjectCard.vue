@@ -10,14 +10,16 @@
           <div class="titleSimple">
             {{ project.Title }}
           </div>
-          <div class="hashtagSimple">
-            <Hashtags :hashtags="project.Hashtags"/>
+          <div>
+            <Hashtags class="justify-center" :hashtags="project.SimpleHashtags"/>
           </div>
-          <div class="introSimple">
+          <div class="introSimple"> 
             {{ project.ForShort }}
           </div>
         </div>
-        <div class="showMore" @click="changeModalStatus">More</div>
+        <div class="showMore" @click="changeModalStatus">
+          <i class="fas fa-external-link-alt"></i> More
+        </div>
       </div>
     </div>
   </div>
@@ -97,7 +99,8 @@ export default {
 } */
 
 .contentSimple {
-  @apply absolute text-center text-white p-4;
+  @apply absolute text-center text-white;
+  @apply p-4;
   @apply top-0 bottom-0 left-0 right-0;
   z-index: 2;
 }
@@ -111,22 +114,18 @@ export default {
 .titleSimple {
   @apply text-2xl font-semibold mb-6;
 }
-/* .hashtagSimple {
-  @apply mx-auto;
-} */
 .introSimple {
   @apply text-xs md:text-sm leading-relaxed tracking-wide my-4;
 }
 .showMore {
-  @apply cursor-pointer bg-white text-black;
-  @apply border border-white rounded-md;
+  @apply cursor-pointer;
+  @apply transition duration-500 transform border border-white rounded-md shadow;
   @apply text-sm md:text-base font-semibold;
   @apply py-2;
-  transition: all 0.3s ease;
   -webkit-tap-highlight-color: transparent;
 }
 .showMore:hover {
-  @apply border-opacity-100 bg-transparent text-white border border-white;
+  @apply transition duration-100 transform shadow-xl scale-95;
 }
 
 

@@ -13,7 +13,7 @@
             </a>
           </div>
           <!-- SplitLine -->
-          <div class="splitLine" />
+          <!-- <div class="splitLine" /> -->
           <!-- Img -->
           <div class="img">
             <!-- If at least 1 image -->
@@ -37,7 +37,9 @@
             </div>
           </div>
           <!-- SplitLine -->
-          <div class="splitLine" />
+          <!-- <div class="splitLine" /> -->
+          <!-- Hashtag -->
+          <div class="hashtag"><Hashtags class="justify-start" :hashtags="project.Hashtags"/></div>
           <div class="contentPadding">
             <!-- Introduction -->
             <div class="introduction">
@@ -46,13 +48,6 @@
             <!-- Detail -->
             <div class="detail">
                 <Marked :content="project.Detail" />
-            </div>
-            <!-- Link -->
-            <div class="link">
-            </div>
-            <!-- Hashtags -->
-            <div class="hashtag">
-                <Hashtags :hashtags="project.Hashtags"/>
             </div>
           </div>
         </div>
@@ -126,7 +121,7 @@ export default {
 .container {
   @apply relative overflow-scroll;
   /* @apply mx-5 md:mx-40 my-auto pt-8; */
-  @apply pt-8;
+  @apply py-4 md:py-8;
   @apply max-w-sm sm:max-w-screen-sm md:max-w-screen-md max-h-full;
   @apply bg-white;
   /* transition: all 0.5s ease; */
@@ -136,7 +131,7 @@ export default {
 .title {
   @apply max-w-max;
   @apply text-2xl md:text-3xl font-bold;
-  @apply px-4 md:px-8;
+  @apply mx-4 md:mx-8 mb-2 md:mb-4;
 }
 .title:hover {
   @apply text-green-600 underline;
@@ -194,10 +189,10 @@ export default {
 
 /* Content below image */
 .contentPadding {
-    @apply px-10 leading-relaxed tracking-wide;
+    @apply px-4 md:px-8 leading-relaxed tracking-wide;
 }
 .hashtag {
-    @apply my-5 flex justify-center;
+    @apply px-4 md:px-8 my-2 mb-4;
 }
 .introduction {
     @apply my-5 ;

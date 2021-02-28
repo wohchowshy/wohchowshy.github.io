@@ -72,6 +72,6 @@ export default {
   @apply italic;
 }
 .hashtags {
-  @apply mx-auto my-2;
+  @apply mt-2 justify-center;
 }
 </style>

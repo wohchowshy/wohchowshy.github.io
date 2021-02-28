@@ -18,16 +18,23 @@ export default {
 A novel LINE application, gives us more chances to earn extra income.
 `,
             "Introduction": `
-<big>**NoMoney**</big>, an novel application in LINE, gives us more chances to earn extra income in our leisure time. 
-Besides, NoMoney will notice users either they are accepted in a case or someone applies for your case. 
-On the other hand, NoMoney provides you the most relavant cases according to your county, your introduction and the pay.
+<big class="text-green">**NoMoney**</big>, an novel application in LINE, gives us more chances to earn extra income in our leisure time.
+
+***Features:***
+1. NoMoney will <span class="emphasis">send a notification</span> either you are accepted in a case or someone applies for your case. 
+2. NoMoney provides you <span class="emphasis">the most relavant cases</span> according to your county, your introduction and your expected pay.
 `,
             "Detail": `
-My work:
-1. Most parts of backend, using Django!
-2. 
+***My contributions:***
+1. Code backend codes by Django includes:
+    - CRUD for Database
+    - Send response to frontend
+2. Logic design for database.
+3. Security of request/response data.
+
 `,
             "Hashtags": ["LIFF", "Django", "SQL", "backend"],
+            "SimpleHashtags": ["Django", "SQL"],
             "Link": "https://nomoney.nlplab.cc"
         },
         {
@@ -38,11 +45,30 @@ My work:
                 require("@/assets/img/projects/jplinggle/jplinggle2.png"),
                 require("@/assets/img/projects/jplinggle/jplinggle3.png"),
             ],
-            "ForShort": "",
-            "Introduction": ``,
-            "Detail": ``,
-            "Hashtags": ["Vue.js", "Flask", "PostgreSQL", "JP", "CH", "EN"],
-            "Link": ""
+            "ForShort": `
+A phrases querying system in 3 languages, especially suitable for language learners.
+`,
+            "Introduction": `
+<big class="text-green">**Multilingual Linggle**</big> aims to provide a self-learning chance to language learner.
+We have 3 language supports - Japanese, Chinese, and English.
+
+No people can learn a language without any confusion. 
+For example, a learner is confused between *“discuss about the issue”* and *“discuss the issue”*. Just easily type *"discuss ?about the issue"* in our system, then find out the correct one is *"discuss the issue"*.
+
+***Features***
+1. The system is easy to use. Try to follow the quick start tutorials in <a class="underline text-green" href="https://linggle.com/" target="_blank">Linggle</a>.
+2. Especially suitable for the learners who are interested in self-learning.
+3. Support using Zhuyin (e.g. ㄅㄆㄇ...) in Chinese version.
+`,
+            "Detail": `
+***My contributions:***
+1. Code frontend codes by Vue.js.
+2. Code backend codes for Chinese and English version by Flask.
+3. Maintain huge databases (up to 500GB) by PostgreSQL.
+`,
+            "Hashtags": ["Vue.js", "Flask", "PostgreSQL", "Big Data", "Japanese", "Chinese", "English"],
+            "SimpleHashtags": ["Vue.js", "Flask", "PostgreSQL", "Big Data"],
+            "Link": "http://jp.linggle.com/"
         },
         {
             "Title": "LingConc",
@@ -51,14 +77,17 @@ My work:
                 require("@/assets/img/projects/lingconc/lingconc1.png"),
                 require("@/assets/img/projects/lingconc/lingconc2.png"),
             ],
-            "ForShort": "",
+            "ForShort": `
+A linguistic statistic tools, provides 4 kinds of statistics - Words, Keywords, Collocations, and Lexical Bundles.
+`,
             "Introduction": ``,
             "Detail": ``,
-            "Hashtags": [""],
+            "Hashtags": ["NLP"],
+            "SimpleHashtags": ["NLP", "Statistic"],
             "Link": "https://zenodo.org/record/3871325#.YDoNh2ozZhE"
         },
         {
-            "Title": "IEEE BIG DATA 2019 Poster",
+            "Title": "IEEE Big Data 2019 Poster",
             "Thumbnail": require("@/assets/img/projects/ieee/ieee-thumbnail.png"),
             "Imgs": [
                 require('@/assets/img/projects/ieee/ieee1.png'),
@@ -67,10 +96,13 @@ My work:
                 require('@/assets/img/projects/ieee/ieee4.png'),
                 require('@/assets/img/projects/ieee/ieee5.png'),
             ],
-            "ForShort": "The biggest parallel data for Grammatical Error Correction. Generated data can be used in NN models. Use Parallel Processing, MapReduce, and so on.",
+            "ForShort": `
+The biggest parallel data for Grammatical Error Correction. Generated data can be used in many fields.
+`,
             "Introduction": ``,
             "Detail": ``,
-            "Hashtags": ["IEEE", "GEC", "Big Data"],
+            "Hashtags": ["IEEE", "GEC", "BigData"],
+            "SimpleHashtags": ["IEEE", "GEC", "BigData"],
             "Link": "https://ieeexplore.ieee.org/abstract/document/9005618"
         },
         {
@@ -84,10 +116,13 @@ My work:
                 require('@/assets/img/projects/etf/etf5.png'),
                 require('@/assets/img/projects/etf/etf6.png'),
             ],
-            "ForShort": "Bi-directional LSTM to predict ETF Prices. Treat Everyday's stock prices as sequential states and train an insteresting model.",
+            "ForShort": `
+A neural network system aims to predict ETF prices. It is a interesting project but not stable yet.
+`,
             "Introduction": "",
             "Detail": ``,
             "Hashtags": [""],
+            "SimpleHashtags": ["Neural Network", "LSTM"],
             "Link": ""
         },
     ],
