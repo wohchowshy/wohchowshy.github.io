@@ -1,6 +1,16 @@
 export default{
     "content": `
-### To Be Published! Take a break~
+<div class='text-green-600'>
+<span class="text-2xl">跟老師討論的內容</span>
+
+- 2 dataset are more informative
+    - 小資料集：FEC, lang-8
+    - 大資料集：EF
+
+- distance bigram 可以再用 annotated data（隱含的註記）過濾
+- 不一定要用比賽的測試集來 evaluate，要看最終目標是什麼
+- 可以朝英文學習者的方向走
+- 可考慮先做 Delete, Insert. Replace 之後再做
 
 \`\`\`python
 import spacy
@@ -15,7 +25,7 @@ print(*[token.pos_ for token in nlp(sentence)], sep=', ')
 
 \`\`\`
 
-
+</div>
 `
 }
 

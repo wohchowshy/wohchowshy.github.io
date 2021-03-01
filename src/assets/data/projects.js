@@ -20,12 +20,12 @@ A novel LINE application, gives us more chances to earn extra income.
             "Introduction": `
 <big class="text-green">**NoMoney**</big>, an novel application in LINE, gives us more chances to earn extra income in our leisure time.
 
-***Features:***
-1. NoMoney will <span class="emphasis">send a notification</span> either you are accepted in a case or someone applies for your case. 
-2. NoMoney provides you <span class="emphasis">the most relavant cases</span> according to your county, your introduction and your expected pay.
+***Features***
+1. NoMoney will send a notification either you are accepted in a case or someone applies for your case. 
+2. NoMoney provides you the most relavant cases according to your county, your introduction and your expected pay.
 `,
             "Detail": `
-***My contributions:***
+***My contributions***
 1. Code backend codes by Django includes:
     - CRUD for Database
     - Send response to frontend
@@ -56,12 +56,12 @@ No people can learn a language without any confusion.
 For example, a learner is confused between *“discuss about the issue”* and *“discuss the issue”*. Just easily type *"discuss ?about the issue"* in our system, then find out the correct one is *"discuss the issue"*.
 
 ***Features***
-1. The system is easy to use. Try to follow the quick start tutorials in <a class="underline text-green" href="https://linggle.com/" target="_blank">Linggle</a>.
+1. The system is easy to use. Try the quick start tutorials in Linggle <a class="cursor-pointer" href="https://linggle.com/" target="_blank"><span class="fas fa-external-link-alt"></span></a>.
 2. Especially suitable for the learners who are interested in self-learning.
 3. Support using Zhuyin (e.g. ㄅㄆㄇ...) in Chinese version.
 `,
             "Detail": `
-***My contributions:***
+***My contributions***
 1. Code frontend codes by Vue.js.
 2. Code backend codes for Chinese and English version by Flask.
 3. Maintain huge databases (up to 500GB) by PostgreSQL.
@@ -78,11 +78,29 @@ For example, a learner is confused between *“discuss about the issue”* and *
                 require("@/assets/img/projects/lingconc/lingconc2.png"),
             ],
             "ForShort": `
-A linguistic statistic tools, provides 4 kinds of statistics - Words, Keywords, Collocations, and Lexical Bundles.
+A linguistic statistic tool, provides 4 kinds of statistics - Words, Keywords, Collocations, and Lexical Bundles.
 `,
-            "Introduction": ``,
-            "Detail": ``,
-            "Hashtags": ["NLP"],
+            "Introduction": `
+<big class="text-green">**LingConc**</big>, a powerful linguistic statistic tool, provides 3 major services: Reader, Linggle Booster, and Statistics.
+
+***Features***
+- <u>Reader:</u>
+    online pdf files reader.
+- <u>Linggle Booster</u> <a class="cursor-pointer" target="_blank" href="https://r.linggle.com/"><span class="fas fa-external-link-alt"></span></a>:
+    Just serve like a dictionary, and all words will be separated into 3 levels according to the difficulty.
+- <u>Reader:</u>
+    Read a pdf file like a book.
+- <u>Statistics:</u>
+    Summaries of uploaded pdf files, include words count, keywords, collocations, and lexical bundles.
+`,
+            "Detail": `
+***My contributions*** <small>(All in Statistics part)</small>
+1. Words (count): counts all word frequency in all uploaded files.
+2. Keywords: use chi Square Test score to rank all Ngrams (N = 1 to 3).
+3. Collocations: use Smadja algorithm as metrix and find .
+4. Lexical Bundles: keep 4-gram and 5-gram that have more functional words than a threshold.
+`,
+            "Hashtags": ["NLP", "Statistic", "Chi Square Test", "Collocation", "Lexical Bundle"],
             "SimpleHashtags": ["NLP", "Statistic"],
             "Link": "https://zenodo.org/record/3871325#.YDoNh2ozZhE"
         },
@@ -99,10 +117,21 @@ A linguistic statistic tools, provides 4 kinds of statistics - Words, Keywords, 
             "ForShort": `
 The biggest parallel data for Grammatical Error Correction. Generated data can be used in many fields.
 `,
-            "Introduction": ``,
-            "Detail": ``,
-            "Hashtags": ["IEEE", "GEC", "BigData"],
-            "SimpleHashtags": ["IEEE", "GEC", "BigData"],
+            "Introduction": `
+In this paper, we released the largest GEC parallel data in that time, which aims to reinforce neural network model.
+We extracted grammar-related errors, and then splited them into finer classes such as NOUN, ADJ, VERB, and so on.
+
+***Features***
+1. MapReduce to process huge data in parallel.
+2. Use ERRANT <a class="cursor-pointer" target="_blank" href="https://github.com/chrisjbryant/errant"><span class="fas fa-external-link-alt"></span></a> to automatically parse error type.
+`,
+            "Detail": `
+***My contributions***
+1. Write python codes for ERRENT, word tokenize, and HTML symbols unescaping.
+2. Run codes in parallel by using local-mapreduce <a class="cursor-pointer" target="_blank" href="https://github.com/d2207197/local-mapreduce"><span class="fas fa-external-link-alt"></span></a>.
+`,
+            "Hashtags": ["IEEE", "GEC", "Big Data", "MapReduce", "parallel process"],
+            "SimpleHashtags": ["IEEE", "GEC", "Big Data"],
             "Link": "https://ieeexplore.ieee.org/abstract/document/9005618"
         },
         {
@@ -119,11 +148,22 @@ The biggest parallel data for Grammatical Error Correction. Generated data can b
             "ForShort": `
 A neural network system aims to predict ETF prices. It is a interesting project but not stable yet.
 `,
-            "Introduction": "",
-            "Detail": ``,
-            "Hashtags": [""],
-            "SimpleHashtags": ["Neural Network", "LSTM"],
-            "Link": ""
+            "Introduction": `
+Our goal is to predict ETF prices in the following week, using Bi-directional LSTM and AutoEncoder.
+Also, we try different cost function to train a more stable and pricise model.
+The project encourages us to do more interesting things and lets us be more imaginative. 
+
+***Performance***
+1. AutoEncoder helps a lot in a faster trainging speed.
+2. Waveloss is a key to perform more stable.
+`,
+            "Detail": `
+***My contributions***
+1. Coded Bi-directional LSTM and AutoEncoder by Tensorflow
+`,
+            "Hashtags": ["Neural Network", "LSTM", "AutoEncoder", "ETF", "Sequence to Sequence"],
+            "SimpleHashtags": ["Neural Network", "LSTM", "ETF"],
+            "Link": "https://drive.google.com/file/d/1CAGPotIq0jLkg8GonbG0nTqnakgfsTgQ/view"
         },
     ],
 }

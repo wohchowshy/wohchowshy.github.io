@@ -13,6 +13,7 @@
                 <div class="status"> {{item.Degree}} </div>
               </div>
             </div>
+            <div class="horizontalLine"/>
             <div class="secondRow">
               <Marked :content="item.Courses"/>
             </div>
@@ -78,7 +79,7 @@ export default {
 
 
 .firstRow {
-  @apply flex items-center;
+  @apply flex items-center mb-4;
 }
 
 .img {
@@ -104,12 +105,16 @@ export default {
   @apply italic
 }
 
+.horizontalLine {
+  @apply border-t my-2 border-gray-500;
+}
+
 .secondRow {
-  @apply mt-5
+  @apply mt-4;
 }
 
 .courses {
-  @apply flex
+  @apply flex;
 }
 
 

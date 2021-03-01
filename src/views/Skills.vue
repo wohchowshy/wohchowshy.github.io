@@ -1,9 +1,6 @@
 <template>
-  <div v-if="Info.length !== 0" class=" skillCardContainer">
+  <div class=" skillCardContainer">
     <SkillCard v-for="item in Info" :key="item" :Info="item" class="skillCard" />
-  </div>
-  <div v-else class="pt-40 text-gray-500 text-center text-3xl">
-    To Be Published !
   </div>
 </template>
 
@@ -25,10 +22,7 @@ export default {
   },
   computed: {
     Info() {
-      if(this.skill() === "all"){
-        return [].concat(...Object.values(Info))
-      }
-      return Info[this.skill()];
+      return Info.skills;
     },
   },
   watch:{

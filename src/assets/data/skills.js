@@ -1,9 +1,5 @@
 export default {
-// ALL
-    "all": [],
-
-// Programming
-    "programming": [
+    "skills": [
         {
             "header": "C",
             "content": `
@@ -68,11 +64,6 @@ export default {
 `,
             "hashtags": ["R"]
         },
-    ],
-
-
-// Framework
-    "framework": [
         {
             "header": "PyTorch",
             "content":`
@@ -124,26 +115,6 @@ export default {
 - API to access database
 `,
             "hashtags": ["Flask", "backend", "Python", "API"]
-        },
-        
-    ],
-
-
-// Leisure
-    "leisure": [
-        {
-            "header": "Bedminton",
-            "content": `
-<img src=`+ require('@/assets/img/bedminton.svg') +` style="display:block; margin: auto; width:50%" />
-`,
-            "hashtags": ["Badminton", "Sport"]
-        },
-        {
-            "header": "Basketball",
-            "content": `
-<img src=`+ require('@/assets/img/basketball.svg') +` style="display:block; margin: auto; width:50%" />
-`,
-            "hashtags": ["Basketball", "Sport"]
         },
     ],
 }

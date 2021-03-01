@@ -52,7 +52,7 @@ export default {
 }
 
 .horizontalLine {
-  @apply border-t my-2 border-gray-200
+  @apply border-t my-2 border-gray-500;
 }
 
 .skillContent {

@@ -56,8 +56,7 @@ export default {
 }
 
 .cardBgColor-dark {
-  @apply transition duration-500 transform bg-blue-200 bg-opacity-80;
-  /* @apply transition duration-500 transform bg-white bg-opacity-80; */
+  @apply transition duration-500 transform bg-white bg-opacity-90;
 }
 .cardBgColor-light {
   @apply transition duration-500 transform bg-white bg-opacity-100;
