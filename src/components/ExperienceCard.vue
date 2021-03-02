@@ -55,10 +55,7 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  @apply rounded-t-lg opacity-70;
-}
-.imgDiv:hover {
-  @apply transition duration-500 transform opacity-100;
+  @apply rounded-t-lg;
 }
 
 .content {

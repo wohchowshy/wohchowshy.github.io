@@ -1,23 +1,25 @@
 <template>
-  <div :class="['skillCard', textColor, cardBgColor]">
-    <div class="skillHeader">
-      {{ Info.header }}
+  <div :class="['skillCard', textColor, cardBgColor]" :style="Style">
+    <div class="imgDiv">
+      <img class="imgLogo" :src="Info.img"/>
     </div>
-    <div class="horizontalLine" />
-    <Marked :content="Info.content" class="markedContent"/>
-    <div class="hashContainer">
-      <Hashtags :hashtags="Info.hashtags"/>
+    <div class="content">
+      <div class="skillHeader">{{ Info.header }}</div>
+      <!-- <div class="text-gray-300">123</div> -->
+      <div class="horizontalLine"/>
+      <ul class="list">
+        <li v-for="item in Info.content" :key="item">{{ item }}</li>
+      </ul>
+      <!-- <div class="experience"><Hashtags :hashtags="Info.hashtags" /></div> -->
     </div>
   </div>
 </template>
 
 <script>
-import Hashtags from "@/components/Hashtags.vue"
-import Marked from "@/components/Marked.vue"
+// import Hashtags from "@/components/Hashtags.vue"
 export default {
   components:{
-    Hashtags,
-    Marked,
+    // Hashtags,
   },
   props: {
     Info: Object,
@@ -35,6 +37,14 @@ export default {
     },
     cardBgColor() {
       return this.$store.state.cardBgColor;
+    },
+    Style() {
+      return {
+        '--bgColor': this.Info.bgColor,
+        '--transitionTime': "0.5s",
+        '--upperHeight': "170px",
+        '--lowerHeight': "30px",
+      }
     }
   },
 };
@@ -42,30 +52,48 @@ export default {
 
 <style scoped>
 .skillCard {
-  /* @apply rounded-lg shadow-lg p-4 bg-blue-300 bg-opacity-20 tracking-wide text-justify; */
-  @apply rounded-lg shadow-lg p-4 pb-2;
+  @apply rounded-lg shadow-lg p-4 overflow-hidden;
+  @apply p-4;
   @apply flex flex-col;
 }
-
+.imgDiv {
+  position: relative;
+  height: var(--upperHeight);
+  transition: height var(--transitionTime);
+  background-color: var(--bgColor);
+  @apply -mt-4 -ml-4 -mr-4 mb-4;
+  @apply overflow-hidden;
+}
+.skillCard:hover .imgDiv {
+  height: var(--lowerHeight);
+}
+.skillCard:hover .imgDiv .imgLogo {
+  transform: translateX(-50%) translateY(-50%) scale(3);
+}
+.skillCard:hover .content {
+  height: var(--upperHeight);
+}
+.imgLogo {
+  position: absolute;
+  transform: translateY(-50%) translateX(-50%);
+  /* width: 128px; */
+  width: auto;
+  height: 128px;
+  transition: transform var(--transitionTime);
+  @apply top-1/2 left-1/2;
+}
+.content {
+  height: var(--lowerHeight);
+  transition: height var(--transitionTime);
+  overflow: hidden;
+}
 .skillHeader {
-  @apply font-semibold text-lg md:text-xl pl-1;
+  @apply font-semibold text-lg md:text-xl;
 }
-
 .horizontalLine {
-  @apply border-t my-2 border-gray-500;
+  @apply border-t border-gray-400 my-2;
 }
-
-.skillContent {
-  @apply text-xs md:text-sm;
-}
-
-.hashContainer {
-  @apply flex-grow flex content-end flex-wrap
-}
-
-.markedContent {
-  @apply text-xs;
-  @apply md:text-sm;
-  @apply mr-2 md:mr-4
+.list {
+  @apply text-sm;
 }
 </style>
