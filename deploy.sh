@@ -12,7 +12,7 @@ cd dist
 cp index.html 404.html
 
 # if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
+echo 'yizzy.nlplab.cc' > CNAME
 
 git init
 git add -A
