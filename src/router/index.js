@@ -32,9 +32,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Projects.vue')
   },
   {
-    path: '/blog',
+    path: '/blog/:file?',
     name: 'Blog',
     component: () => import(/* webpackChunkName: "about" */ '../views/Blog.vue')
+  },
+  {
+    path: '/editor',
+    name: 'Editor',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Editor.vue')
   },
   {
     path: '/:pathMatch(.*)*',

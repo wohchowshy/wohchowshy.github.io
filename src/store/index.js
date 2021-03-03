@@ -2,9 +2,9 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    isDark: true,
-    textColor: "textColor-dark",
-    cardBgColor: "cardBgColor-dark",
+    isDark: false,
+    textColor: "textColor-light",
+    cardBgColor: "cardBgColor-light",
     navigations: {
       'About': [], 
       'Educations': [], 

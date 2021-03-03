@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="marked"
-    v-html="markedContent"
-  ></div>
+  <div class="marked" v-html="markedContent"></div>
 </template>
 
 <script>
@@ -140,8 +137,10 @@ export default {
 // customized css style
 .marked {
   pre{
-    background-color: rgb(247, 246, 243);
-    @apply rounded-lg shadow-2xl p-4 max-h-96 overflow-scroll;
+    // background-color: rgb(247, 246, 243);
+    @apply bg-gray-800;
+    @apply text-white;
+    @apply rounded-md p-4 max-h-96 relative overflow-scroll;
   }
   a:link {
     @apply no-underline	transition duration-300 transform scale-105

@@ -45,14 +45,14 @@ export default {
   @apply transition duration-500 transform text-gray-400 border-gray-400;
 }
 .textColor-light {
-  @apply transition duration-500 transform text-gray-500 border-gray-500;
+  @apply transition duration-500 transform text-gray-700 border-gray-500;
 }
 
 .card-textColor-dark {
   @apply transition duration-500 transform text-gray-800;
 }
 .card-textColor-light {
-  @apply transition duration-500 transform text-gray-700;
+  @apply transition duration-500 transform text-gray-800;
 }
 
 .cardBgColor-dark {
