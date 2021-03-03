@@ -21,7 +21,7 @@
                     </div>
                 </label>
                 <div class="hashtagsGroup123456789">
-                    <input v-for="idx in 5" v-show="idx<=hashCount" :key="idx" v-model="Hashtags[idx]" :name="'Hashtags'+idx" class="hashtagArea" required/>
+                    <input v-for="idx in 5" v-show="idx<=hashCount" :key="idx" v-model="Hashtags[idx]" :name="'Hashtags'+idx" class="hashtagArea"/>
                 </div>
                 <div class="sepDiv"/>
                 <div class="nextButton justify-self-end" @click.stop="changeNext"> Next </div>
