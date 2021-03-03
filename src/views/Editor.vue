@@ -11,8 +11,18 @@
                 <label for="Description">Description</label>
                 <textarea name="Description" class="descriptionArea" v-model="Description" required/>
                 <div class="sepDiv"/>
-                <label for="Hashtags">Hashtags</label>
-                <textarea name="Hashtags" class="hashtagArea" v-model="Hashtags" required/>
+                <label for="Hashtags">
+                    <div class="flex justify-between">
+                    <div>Hashtags <span class="text-xs">(Max: 5)</span></div>
+                        <div class="flex gap-2">
+                            <div @click.stop="deleteHashtagDiv"><i class="fas fa-minus-circle addHashtagButton"></i></div>
+                            <div @click.stop="addHashtagDiv"><i class="fas fa-plus-circle addHashtagButton"></i></div>
+                        </div>
+                    </div>
+                </label>
+                <div class="hashtagsGroup123456789">
+                    <input v-for="idx in 5" v-show="idx<=hashCount" :key="idx" v-model="Hashtags[idx]" :name="'Hashtags'+idx" class="hashtagArea" required/>
+                </div>
                 <div class="sepDiv"/>
                 <div class="nextButton justify-self-end" @click.stop="changeNext"> Next </div>
             </div>
@@ -38,10 +48,11 @@
 
 <script>
 import Marked from "@/components/Marked.vue"
-
+import Hashtags from "@/components/Hashtags.vue"
 export default {
     components: {
         Marked, 
+        Hashtags,
     },
     data() {
         return  {
@@ -49,8 +60,9 @@ export default {
             Time: "",
             Description: "",
             Content: "",
-            Hashtags: [],
+            Hashtags: ['', '', '', '', ''],
             nextClick: false,
+            hashCount: 1,
         }
     },
     methods: {
@@ -59,7 +71,8 @@ export default {
                 Title: this.Title,
                 Date: this.Time,
                 Description: this.Description,
-                Content: this.Content
+                Content: this.Content,
+                Hashtags: this.Hashtags,
             })
             const blob = new Blob([data], {type: 'text/plain'})
             const e = document.createEvent('MouseEvents'),
@@ -72,6 +85,14 @@ export default {
         },
         changeNext: function () {
             this.nextClick = !this.nextClick;
+        },
+        addHashtagDiv: function() {
+            if (this.hashCount == 5) return
+            this.hashCount += 1;
+        },
+        deleteHashtagDiv: function() {
+            if (this.hashCount == 1) return
+            this.hashCount -= 1;
         }
     },
     computed: {
@@ -165,7 +186,10 @@ button:hover, .nextButton:hover {
     @apply text-gray-400;
 }
 .descriptionArea, .hashtagArea {
-    @apply rounded-md border p-2;
+    @apply rounded-md border p-2 w-full;
+}
+.hashtagArea {
+    @apply my-1;
 }
 .contentArea {
     @apply rounded-md border flex-grow p-2;
@@ -179,5 +203,8 @@ button:hover, .nextButton:hover {
 }
 .sepLine {
     @apply border-t my-2;
+}
+.addHashtagButton {
+    @apply text-green-800 text-sm cursor-pointer;
 }
 </style>

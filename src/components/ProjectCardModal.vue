@@ -146,8 +146,9 @@ export default {
 .showImg {
   @apply flex justify-between items-center relative;
   @apply bg-gray-100;
-  max-height: 500px;
-  height: auto;
+  /* max-height: 500px; */
+  height: 500px;
+  /* height: auto; */
   /* height: 384px; */
 }
 .showIdx {
