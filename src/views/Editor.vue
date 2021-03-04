@@ -125,6 +125,7 @@ export default {
                 this.$refs.file.value = ""
                 return
             }
+            this.$refs.file.value = ""
         },
         changeNext: function () {
             this.nextClick = !this.nextClick;
