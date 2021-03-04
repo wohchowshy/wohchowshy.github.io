@@ -3,7 +3,7 @@
         <div v-if="isHome" class="homeDiv">
             <div v-for="(item, key) in folder" :key="item" class="eachFile">
                 <div class="homeHeader" @click="enterPage(key)">{{ item.Title }}</div>
-                <div class="homeTime">{{ item.Time }}</div>
+                <div class="homeTime">{{ item.PublishTime }}</div>
                 <div class="homeDescription">{{ item.Description }}</div>
             </div>
         </div>
@@ -53,7 +53,7 @@ export default {
           return folder[this.$route.params.file].Title;
       },
       getDate() {
-          return folder[this.$route.params.file].Date;
+          return folder[this.$route.params.file].PublishTime;
       },
       getHashtag() {
           return folder[this.$route.params.file].Hashtag;

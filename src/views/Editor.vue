@@ -6,7 +6,7 @@
                 <input name="Title" class="titleArea" v-model="Title" required/>
                 <div class="sepDiv"/>
                 <label for="Time">Time</label>
-                <input type="date" name="Time" class="dateArea" :class="[Time === ''? '': 'text-black']" v-model="Time" required/>
+                <input type="date" name="Time" class="dateArea" :class="[PublishTime === ''? '': 'text-black']" v-model="PublishTime" required/>
                 <div class="sepDiv"/>
                 <label for="Description">Description</label>
                 <textarea name="Description" class="descriptionArea" v-model="Description" required/>
@@ -24,13 +24,19 @@
                     <input v-for="idx in 5" v-show="idx<=hashCount" :key="idx" v-model="Hashtags[idx]" :name="'Hashtags'+idx" class="hashtagArea"/>
                 </div>
                 <div class="sepDiv"/>
-                <div class="nextButton justify-self-end" @click.stop="changeNext"> Next </div>
+                <div class="leftButtonDiv">
+                    <div class="dropFileDiv items-end">
+                        <i class="fas fa-upload uploadIcon"  @click="triggerInputFile"></i>
+                        <input type="file" accept="application/json" id="file" ref="file" @change.stop="handleFileUpload()" style="display:none;"/>
+                    </div>
+                    <div class="nextButton items-end" @click.stop="changeNext"> Next </div>
+                </div>
             </div>
             <div class="right">
                 <label for="Content">Content</label>
                 <textarea name="Content" v-model="Content" class="contentArea" required/>
                 <div class="sepDiv"/>
-                <div class="flex">
+                <div class="rightButtonDiv">
                     <div class="nextButton" @click.stop="changeNext"> Previous </div>
                     <button class="button">Save</button>
                 </div>
@@ -38,7 +44,7 @@
         </form>
         <div class="markdownPreview">
             <div class="title">{{ Title }}</div>
-            <div class="homeTime">{{ Time }}</div>
+            <div class="homeTime">{{ PublishTime }}</div>
             <div v-if="Title" class="sepLine"/>
             <Hashtags :hashtags="Hashtags"/>
             <Marked :content="Content" />
@@ -57,7 +63,7 @@ export default {
     data() {
         return  {
             Title: "",
-            Time: "",
+            PublishTime: "",
             Description: "",
             Content: "",
             Hashtags: ['', '', '', '', ''],
@@ -69,7 +75,7 @@ export default {
         saveFile: function() {
             const data = JSON.stringify({
                 Title: this.Title,
-                Date: this.Time,
+                PublishTime: this.PublishTime,
                 Description: this.Description,
                 Content: this.Content,
                 Hashtags: this.Hashtags,
@@ -82,6 +88,43 @@ export default {
             a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
             e.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
             a.dispatchEvent(e);
+        },
+        triggerInputFile: function() {
+            this.$refs.file.click();
+        },
+        inputFileToJSON: function(file) {
+            let fileReader = new FileReader();
+            return new Promise((resolve, reject) => {
+                fileReader.onerror = () => {
+                    fileReader.abort()
+                    reject(new DOMException("Problem parsing input file."));
+                }
+                fileReader.onload = () => {
+                    resolve(fileReader.result)
+                }
+                fileReader.readAsText(file);
+            })
+        },
+        handleFileUpload: async function() {
+            let file = this.$refs.file.files[0]
+            try {
+                let content = await this.inputFileToJSON(file)
+                content = JSON.parse(content);
+                if (!content.Content || !content.PublishTime || !content.Description || !content.Hashtags || !content.Title){
+                    alert("Format Incorrect! Please check and try again!")
+                    this.$refs.file.value = ""
+                    return
+                }
+                this.Title = content.Title
+                this.PublishTime = content.PublishTime
+                this.Description = content.Description
+                this.Content = content.Content
+                this.Hashtags = content.Hashtags
+            } catch(e) {
+                alert(e)
+                this.$refs.file.value = ""
+                return
+            }
         },
         changeNext: function () {
             this.nextClick = !this.nextClick;
@@ -119,8 +162,8 @@ textarea {
 }
 button, .nextButton {
     max-width: 200px;
-    margin: auto;
-    margin-bottom: 0;
+    /* margin: auto; */
+    /* margin-bottom: 0; */
     @apply p-2 font-light text-xl;
     @apply border-t border-b border-white;
     @apply cursor-pointer;
@@ -178,15 +221,18 @@ button:hover, .nextButton:hover {
 
 .titleArea {
     @apply rounded-md border p-2 text-xl;
+    min-height: 40px;
 }
 .dateArea {
     @apply rounded-md border text-gray-200 p-2;
+    min-height: 40px;
 }
 .dateArea:focus {
     @apply text-gray-400;
 }
 .descriptionArea, .hashtagArea {
     @apply rounded-md border p-2 w-full;
+    min-height: 40px;
 }
 .hashtagArea {
     @apply my-1;
@@ -206,5 +252,19 @@ button:hover, .nextButton:hover {
 }
 .addHashtagButton {
     @apply text-green-800 text-sm cursor-pointer;
+}
+
+.rightButtonDiv, .leftButtonDiv {
+    @apply flex justify-between mx-2 overflow-scroll;
+}
+.leftButtonDiv {
+    @apply flex-grow items-end;
+}
+
+.uploadIcon {
+    @apply cursor-pointer text-gray-400;
+}
+.uploadIcon:hover {
+    @apply text-black;
 }
 </style>
