@@ -1,7 +1,7 @@
 <template>
-  <div :class="['card', cardBgColor]">
+  <div class="card cardBgColor">
     <div class="imgDiv" :style="{ 'background-image': 'url(' + Info.Img + ')' }"></div>
-    <div :class="['content', textColor]">
+    <div class="content cardTextColor">
       <div class="title">{{ Info.Title }}</div>
       <div class="time">{{ Info.StartTime }} ~ {{ Info.EndTime }}</div>
       <!-- <div class="location">{{ Info.Location }}</div> -->
@@ -29,16 +29,6 @@ export default {
     isDark() {
       return this.$store.state.isDark;
     },
-    textColor() {
-      if (this.isDark) {
-        return ["card-textColor-dark"];
-      } else {
-        return ["card-textColor-light"];
-      }
-    },
-    cardBgColor() {
-      return this.$store.state.cardBgColor;
-    }
   },
 };
 </script>
@@ -46,9 +36,9 @@ export default {
 <style scoped>
 .card {
   /* max-width: 300px; */
-  @apply rounded-lg z-10 justify-self-center;
+  @apply rounded-lg shadow-lg z-10 justify-self-center;
   @apply w-full;
-  @apply flex flex-col
+  @apply flex flex-col;
 }
 .imgDiv {
   height: 150px;
@@ -59,7 +49,8 @@ export default {
 }
 
 .content {
-  @apply m-4 mb-2 text-xs md:text-sm text-center leading-relaxed;
+  @apply m-4 mb-2;
+  @apply text-xs md:text-sm text-center leading-relaxed;
   @apply flex flex-col;
 }
 .title {

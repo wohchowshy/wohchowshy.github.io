@@ -12,7 +12,6 @@ export default {
                 require('@/assets/img/projects/nomoney/nomoney6.png'),
                 require('@/assets/img/projects/nomoney/nomoney7.png'),
                 require('@/assets/img/projects/nomoney/nomoney8.png'),
-                require('@/assets/img/projects/nomoney/nomoney9.png'),
             ],
             "ForShort": `
 A novel LINE application, gives us more chances to earn extra income.

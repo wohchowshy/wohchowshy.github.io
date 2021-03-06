@@ -1,14 +1,10 @@
 <template>
-  <div class="headerBar responsiveHeaderBar-pbm sticky" :class="[isDark? '':'HeaderBar', showNav && isDark? 'smallNavBg':'smallNav']">
-    <!-- Logo -->
-    <div id="Logo" class="hidden md:flex">
-      <!-- {{this.$router.currentRoute._rawValue.fullPath}} -->
-    </div>
+  <div :class="[isDark? 'darkModeBackground-dark': 'darkModeBackground', showNavSmall && isDark? 'smallNavBg':'smallNav', 'headerBar']">
     <!-- Navi -->
     <navigation />
     <!-- dark mode button -->
     <dark-mode-switch/>
-  </div>
+  </div>  
 </template>
 
 <script>
@@ -21,7 +17,7 @@ export default {
   },
   name: "HeaderBar",
   computed: {
-    showNav() {
+    showNavSmall() {
       return this.$store.state.showNavSmall;
     },
     isDark() {
@@ -31,8 +27,8 @@ export default {
   watch: {
     $route: {
       handler: function(){
-        let [page, subPage] = this.$router.currentRoute._rawValue.fullPath.split('/').slice(1, 3);
-        this.$store.dispatch("changePage", [page, subPage])
+        let page = this.$router.currentRoute._rawValue.fullPath.split('/')[1];
+        this.$store.dispatch("changePage", page)
       }, 
       immediate: true,
     }
@@ -43,18 +39,20 @@ export default {
 
 <style scoped>
 .headerBar {
-    @apply flex justify-between md:items-center items-start w-full top-0 bg-gray-800 z-50 ;
-}
-.responsiveHeaderBar-pbm {
-    @apply py-3 md:py-1 px-2;
+  @apply sticky;
+  @apply flex justify-between items-start md:items-center;
+  @apply w-full top-0 z-50;
+  @apply bg-gray-800;
+  @apply py-3 md:py-1 px-2;
 }
 .HeaderBar {
   @apply shadow-2xl;
 }
 .smallNavBg {
-  @apply transition duration-500 transform bg-gray-900 shadow-2xl;
+  @apply transition duration-500 transform shadow-2xl;
+  /* @apply bg-gray-900; */
 }
 .smallNav {
-  @apply transition delay-150 duration-75 transform bg-gray-800;
+  /* @apply transition delay-150 duration-75 transform bg-gray-800; */
 }
 </style>

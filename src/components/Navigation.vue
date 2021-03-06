@@ -2,23 +2,13 @@
   <!-- larger than 768px -->
   <div class="NavTypesetting-large">
     <div class="flex">
-    <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" >
-      <div class="NavStyle-large relative" :class="[nowPage == nav ? 'NavStyle-now-large' : '']">
-        {{ nav }}
-        <!-- arrow svg -->
-        <svg v-if="subNav.length" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline">
-          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-        </svg>
-        <!-- sub Navigation here (default hidden) -->
-        <div v-if="subNav.length" class="absolute subNavStyle-large">
-          <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-large" :class="[nowSubPage == item && nowPage == nav ? 'subNavStyle-now-large' : '']">
-            {{ item }}
-          </div>
+      <div v-for="nav in navigations" :key="nav" @click="changePage(nav)" >
+        <div :class="[nowPage == nav ? 'NavStyle-now-large' : 'NavStyle-notNow-large', isDark? 'navTextColor-dark':'navTextColor-light', 'NavStyle-large']">
+          {{ nav }}
         </div>
       </div>
     </div>
-    </div>
-    <contact-icon class="justify-center h-full text-gray-300"/>
+    <contact-icon :class="['contactIcon', isDark? 'navTextColor-dark':'navTextColor-light']"/>
   </div>
 
   <!-- small than 768px -->
@@ -27,24 +17,14 @@
       <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
     </svg>
     <transition name="scale">
-    <div v-if="showNav" class="NavTypesetting-small">
-      <div v-for="(subNav, nav, idx) in navigations" :key="idx" @click="changePage(nav, '', subNav.length)" class="flex">
-        <div class="NavStyle-small " :class="[nowPage == nav ? 'NavStyle-now-small' : '']">
-          {{ nav }}
-          <!-- arrow svg -->
-          <svg v-if="subNav.length" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-          </svg>
-          <!-- sub Navigation here (default hidden) -->
-          <div v-if="subNav.length" class="subNavStyle-small">
-            <div v-for="(item, idx) in subNav" :key="idx" @click.stop="changePage(nav, item, 0)" class="subNavStyle-text-small" :class="[nowSubPage == item && nowPage == nav ? 'subNavStyle-now-small' : '']">
-            {{ item }}
-            </div>
-           </div>
+      <div v-if="showNav" class="NavTypesetting-small">
+        <div v-for="nav in navigations" :key="nav" @click="changePage(nav)" class="flex">
+          <div :class="[nowPage == nav ? 'NavStyle-now-small' : 'NavStyle-notNow-small', 'NavStyle-small']">
+            {{ nav }}
+          </div>
         </div>
+        <contact-icon class="justify-start m-2"/>
       </div>
-      <contact-icon class="justify-start m-2"/>
-    </div>
     </transition>
   </div>
 </template>
@@ -60,35 +40,21 @@ export default {
     nowPage() {
       return this.$store.state.nowPage;
     },
-    nowSubPage() {
-      return this.$store.state.nowSubPage;
-    },
     navigations() {
       return this.$store.state.navigations;
     },
     showNav() {
       return this.$store.state.showNavSmall;
+    },
+    isDark() {
+      return this.$store.state.isDark;
     }
   },
   methods: {
-    isNowPage(nowPage, nav, subNav) {
-      if (nowPage == nav || subNav.find((el) => el == nowPage)) {
-        return true;
-      }
-      return false;
-    },
-    ProxyToList(p) {
-      return p.toString().split(",");
-    },
-    changePage(page, subPage, childsLenght) {
+    changePage(page) {
       let oldPage = this.$router.currentRoute._rawValue.fullPath;
       let newPage = "/" + page.toLowerCase();
-      if (subPage) {
-        newPage += "/" + subPage.toLowerCase();
-      }
-      if (oldPage == newPage || (subPage == "" && childsLenght != 0)) {
-        return;
-      }
+      if (oldPage == newPage) return;
       this.$router.push(newPage);
     },
     changeNavStatSmall() {
@@ -106,58 +72,49 @@ export default {
 <style scoped>
 /* Large Style */
 .NavTypesetting-large {
-  @apply justify-between flex-grow hidden md:flex items-center mx-5;
+  @apply justify-between flex-grow hidden md:flex items-center;
+  @apply mx-5;
 }
 .NavStyle-large {
-  @apply text-gray-300 px-2 py-4 font-light cursor-pointer transition duration-300 transform hover:text-gray-400 hover:-translate-y-1;
+  @apply relative;
+  @apply px-2 py-4;
+  @apply font-light;
+  @apply text-gray-300;
 }
 .NavStyle-now-large {
-  @apply border-b-2 pb-3 text-white font-medium;
+  @apply border-b-2 pb-3;
+  @apply font-medium cursor-default;
+  @apply transition duration-500 transform opacity-100;
 }
-div.NavStyle-large.relative:hover > div.absolute.subNavStyle-large {
-  @apply block;
-}
-.subNavStyle-large {
-  @apply hidden left-0 leading-10 text-gray-300 bg-gray-800 px-4 pt-6 pb-2 min-w-full shadow-md rounded-b-md; /**/
-}
-.subNavStyle-text-large {
-  @apply text-center font-light transform hover:scale-105;
-}
-.subNavStyle-now-large {
-  @apply text-white font-medium;
+.NavStyle-notNow-large {
+  @apply cursor-pointer;
+  /* @apply transition duration-300 transform hover:opacity-100 hover:-translate-y-1; */
+  @apply transition duration-300 transform hover:text-gray-400 hover:-translate-y-1;
 }
 
 
 /* Small Style */
 .NavTypesetting-small-extra {
-  @apply justify-start flex flex-col md:hidden text-gray-300 leading-10 text-sm ml-2 w-full;
+  @apply justify-start flex flex-col md:hidden;
+  @apply text-gray-300 leading-10 text-sm ml-2 w-full;
 }
 .NavTypesetting-small {
   @apply ml-1 mt-5 relative overflow-hidden;
 }
-/* div.NavTypesetting-small-extra:hover > div.NavTypesetting-small {
-  @apply block;
-} */
 .NavStyle-small {
   -webkit-tap-highlight-color: transparent;
-  @apply text-gray-300 mx-2 w-20 tracking-wide font-light cursor-pointer hover:text-gray-400;
+  @apply text-gray-300 mx-2 w-20 tracking-wide font-light;
 }
 .NavStyle-now-small {
-  @apply text-white font-medium;
+  @apply text-white font-medium cursor-default;
 }
-div.NavStyle-small:hover div.subNavStyle-small {
-  @apply flex;
-}
-.subNavStyle-small {
-  @apply flex text-gray-300 font-light ml-4 hidden;
-}
-.subNavStyle-text-small {
-  @apply cursor-pointer px-3 hover:text-gray-400;
-}
-.subNavStyle-now-small {
-  @apply text-white font-medium;
+.NavStyle-notNow-small {
+  @apply cursor-pointer hover:text-gray-400;
 }
 
+.contactIcon {
+  @apply justify-center h-full text-gray-300;
+}
 
 .scale-enter-active {
   animation: bounce-in .8s;

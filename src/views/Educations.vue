@@ -1,9 +1,9 @@
 <template>
   <div class="adjustSize">
-    <div :class="['education', borderColor]">
+    <div class="education">
       <VerticalTimeline v-for="item in Info" :key="item">
         <template v-slot:card>
-          <div :class="['card', textColor, cardBgColor]">
+          <div class="card cardTextColor cardBgColor">
             <div class="firstRow">
               <div class="img"> <img :src="item.Img" alt="Oops!"/> </div>
               <div class="headerContent">
@@ -41,23 +41,6 @@ export default {
     isDark() {
       return this.$store.state.isDark;
     },
-    cardBgColor() {
-      return this.$store.state.cardBgColor;
-    },
-    borderColor() {
-      if (this.isDark) {
-        return ["borderColor-dark"];
-      } else {
-        return ["borderColor-light"];
-      }
-    },
-    textColor() {
-      if (this.isDark) {
-        return ["card-textColor-dark"];
-      } else {
-        return ["card-textColor-light"];
-      }
-    }
   },
 };
 </script>
@@ -68,15 +51,17 @@ export default {
 }
 
 .education {
-  @apply relative max-w-screen-lg m-auto h-full flex flex-col justify-center;
+  @apply relative;
+  @apply flex flex-col justify-center;
+  @apply border-blue-gray-400;
+  @apply m-auto h-full max-w-screen-lg;
 }
 
 .card {
   @apply ml-10 p-4;
-  @apply rounded-lg shadow-2xl;
+  @apply rounded-lg shadow-lg;
   @apply text-xs md:text-sm;
 }
-
 
 .firstRow {
   @apply flex items-center mb-4;
@@ -111,18 +96,5 @@ export default {
 
 .secondRow {
   @apply mt-4;
-}
-
-.courses {
-  @apply flex;
-}
-
-
-/* Responsive style */
-.borderColor-dark {
-  @apply transition duration-500 transform border-blue-gray-400;
-}
-.borderColor-light {
-  @apply transition duration-500 transform border-blue-gray-400;
 }
 </style>

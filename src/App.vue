@@ -30,41 +30,38 @@ export default {
   @apply w-full h-full flex flex-col;
   /* @apply w-full h-full relative transition duration-500 flex flex-col; */
 }
-
-.darkModeBackground-dark {
-  @apply transition duration-500 transform bg-gray-800;
-}
-
-.darkModeBackground {
-  @apply transition duration-500 transform bg-gray-100;
-}
 </style>
 
 <style>
 .textColor-dark {
-  @apply transition duration-500 transform text-gray-400 border-gray-400;
+  @apply transition duration-500 transform text-gray-400;
 }
 .textColor-light {
-  @apply transition duration-500 transform text-gray-700 border-gray-500;
+  @apply transition duration-500 transform text-gray-700;
 }
 
-.card-textColor-dark {
-  @apply transition duration-500 transform text-gray-800;
+/* .navTextColor-dark {
+  @apply transition duration-500 transform text-white border-white opacity-70;
 }
-.card-textColor-light {
-  @apply transition duration-500 transform text-gray-800;
+.navTextColor-light {
+  @apply transition duration-500 transform text-black border-black opacity-70;
+} */
+
+.darkModeBackground-dark {
+  @apply transition duration-500 transform bg-gray-800;
+}
+.darkModeBackground {
+  @apply transition duration-500 transform bg-gray-100;
 }
 
-.cardBgColor-dark {
-  @apply transition duration-500 transform bg-white bg-opacity-90;
+.cardTextColor {
+  @apply text-gray-800;
 }
-.cardBgColor-light {
-  @apply transition duration-500 transform bg-white bg-opacity-100;
+.cardBgColor {
+  @apply bg-white bg-opacity-95;
 }
 
 body {
-  /* font-family: 'Cormorant Garamond', serif !important; */
-  /* font-family: 'Alegreya Sans', sans-serif; */
   font-family: 'Roboto', sans-serif !important;
   @apply relative;
 }

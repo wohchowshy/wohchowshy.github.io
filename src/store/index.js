@@ -4,17 +4,8 @@ export default createStore({
   state: {
     isDark: false,
     textColor: "textColor-light",
-    cardBgColor: "cardBgColor-light",
-    navigations: {
-      'About': [], 
-      'Educations': [], 
-      'Experience': [], 
-      'Blog': [],
-      'Projects': [], 
-      'Skills': [], 
-    },
+    navigations: ['About', 'Educations', 'Experience', 'Blog', 'Projects', 'Skills', ],
     nowPage: 'About',
-    nowSubPage: '',
     showNavSmall: false,
   },
   mutations: {
@@ -22,15 +13,12 @@ export default createStore({
       state.isDark = !state.isDark
       if(state.isDark == true){
         state.textColor = "textColor-dark"
-        state.cardBgColor = "cardBgColor-dark"
       }else{
         state.textColor = "textColor-light"
-        state.cardBgColor = "cardBgColor-light"
       }
     },
-    CHANGE_PAGE(state, [nowPage, nowSubPage]) {
+    CHANGE_PAGE(state, nowPage) {
       state.nowPage = nowPage
-      state.nowSubPage = nowSubPage
     },
     CHANGE_NAV_SMALL(state, status) {
       if (status === false) {
@@ -45,19 +33,14 @@ export default createStore({
     changeDarkMode({commit}){
       commit("CHANGE_DARK_MODE");
     },
-    changePage({commit}, [page, subPage]){
+    changePage({commit}, page){
       let nowPage = page || 'about'
-      let nowSubPage = subPage || ''
       nowPage = nowPage.charAt(0).toUpperCase() + nowPage.slice(1)
-      nowSubPage = nowSubPage.charAt(0).toUpperCase() + nowSubPage.slice(1)
-      commit("CHANGE_PAGE", [nowPage, nowSubPage])
+      commit("CHANGE_PAGE", nowPage)
     },
     ChangeNavSmall({commit}, status) {
       commit("CHANGE_NAV_SMALL", status);
     },
-    // addNumber(context,number) {
-    //   context.commit("ADD_NUMBER", number)
-    // },
   },
   modules: {
   },

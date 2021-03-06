@@ -1,10 +1,10 @@
 <template>
     <div class="darkModeButton-Common" @click="changeDark">
       <!-- class in darkmode.css/lightmode.css -->
-      <div class="darkModeSwitchBorder-Common" :class="[isDark ? 'darkModeSwitchBorder-dark' : '']">
+      <div class="darkModeSwitchBorder-Common" :class="[isDark ? 'darkModeSwitchBorder-dark' : 'darkModeSwitchBorder']">
         <div class="darkModeSwitchInner-Common" :class="[isDark ? 'darkModeSwitchInner-dark' : 'darkModeSwitchInner']">
           <!-- Moon -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="[isDark ? 'darkModeSwitchMoon-dark' : 'darkModeSwitchMoon']" class="darkModeSwitchMoon-Common">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="[isDark ? 'darkModeSwitchMoon-dark' : 'darkModeSwitchMoon', 'darkModeSwitchMoon-Common']">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
           </svg>
         </div>
@@ -31,14 +31,6 @@ export default {
 <style scoped>
 .darkModeButton-Common {
     @apply order-last mx-2 w-10 h-10 flex justify-center items-center;
-}
-
-.darkModeBackground-Common {
-    @apply w-full h-full relative transition duration-500;
-}
-
-.darkModeBackground {
-    @apply transform bg-gray-100;
 }
 
 /* Common for light/dark */

@@ -1,16 +1,14 @@
 <template>
-  <div :class="['skillCard', textColor, cardBgColor]" :style="Style">
+  <div class="skillCard, cardTextColor, cardBgColor" :style="Style">
     <div class="imgDiv">
       <img class="imgLogo" :src="Info.img"/>
     </div>
     <div class="content">
       <div class="skillHeader">{{ Info.header }}</div>
-      <!-- <div class="text-gray-300">123</div> -->
       <div class="horizontalLine"/>
       <ul class="list">
         <li v-for="item in Info.content" :key="item">{{ item }}</li>
       </ul>
-      <!-- <div class="experience"><Hashtags :hashtags="Info.hashtags" /></div> -->
     </div>
   </div>
 </template>
@@ -27,16 +25,6 @@ export default {
   computed: {
     isDark() {
       return this.$store.state.isDark;
-    },
-    textColor() {
-      if (this.isDark) {
-        return ["card-textColor-dark"];
-      } else {
-        return ["card-textColor-light"];
-      }
-    },
-    cardBgColor() {
-      return this.$store.state.cardBgColor;
     },
     Style() {
       return {
