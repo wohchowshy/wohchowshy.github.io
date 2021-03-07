@@ -23,6 +23,8 @@ export default createStore({
     CHANGE_NAV_SMALL(state, status) {
       if (status === false) {
         state.showNavSmall = false
+      }else if (status === true) {
+        state.showNavSmall = true
       }
       else{
         state.showNavSmall = !state.showNavSmall

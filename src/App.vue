@@ -2,6 +2,7 @@
   <div
     class="darkModeBackground-Common"
     :class="[$store.state.isDark ? 'darkModeBackground-dark' : 'darkModeBackground']"
+    @click.stop="changeNavStatSmall"
   >
     <header-bar></header-bar>
     <!-- <div id="nav"> -->
@@ -21,6 +22,11 @@ export default {
   components: {
     HeaderBar,
   },
+  methods: {
+    changeNavStatSmall() {
+      this.$store.dispatch("ChangeNavSmall", false)
+    }
+  }
 };
 </script>
 
@@ -39,13 +45,6 @@ export default {
 .textColor-light {
   @apply transition duration-500 transform text-gray-700;
 }
-
-/* .navTextColor-dark {
-  @apply transition duration-500 transform text-white border-white opacity-70;
-}
-.navTextColor-light {
-  @apply transition duration-500 transform text-black border-black opacity-70;
-} */
 
 .darkModeBackground-dark {
   @apply transition duration-500 transform bg-gray-800;

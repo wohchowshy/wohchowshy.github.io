@@ -3,27 +3,27 @@
   <div class="NavTypesetting-large">
     <div class="flex">
       <div v-for="nav in navigations" :key="nav" @click="changePage(nav)" >
-        <div :class="[nowPage == nav ? 'NavStyle-now-large' : 'NavStyle-notNow-large', isDark? 'navTextColor-dark':'navTextColor-light', 'NavStyle-large']">
+        <div :class="[nowPage == nav ? 'NavStyle-now-large':'NavStyle-notNow-large', 'NavStyle-large']">
           {{ nav }}
         </div>
       </div>
     </div>
-    <contact-icon :class="['contactIcon', isDark? 'navTextColor-dark':'navTextColor-light']"/>
+    <contact-icon class="contactIcon"/>
   </div>
 
   <!-- small than 768px -->
   <div class="NavTypesetting-small-extra">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-10 h-10 block" @click.stop="changeNavStatSmall">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-10 h-10 block" @click.stop="changeNavStatSmall('')">
       <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
     </svg>
     <transition name="scale">
       <div v-if="showNav" class="NavTypesetting-small">
-        <div v-for="nav in navigations" :key="nav" @click="changePage(nav)" class="flex">
-          <div :class="[nowPage == nav ? 'NavStyle-now-small' : 'NavStyle-notNow-small', 'NavStyle-small']">
+        <div v-for="nav in navigations" :key="nav">
+          <div @click="changePage(nav)" :class="[nowPage == nav ? 'NavStyle-now-small':'NavStyle-notNow-small', 'NavStyle-small']">
             {{ nav }}
           </div>
         </div>
-        <contact-icon class="justify-start m-2"/>
+        <contact-icon class="justify-start m-2" @click.stop="changeNavStatSmall(true)"/>
       </div>
     </transition>
   </div>
@@ -46,9 +46,6 @@ export default {
     showNav() {
       return this.$store.state.showNavSmall;
     },
-    isDark() {
-      return this.$store.state.isDark;
-    }
   },
   methods: {
     changePage(page) {
@@ -57,8 +54,8 @@ export default {
       if (oldPage == newPage) return;
       this.$router.push(newPage);
     },
-    changeNavStatSmall() {
-      this.$store.dispatch("ChangeNavSmall", '')
+    changeNavStatSmall(status) {
+      this.$store.dispatch("ChangeNavSmall", status)
     }
   },
   watch: {
@@ -76,19 +73,16 @@ export default {
   @apply mx-5;
 }
 .NavStyle-large {
-  @apply relative;
+  @apply relative font-light text-gray-300;
   @apply px-2 py-4;
-  @apply font-light;
-  @apply text-gray-300;
 }
 .NavStyle-now-large {
   @apply border-b-2 pb-3;
   @apply font-medium cursor-default;
-  @apply transition duration-500 transform opacity-100;
+  @apply transition duration-500 transform text-white border-white;
 }
 .NavStyle-notNow-large {
   @apply cursor-pointer;
-  /* @apply transition duration-300 transform hover:opacity-100 hover:-translate-y-1; */
   @apply transition duration-300 transform hover:text-gray-400 hover:-translate-y-1;
 }
 
@@ -99,11 +93,12 @@ export default {
   @apply text-gray-300 leading-10 text-sm ml-2 w-full;
 }
 .NavTypesetting-small {
-  @apply ml-1 mt-5 relative overflow-hidden;
+  @apply relative overflow-hidden;
+  @apply ml-1 mt-5;
 }
 .NavStyle-small {
   -webkit-tap-highlight-color: transparent;
-  @apply text-gray-300 mx-2 w-20 tracking-wide font-light;
+  @apply flex text-gray-300 mx-2 w-20 tracking-wide font-light;
 }
 .NavStyle-now-small {
   @apply text-white font-medium cursor-default;
