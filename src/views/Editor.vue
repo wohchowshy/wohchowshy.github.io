@@ -1,12 +1,30 @@
 <template>
     <div class="onlineEditor" :style="LRPosition">
-        <form class="editor" @submit.prevent="saveFile($event)">
+        <!-- Editor's left hand side -->
+        <form class="editor" @submit.prevent.self="saveFile($event)">
+            <!-- LHS of LHS -->
             <div class="left">
                 <label for="Title">Title</label>
                 <input name="Title" class="titleArea" v-model="Title" required/>
                 <div class="sepDiv"/>
-                <label for="Time">Time</label>
-                <input type="date" name="Time" class="dateArea" :class="[PublishTime === ''? '': 'text-black']" v-model="PublishTime" required/>
+                <div class="flex gap-4 overflow-x-scroll w-full">
+                    <div class="flex-grow flex flex-col">
+                        <label for="Time">Time</label>
+                        <input type="date" name="Time" class="dateArea" :class="[PublishTime === ''? '': 'text-black']" v-model="PublishTime" required/>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <label for="Author">Author</label>
+                        <input name="Author" class="authorArea" v-model="Author" required>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="Image">Image</label>
+                        <i class="far fa-image imageArea" @click="triggerImgFile"><i class="fas fa-check imgChecked" v-show="Image"></i></i>
+                        <input type="file" name="Image" ref="img" @change.stop="handleImgUpload()" style="display: none;" accept=".pdf,.jpg,.jpeg,.png">
+                    </div>
+                </div>
+                <div class="sepDiv"/>
+                <label for="Subclass">Subclass</label>
+                <input name="Subclass" class="subclassArea" v-model="Subclass" required/>
                 <div class="sepDiv"/>
                 <label for="Description">Description</label>
                 <textarea name="Description" class="descriptionArea" v-model="Description" required/>
@@ -26,12 +44,13 @@
                 <div class="sepDiv"/>
                 <div class="leftButtonDiv">
                     <div class="dropFileDiv items-end">
-                        <i class="fas fa-upload uploadIcon"  @click="triggerInputFile"></i>
+                        <i class="fas fa-upload uploadIcon"  @click="triggerInputFile"> From Disk</i>
                         <input type="file" accept="application/json" id="file" ref="file" @change.stop="handleFileUpload()" style="display:none;"/>
                     </div>
                     <div class="nextButton items-end" @click.stop="changeNext"> Next </div>
                 </div>
             </div>
+            <!-- RHS of LHS (default hidden) -->
             <div class="right">
                 <label for="Content">Content</label>
                 <textarea name="Content" v-model="Content" class="contentArea" required/>
@@ -43,27 +62,26 @@
             </div>
         </form>
         <div class="markdownPreview">
-            <div class="title">{{ Title }}</div>
-            <div class="homeTime">{{ PublishTime }}</div>
-            <div v-if="Title" class="sepLine"/>
-            <Hashtags :hashtags="Hashtags"/>
-            <Marked :content="Content" />
+            <BlogPage :content="propsToPage"/>
         </div>
     </div>
 </template>
 
 <script>
-import Marked from "@/components/Marked.vue"
-import Hashtags from "@/components/Hashtags.vue"
+import BlogPage from "@/components/BlogPage.vue"
 export default {
     components: {
-        Marked, 
-        Hashtags,
+        // Marked, 
+        // Hashtags,
+        BlogPage
     },
     data() {
         return  {
             Title: "",
             PublishTime: "",
+            Author: "",
+            Subclass: "",
+            Image: "",
             Description: "",
             Content: "",
             Hashtags: ['', '', '', '', ''],
@@ -76,9 +94,12 @@ export default {
             const data = JSON.stringify({
                 Title: this.Title,
                 PublishTime: this.PublishTime,
+                Author: this.Author,
+                Subclass: this.Subclass,
                 Description: this.Description,
                 Content: this.Content,
                 Hashtags: this.Hashtags,
+                Image: this.Image,
             })
             const blob = new Blob([data], {type: 'text/plain'})
             const e = document.createEvent('MouseEvents'),
@@ -91,6 +112,9 @@ export default {
         },
         triggerInputFile: function() {
             this.$refs.file.click();
+        },
+        triggerImgFile: function() {
+            this.$refs.img.click();
         },
         inputFileToJSON: function(file) {
             let fileReader = new FileReader();
@@ -110,16 +134,19 @@ export default {
             try {
                 let content = await this.inputFileToJSON(file)
                 content = JSON.parse(content);
-                if (!content.Content || !content.PublishTime || !content.Description || !content.Hashtags || !content.Title){
+                if (!content.Content || !content.PublishTime || !content.Author || !content.Subclass || !content.Description || !content.Hashtags || !content.Title || !content.Image){
                     alert("Format Incorrect! Please check and try again!")
                     this.$refs.file.value = ""
                     return
                 }
                 this.Title = content.Title
                 this.PublishTime = content.PublishTime
+                this.Author = content.Author
+                this.Subclass = content.Subclass
                 this.Description = content.Description
                 this.Content = content.Content
                 this.Hashtags = content.Hashtags
+                this.Image = content.Image
             } catch(e) {
                 alert(e)
                 this.$refs.file.value = ""
@@ -137,9 +164,47 @@ export default {
         deleteHashtagDiv: function() {
             if (this.hashCount == 1) return
             this.hashCount -= 1;
+        },
+        inputImgToBase64: function(img) {
+            let fileReader = new FileReader();
+            return new Promise((resolve, reject) => {
+                fileReader.onerror = () => {
+                    fileReader.abort()
+                    reject(new DOMException("Problem parsing input image."));
+                }
+                fileReader.onload = () => {
+                    resolve(fileReader.result)
+                }
+                fileReader.readAsDataURL(img);
+            })
+        },
+        handleImgUpload: async function() {
+            let img = this.$refs.img.files[0]
+            try {
+                let content = await this.inputImgToBase64(img)
+                // console.log(content)
+                this.Image = content;
+            } catch(e) {
+                alert(e)
+                this.$refs.img.value = ""
+                return
+            }
+            this.$refs.img.value = ""
         }
     },
     computed: {
+        propsToPage() {
+            return  {
+                Title: this.Title,
+                PublishTime: this.PublishTime,
+                Author: this.Author,
+                Subclass: this.Subclass,
+                Image: this.Image,
+                Description: this.Description,
+                Content: this.Content,
+                Hashtags: this.Hashtags,
+            }
+        },
         LRPosition() {
             if (!this.nextClick){
                 return {
@@ -163,8 +228,6 @@ textarea {
 }
 button, .nextButton {
     max-width: 200px;
-    /* margin: auto; */
-    /* margin-bottom: 0; */
     @apply p-2 font-light text-xl;
     @apply border-t border-b border-white;
     @apply cursor-pointer;
@@ -187,7 +250,6 @@ button:hover, .nextButton:hover {
 .editor {
     @apply relative overflow-hidden;
     @apply bg-white shadow-md;
-    /* @apply h-full overflow-scroll; */
 }
 .left, .right {
     @apply flex flex-col h-full w-full overflow-scroll;
@@ -211,17 +273,12 @@ button:hover, .nextButton:hover {
 .sepDiv {
     @apply my-2;
 }
-.editor > .left > label {
-    @apply font-light text-2xl;
-    @apply mb-2;
-}
-.editor > .right > label {
-    @apply font-light text-2xl;
-    @apply mb-2;
+label {
+    @apply font-light mb-1;
 }
 
-.titleArea {
-    @apply rounded-md border p-2 text-xl;
+.titleArea, .authorArea, .subclassArea{
+    @apply rounded-md border p-2;
     min-height: 40px;
 }
 .dateArea {
@@ -230,6 +287,18 @@ button:hover, .nextButton:hover {
 }
 .dateArea:focus {
     @apply text-gray-400;
+}
+.imageArea {
+    @apply cursor-pointer text-gray-300 text-center text-3xl m-auto relative;
+    height: 40px;
+    width: 40px;
+}
+.imageArea:hover {
+    @apply text-gray-400
+}
+.imgChecked {
+    @apply absolute right-0 bottom-0 text-green-600;
+    font-size: 2px;
 }
 .descriptionArea, .hashtagArea {
     @apply rounded-md border p-2 w-full;
@@ -243,7 +312,7 @@ button:hover, .nextButton:hover {
 }
 
 .title {
-    @apply text-2xl text-gray-800;
+    @apply text-2xl md:text-3xl text-gray-800;
 }
 .homeTime {
     @apply text-sm font-light opacity-50;

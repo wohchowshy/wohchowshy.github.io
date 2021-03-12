@@ -42,7 +42,7 @@ export default {};
   width: 24px;
   height: 24px;
   left: -10px; /* -24 / 2 + 2*/
-  @apply absolute z-50 rounded-full border-4 bg-white;
+  @apply absolute z-20 rounded-full border-4 bg-white;
 }
 
 .dot::before {
