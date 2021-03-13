@@ -64,5 +64,8 @@ export default {
   hr {
     height: 0.05em !important;
   }
+  p {
+    @apply leading-relaxed;
+  }
 }
 </style>
