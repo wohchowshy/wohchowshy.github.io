@@ -20,7 +20,7 @@
                     </i>
                     <i class="far fa-thumbs-up imgUploadIcon" v-show="Image">
                     </i>
-                    <input type="file" name="Image" ref="img" @change.stop="handleImgUpload()" style="height:0px;" accept=".pdf,.jpg,.jpeg,.png" required>
+                    <input type="file" name="Image" ref="img" @change.stop="handleImgUpload()" style="display: none;" accept=".pdf,.jpg,.jpeg,.png">
                 </div>
                 <div class="sepDiv"/>
                 <label for="Subclass">Subclass</label>
@@ -31,7 +31,7 @@
                 <div class="sepDiv"/>
                 <label for="hashtagsGroup">Hashtags <span class="text-xs">(Max: 10)</span></label>
                 <div class="hashtagsGroup" name="hashtagsGroup">
-                    <input v-for="idx in Hashtags.length" :key="idx" v-model="Hashtags[idx]" class="hashtagArea"/>
+                    <input v-for="idx in Hashtags.length" :key="idx" v-model="Hashtags[idx-1]" class="hashtagArea"/>
                 </div>
                 <div class="sepDiv"/>
                 <div class="leftButtonDiv">
@@ -82,7 +82,6 @@ export default {
     },
     methods: {
         saveFile: function() {
-            console.log('HI')
             const data = JSON.stringify({
                 Title: this.Title,
                 PublishTime: this.PublishTime,

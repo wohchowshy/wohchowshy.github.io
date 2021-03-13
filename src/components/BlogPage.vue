@@ -5,7 +5,10 @@
         <div class="metadata">
             <div class="author" v-show="content.Author"><i class="far fa-user"></i> {{ content.Author }}</div>
             <div class="date" v-show="content.PublishTime"><i class="far fa-clock"></i>{{ content.PublishTime }}</div>
-            <div class="subclass" v-show="content.Subclass"><i class="far fa-folder"></i>{{ content.Subclass }}</div>
+            <div class="subclass" v-show="content.Subclass">
+                <i class="far fa-folder"></i>
+                <router-link :to="genLink" class="classLink">{{ content.Subclass }}</router-link>
+            </div>
         </div>
         <div class="image" v-show="content.Image"><img :src="content.Image" alt="oops"/></div>
         <div class="markdown">
@@ -29,6 +32,11 @@ export default {
     props: {
         content: Object 
     },
+    computed: {
+        genLink() {
+            return '/blog?class='+this.content.Subclass;
+        }
+    }
     
 }
 </script>
@@ -49,5 +57,8 @@ export default {
 }
 .sepLine {
     @apply border-t border-gray-200 mt-4;
+}
+.classLink:hover {
+    @apply underline;
 }
 </style>
