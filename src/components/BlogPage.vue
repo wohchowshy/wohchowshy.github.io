@@ -48,7 +48,6 @@ export default {
             while(newHashtags.length !== 0 && newHashtags[newHashtags.length-1] === ""){
                 newHashtags.pop()
             }
-            console.log(newHashtags)
             return newHashtags
         }
     }
