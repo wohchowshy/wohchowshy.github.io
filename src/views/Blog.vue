@@ -84,7 +84,7 @@ export default {
 <style scoped>
 .blog {
     @apply max-w-screen-md;
-    @apply h-full w-full m-auto;
+    @apply h-full w-full m-auto px-4;
 }
 .homeDiv {
 
