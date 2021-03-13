@@ -7,20 +7,19 @@
                 <label for="Title">Title</label>
                 <input name="Title" class="titleArea" v-model="Title" required/>
                 <div class="sepDiv"/>
-                <div class="flex gap-4 overflow-x-scroll w-full">
-                    <div class="flex-grow flex flex-col">
-                        <label for="Time">Time</label>
-                        <input type="date" name="Time" class="dateArea" :class="[PublishTime === ''? '': 'text-black']" v-model="PublishTime" required/>
-                    </div>
-                    <div class="flex-grow flex flex-col">
-                        <label for="Author">Author</label>
-                        <input name="Author" class="authorArea" v-model="Author" required>
-                    </div>
-                    <div class="flex flex-col">
-                        <label for="Image">Image</label>
-                        <i class="far fa-image imageArea" @click="triggerImgFile"><i class="fas fa-check imgChecked" v-show="Image"></i></i>
-                        <input type="file" name="Image" ref="img" @change.stop="handleImgUpload()" style="display: none;" accept=".pdf,.jpg,.jpeg,.png">
-                    </div>
+                <label for="Time">Time</label>
+                <input type="date" name="Time" class="dateArea" :class="[PublishTime === ''? '': 'text-black']" v-model="PublishTime" required/>
+                <div class="sepDiv"/>
+                <label for="Author">Author</label>
+                <input name="Author" class="authorArea" v-model="Author" required>
+                <div class="sepDiv"/>
+                <label for="Image">Image</label>
+                <div class="imageDiv" @click.self="triggerImgFile">
+                    <i class="fas fa-upload imgUploadIcon">
+                        <span class="text-sm"> Click to upload</span>
+                        <i class="fas fa-check imgUploadChecked" v-show="Image"></i>
+                    </i>
+                    <input type="file" name="Image" ref="img" @change.stop="handleImgUpload()" style="visibility: hidden; height:0px;" accept=".pdf,.jpg,.jpeg,.png" required>
                 </div>
                 <div class="sepDiv"/>
                 <label for="Subclass">Subclass</label>
@@ -29,17 +28,9 @@
                 <label for="Description">Description</label>
                 <textarea name="Description" class="descriptionArea" v-model="Description" required/>
                 <div class="sepDiv"/>
-                <label for="Hashtags">
-                    <div class="flex justify-between">
-                    <div>Hashtags <span class="text-xs">(Max: 5)</span></div>
-                        <div class="flex gap-2">
-                            <div @click.stop="deleteHashtagDiv"><i class="fas fa-minus-circle addHashtagButton"></i></div>
-                            <div @click.stop="addHashtagDiv"><i class="fas fa-plus-circle addHashtagButton"></i></div>
-                        </div>
-                    </div>
-                </label>
-                <div class="hashtagsGroup123456789">
-                    <input v-for="idx in 5" v-show="idx<=hashCount" :key="idx" v-model="Hashtags[idx]" :name="'Hashtags'+idx" class="hashtagArea"/>
+                <label for="hashtagsGroup">Hashtags <span class="text-xs">(Max: 10)</span></label>
+                <div class="hashtagsGroup" name="hashtagsGroup">
+                    <input v-for="idx in Hashtags.length" :key="idx" v-model="Hashtags[idx]" class="hashtagArea"/>
                 </div>
                 <div class="sepDiv"/>
                 <div class="leftButtonDiv">
@@ -84,9 +75,8 @@ export default {
             Image: "",
             Description: "",
             Content: "",
-            Hashtags: ['', '', '', '', ''],
+            Hashtags: ['', '', '', '', '', '', '', '', '', ''],
             nextClick: false,
-            hashCount: 1,
         }
     },
     methods: {
@@ -157,14 +147,6 @@ export default {
         changeNext: function () {
             this.nextClick = !this.nextClick;
         },
-        addHashtagDiv: function() {
-            if (this.hashCount == 5) return
-            this.hashCount += 1;
-        },
-        deleteHashtagDiv: function() {
-            if (this.hashCount == 1) return
-            this.hashCount -= 1;
-        },
         inputImgToBase64: function(img) {
             let fileReader = new FileReader();
             return new Promise((resolve, reject) => {
@@ -226,14 +208,17 @@ export default {
 textarea {
     resize: none;
 }
+input {
+    @apply text-sm;
+}
 button, .nextButton {
     max-width: 200px;
-    @apply p-2 font-light text-xl;
-    @apply border-t border-b border-white;
+    @apply p-2 font-light text-base font-extralight;
+    @apply text-green-600;
     @apply cursor-pointer;
 }
 button:hover, .nextButton:hover {
-    @apply transition duration-500 transform border-black;
+    @apply transition duration-300 transform underline;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -271,7 +256,7 @@ button:hover, .nextButton:hover {
     @apply h-full overflow-y-scroll break-words;
 }
 .sepDiv {
-    @apply my-2;
+    @apply my-1.5;
 }
 label {
     @apply font-light mb-1;
@@ -288,24 +273,28 @@ label {
 .dateArea:focus {
     @apply text-gray-400;
 }
-.imageArea {
-    @apply cursor-pointer text-gray-300 text-center text-3xl m-auto relative;
-    height: 40px;
-    width: 40px;
+.imageDiv {
+    @apply flex flex-col;
+    @apply cursor-pointer rounded-md border border-dashed text-gray-200 p-2 ;
 }
-.imageArea:hover {
+.imgUploadIcon {
+    @apply text-gray-300 text-xl m-auto relative;
+}
+.imageDiv:hover > .imgUploadIcon {
     @apply text-gray-400
 }
-.imgChecked {
+.imgUploadChecked {
     @apply absolute right-0 bottom-0 text-green-600;
     font-size: 2px;
 }
-.descriptionArea, .hashtagArea {
+.descriptionArea {
     @apply rounded-md border p-2 w-full;
     min-height: 40px;
 }
 .hashtagArea {
-    @apply my-1;
+    @apply rounded-md border w-full;
+    @apply my-0.5;
+    font-size: 5px;
 }
 .contentArea {
     @apply rounded-md border flex-grow p-2;
@@ -328,13 +317,17 @@ label {
     @apply flex justify-between mx-2 overflow-scroll;
 }
 .leftButtonDiv {
-    @apply flex-grow items-end;
+    @apply flex-shrink items-center;
 }
 
 .uploadIcon {
-    @apply cursor-pointer text-gray-400;
+    @apply cursor-pointer text-gray-400 text-xs;
 }
 .uploadIcon:hover {
     @apply text-black;
+}
+
+.hashtagsGroup {
+    @apply flex-grow overflow-y-scroll;
 }
 </style>
