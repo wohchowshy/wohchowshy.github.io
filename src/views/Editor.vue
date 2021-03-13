@@ -1,7 +1,7 @@
 <template>
     <div class="onlineEditor" :style="LRPosition">
         <!-- Editor's left hand side -->
-        <form class="editor" @submit.prevent.self="saveFile($event)">
+        <form class="editor" @submit.prevent="saveFile($event)">
             <!-- LHS of LHS -->
             <div class="left">
                 <label for="Title">Title</label>
@@ -14,12 +14,13 @@
                 <input name="Author" class="authorArea" v-model="Author" required>
                 <div class="sepDiv"/>
                 <label for="Image">Image</label>
-                <div class="imageDiv" @click.self="triggerImgFile">
-                    <i class="fas fa-upload imgUploadIcon">
-                        <span class="text-sm"> Click to upload</span>
-                        <i class="fas fa-check imgUploadChecked" v-show="Image"></i>
+                <div class="imageDiv" @click.stop="triggerImgFile">
+                    <i class="fas fa-upload imgUploadIcon" v-show="!Image">
+                        <span class="text-sm" > Click to upload</span>
                     </i>
-                    <input type="file" name="Image" ref="img" @change.stop="handleImgUpload()" style="visibility: hidden; height:0px;" accept=".pdf,.jpg,.jpeg,.png" required>
+                    <i class="far fa-thumbs-up imgUploadIcon" v-show="Image">
+                    </i>
+                    <input type="file" name="Image" ref="img" @change.stop="handleImgUpload()" style="height:0px;" accept=".pdf,.jpg,.jpeg,.png" required>
                 </div>
                 <div class="sepDiv"/>
                 <label for="Subclass">Subclass</label>
@@ -35,7 +36,7 @@
                 <div class="sepDiv"/>
                 <div class="leftButtonDiv">
                     <div class="dropFileDiv items-end">
-                        <i class="fas fa-upload uploadIcon"  @click="triggerInputFile"> From Disk</i>
+                        <i class="fas fa-upload uploadIcon"  @click.stop="triggerInputFile"> From Disk</i>
                         <input type="file" accept="application/json" id="file" ref="file" @change.stop="handleFileUpload()" style="display:none;"/>
                     </div>
                     <div class="nextButton items-end" @click.stop="changeNext"> Next </div>
@@ -48,7 +49,7 @@
                 <div class="sepDiv"/>
                 <div class="rightButtonDiv">
                     <div class="nextButton" @click.stop="changeNext"> Previous </div>
-                    <button class="button">Save</button>
+                    <button class="buttonDiv">Save</button>
                 </div>
             </div>
         </form>
@@ -81,6 +82,7 @@ export default {
     },
     methods: {
         saveFile: function() {
+            console.log('HI')
             const data = JSON.stringify({
                 Title: this.Title,
                 PublishTime: this.PublishTime,
@@ -208,16 +210,16 @@ export default {
 textarea {
     resize: none;
 }
-input {
+input, textarea {
     @apply text-sm;
 }
-button, .nextButton {
+.buttonDiv, .nextButton {
     max-width: 200px;
     @apply p-2 font-light text-base font-extralight;
     @apply text-green-600;
     @apply cursor-pointer;
 }
-button:hover, .nextButton:hover {
+.buttonDiv:hover, .nextButton:hover {
     @apply transition duration-300 transform underline;
     -webkit-tap-highlight-color: transparent;
 }
@@ -293,7 +295,7 @@ label {
 }
 .hashtagArea {
     @apply rounded-md border w-full;
-    @apply my-0.5;
+    @apply my-0.5 px-1 py-0.5;
     font-size: 5px;
 }
 .contentArea {

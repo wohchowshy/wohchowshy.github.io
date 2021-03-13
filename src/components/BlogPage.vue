@@ -5,7 +5,7 @@
         <div class="metadata">
             <div class="author" v-show="content.Author"><i class="far fa-user"></i> {{ content.Author }}</div>
             <div class="date" v-show="content.PublishTime"><i class="far fa-clock"></i>{{ content.PublishTime }}</div>
-            <!-- <div class="subclass" v-show="content.Subclass"><i class="far fa-folder"></i>{{ content.Subclass }}</div> -->
+            <div class="subclass" v-show="content.Subclass"><i class="far fa-folder"></i>{{ content.Subclass }}</div>
         </div>
         <div class="image" v-show="content.Image"><img :src="content.Image" alt="oops"/></div>
         <div class="markdown">
@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .metadata {
-    @apply flex text-gray-400 text-xs;
+    @apply flex text-gray-400 text-xs mb-4;
 }
 .metadata > div {
     @apply my-2 mr-4;
