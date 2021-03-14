@@ -26,3 +26,5 @@ fields:
 - type: textarea
   name: Image
   label: Image
+pages:
+- src/assets/blog/TEST.json
