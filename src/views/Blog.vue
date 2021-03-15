@@ -75,38 +75,15 @@ export default {
 .blog {
     @apply max-w-screen-md lg:max-w-screen-lg;
     @apply m-auto px-4;
-    /* @apply w-full h-full overflow-scroll; */
-}
-.homeDiv {
-
 }
 .eachFile {
-    @apply my-8 p-4;
+    @apply my-8 py-4 px-8;
     @apply border-l-4 border-green-600;
     @apply bg-white shadow-lg;
-}
-.homeHeader {
-    @apply cursor-pointer max-w-max;
-    @apply text-2xl text-gray-800;
-}
-.homeHeader:hover {
-    @apply text-green-600 underline;
-}
-.homeTime {
-    @apply text-sm font-light opacity-50;
-}
-.homeDescription {
-    @apply mt-4
 }
 
 .contentDiv {
     @apply bg-white shadow-md w-full break-words;
     @apply p-10;
-}
-.title {
-    @apply text-2xl text-gray-800;
-}
-.sepLine {
-    @apply border-t my-2;
 }
 </style>
