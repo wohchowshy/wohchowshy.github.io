@@ -56,6 +56,6 @@ export default {
   @apply absolute bottom-8 md:bottom-2 m-auto w-full;
   @apply flex flex-col items-center;
   @apply text-gray-500;
-  @apply text-xs md:text-sm text-green-600;
+  @apply text-xs md:text-sm;
 }
 </style>
