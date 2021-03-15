@@ -1,16 +1,16 @@
 <template>
     <div class="bigDiv">
-    <div v-if="hasContent" class="blog">
-        <div v-if="isHome" class="homeDiv">
-            <div v-for="(item, key) in folder" :key="item" class="eachFile">
-                <BlogPage :content="getHomeContent(item, key)"/>
+        <div v-if="hasContent" class="blog">
+            <div v-if="isHome" class="homeDiv">
+                <div v-for="(item, key) in folder" :key="item" class="eachFile">
+                    <BlogPage :content="getHomeContent(item, key)"/>
+                </div>
+            </div>
+            <div v-else class="contentDiv">
+                <BlogPage :content="getContent"/>
             </div>
         </div>
-        <div v-else class="contentDiv">
-            <BlogPage :content="getContent"/>
-        </div>
-    </div>
-    <div v-else class="text-center text-3xl text-light p-10">To Be Published ASAP! </div>
+        <div v-else class="text-center text-3xl text-light p-10">To Be Published ASAP! </div>
     </div>
 </template>
 
@@ -74,7 +74,7 @@ export default {
 }
 .blog {
     @apply max-w-screen-md lg:max-w-screen-lg;
-    @apply m-auto px-4;
+    @apply m-auto md:px-4;
 }
 .eachFile {
     @apply my-8 py-4 px-8;
@@ -84,6 +84,6 @@ export default {
 
 .contentDiv {
     @apply bg-white shadow-md w-full break-words;
-    @apply p-10;
+    @apply p-8;
 }
 </style>

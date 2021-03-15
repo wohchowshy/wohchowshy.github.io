@@ -95,9 +95,11 @@ export default {
 .classLink:hover {
     @apply underline;
 }
-
+.homeDescription {
+    @apply text-sm md:text-base;
+}
 .hashtags {
-    @apply flex mt-4 text-xs align-middle;
+    @apply flex flex-wrap mt-4 text-xs;
 }
 .tags {
     @apply mx-0.5 text-green-600;
