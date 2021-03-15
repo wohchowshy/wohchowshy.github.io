@@ -7,7 +7,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    navigations: ['Home', 'About', 'Blog', 'Projects', 'Skills', 'Editor'],
+    navigations: ['About', 'Blog', 'Projects', 'Skills', 'Editor'],
     nowPage: 'Home',
     showNavSmall: false,
     scrolled: false,
