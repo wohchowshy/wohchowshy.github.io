@@ -44,8 +44,8 @@ export default {
 }
 .educationDiv {
     /* @apply flex flex-col justify-between m-auto; */
-    @apply m-auto;
-    @apply h-screen;
+    @apply m-auto mb-40;
+    /* @apply h-screen; */
     @apply max-w-max;
 }
 .educationCard {

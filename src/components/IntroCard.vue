@@ -51,6 +51,7 @@ export default {
 .introCard {
   @apply grid grid-cols-1 md:grid-cols-2 items-center justify-items-center md:justify-items-end; 
   @apply h-screen max-w-screen-lg m-auto;
+  min-height: 500px;
 }
 
 .introCard-col1 {
