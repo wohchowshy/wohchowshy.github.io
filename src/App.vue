@@ -1,14 +1,6 @@
 <template>
-  <div
-    class="darkModeBackground-Common"
-    :class="[$store.state.isDark ? 'darkModeBackground-dark' : 'darkModeBackground']"
-    @click.stop="changeNavStatSmall"
-  >
-    <header-bar></header-bar>
-    <!-- <div id="nav"> -->
-    <!-- <router-link to="/">Home</router-link> | -->
-    <!-- <router-link to="/about">About</router-link> -->
-    <!-- </div> -->
+  <div class="outer bgColor" @click.stop="changeNavStatSmall" @scroll="changeScroll">
+    <HeaderBar />
     <router-view />
   </div>
 </template>
@@ -25,43 +17,35 @@ export default {
   methods: {
     changeNavStatSmall() {
       this.$store.dispatch("ChangeNavSmall", false)
+    },
+    changeScroll(e) {
+      this.$store.dispatch("changeScroll", [true, 1 - e.srcElement.scrollTop / 100])
     }
   }
 };
 </script>
 
 <style scoped>
-.darkModeBackground-Common {
-  overflow: scroll;
-  @apply w-full h-full flex flex-col;
-  /* @apply w-full h-full relative transition duration-500 flex flex-col; */
+.outer {
+  @apply w-full h-full flex flex-col overflow-scroll;
+}
+.bgColor {
+  @apply bg-gray-100;
 }
 </style>
 
 <style>
-.textColor-dark {
-  @apply transition duration-500 transform text-gray-400;
+.textColor {
+  @apply text-gray-700;
 }
-.textColor-light {
-  @apply transition duration-500 transform text-gray-700;
+.HeaderMargin {
+  margin-top: 72px;
 }
-
-.darkModeBackground-dark {
-  @apply transition duration-500 transform bg-gray-800;
-}
-.darkModeBackground {
-  @apply transition duration-500 transform bg-gray-100;
-}
-
-.cardTextColor {
-  @apply text-gray-800;
-}
-.cardBgColor {
-  @apply bg-white bg-opacity-95;
-}
-
 body {
-  font-family: 'Roboto', sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
   @apply relative;
+}
+html, body {
+  @apply h-screen;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="onlineEditor" :style="LRPosition">
+    <div class="onlineEditor HeaderMargin" :style="LRPosition">
         <!-- Editor's left hand side -->
         <form class="editor" @submit.prevent="saveFile($event)">
             <!-- LHS of LHS -->
@@ -224,9 +224,9 @@ input, textarea {
 }
 
 .onlineEditor {
-    @apply grid grid-cols-2 gap-4;
+    @apply grid grid-cols-2;
     @apply justify-center justify-items-auto items-stretch;
-    @apply my-10 mx-4 md:mx-10 h-full;
+    @apply h-screen;
     @apply overflow-hidden;
 }
 .onlineEditor > div, form {

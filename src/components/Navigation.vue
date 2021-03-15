@@ -13,7 +13,7 @@
 
   <!-- small than 768px -->
   <div class="NavTypesetting-small-extra">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-10 h-10 block" @click.stop="changeNavStatSmall('')">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-12 h-12 block" @click.stop="changeNavStatSmall('')">
       <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
     </svg>
     <transition name="scale">
@@ -83,14 +83,15 @@ export default {
 }
 .NavStyle-notNow-large {
   @apply cursor-pointer;
-  @apply transition duration-300 transform hover:text-gray-400 hover:-translate-y-1;
+  @apply transition duration-300 transform hover:text-gray-400;
+  /* @apply transition duration-300 transform hover:text-gray-400 hover:-translate-y-1; */
 }
 
 
 /* Small Style */
 .NavTypesetting-small-extra {
   @apply justify-start flex flex-col md:hidden;
-  @apply text-gray-300 leading-10 text-sm ml-2 w-full;
+  @apply text-gray-300 leading-10 text-sm mx-2;
 }
 .NavTypesetting-small {
   @apply relative overflow-hidden;

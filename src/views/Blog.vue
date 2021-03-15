@@ -1,5 +1,5 @@
 <template>
-    <div class="bigDiv">
+    <div class="blogDiv HeaderMargin">
         <div v-if="hasContent" class="blog">
             <div v-if="isHome" class="homeDiv">
                 <div v-for="(item, key) in folder" :key="item" class="eachFile">
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style scoped>
-.bigDiv {
+.blogDiv {
     @apply w-full h-full overflow-scroll;
 }
 .blog {

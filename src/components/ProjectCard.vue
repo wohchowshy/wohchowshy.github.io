@@ -1,8 +1,7 @@
 <template>
-    <ProjectCardModal v-if="openModal" :project="project" @childCloseModal="changeModalStatus">
-    </ProjectCardModal>
+  <ProjectCardModal v-if="openModal" :project="project" @childCloseModal="changeModalStatus"></ProjectCardModal>
 
-  <div :class="['projectCard', textColor, cardBgColor]">
+  <div class="projectCard">
     <img class="bgImg" :src="project.Thumbnail" />
     <div class="contentSimple">
       <div class="contentButtonDivSimple">
@@ -47,22 +46,6 @@ export default {
   methods: {
     changeModalStatus: function () {
       this.openModal = !this.openModal;
-      //   console.log(this.openModal);
-    },
-  },
-  computed: {
-    isDark() {
-      return this.$store.state.isDark;
-    },
-    textColor() {
-      if (this.isDark) {
-        return ["card-textColor-dark"];
-      } else {
-        return ["card-textColor-light"];
-      }
-    },
-    cardBgColor() {
-      return this.$store.state.cardBgColor;
     },
   },
 };
@@ -70,18 +53,9 @@ export default {
 
 <style scoped>
 .projectCard {
-  @apply relative rounded-lg shadow-2xl w-full h-full overflow-hidden;
-  height: 400px;
+  @apply relative rounded-md shadow-md w-full h-full overflow-hidden;
+  @apply h-72 md:h-96;
 }
-@media (max-width: 767px) {
-  .projectCard {
-    height: 300px;
-  }
-  .bgImg {
-    min-height: 300px;
-  }
-}
-/* .projectCard (max-width:) */
 .projectCard::before {
   @apply block absolute top-0 left-0 w-full h-full bg-gray-500 bg-opacity-60;
   content: "";
@@ -92,11 +66,11 @@ export default {
   @apply object-cover w-full h-full;
   filter: blur(2px);
   -webkit-filter: blur(2px);
-  /* transition: all 0.5s ease; */
+  transition: all 0.5s ease;
 }
-/* .projectCard:hover .bgImg {
+.projectCard:hover .bgImg {
   transform: scale(1.1);
-} */
+}
 
 .contentSimple {
   @apply absolute text-center text-white;

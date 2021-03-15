@@ -5,14 +5,13 @@ export default[
         "Title": "National Tsing Hua University",
         "Department": "Department of CS",
         "Degree": "Master's student",
-        "Courses": `
-**Related Courses:**
-- Natural Language Processing
-- Massive Data Analysis
-- Cloud Programming
-- Secure Programming
-- Social Network
-`,
+        "Courses": [
+            "Natural Language Processing", 
+            "Massive Data Analysis",
+            "Cloud Programming",
+            "Secure Programming",
+            "Social Network"
+        ],
         "StartTime": "2019",
         "EndTime": "",
     },
@@ -21,14 +20,13 @@ export default[
         "Title": "National Taiwan University",
         "Department": "Department of CSIE",
         "Degree": "Bachelor",
-        "Courses": `
-**Related Courses:**
-- Information Retrieval and Extraction
-- Natural Language Processing
-- Artificial Intelligence
-- Machine Learning and Deep Learning with Python
-- Digital Speech Processing
-`,
+        "Courses": [
+            "Information Retrieval and Extraction", 
+            "Natural Language Processing",
+            "Artificial Intelligence", 
+            "Machine Learning and Deep Learning with Python", 
+            "Digital Speech Processing"
+        ],
         "StartTime": "2015",
         "EndTime": "2019",
     }

@@ -25,7 +25,7 @@
         <div v-if="!content.key" class="sepLine" v-show="content.Title"></div>
         <!-- Hashtags -->
         <div class="hashtags">
-            <i class="fas fa-tags mr-2"></i>
+            <i v-show="getCleanHashtags.length" class="fas fa-tags mr-2 my-auto"></i>
             <div v-for="(tag, idx) in getCleanHashtags" :key="tag+idx" v-show="tag" class="tags">
                 <router-link :to="genLink(tag)" class="classLink">{{ tag }}</router-link>
             </div>
@@ -59,7 +59,7 @@ export default {
             while(newHashtags.length !== 0 && newHashtags[newHashtags.length-1] === ""){
                 newHashtags.pop()
             }
-            return newHashtags
+            return [...newHashtags]
         }
     }
     

@@ -1,5 +1,5 @@
 <template>
-  <div :class="['introCard', textColor]">
+  <div class="introCard relative">
     <div class="introCard-col1">
       <img
         src="@/assets/img/yizzy.pic.600.jpg"
@@ -13,6 +13,7 @@
         <li class="introCard-col2-text" :class="fontSize(item, key)">{{ item }}</li>
       </ul>
     </div>
+    <slot name="more"></slot>
   </div>
 </template>
 
@@ -43,17 +44,13 @@ export default {
       }
     },
   },
-  computed: {
-    textColor() {
-      return this.$store.state.textColor
-    }
-  },
 };
 </script>
 
 <style scoped>
 .introCard {
-  @apply grid grid-cols-1 md:grid-cols-2 h-full max-w-screen-lg items-center justify-items-center md:justify-items-end m-auto;
+  @apply grid grid-cols-1 md:grid-cols-2 items-center justify-items-center md:justify-items-end; 
+  @apply h-screen max-w-screen-lg m-auto;
 }
 
 .introCard-col1 {
@@ -65,7 +62,10 @@ export default {
 }
 
 .introCard-col2 {
-  @apply justify-self-center md:justify-self-start self-start md:self-center text-center md:text-left list-none pb-10 md:p-0;
+  @apply justify-self-center md:justify-self-start;
+  @apply self-start md:self-center;
+  @apply text-center md:text-left;
+  @apply pb-10 md:p-0;
 }
 
 .introCard-col2-text {

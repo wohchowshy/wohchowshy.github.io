@@ -1,5 +1,5 @@
 <template>
-  <div class=" skillCardContainer">
+  <div class="skillcardDiv HeaderMargin">
     <SkillCard v-for="item in Info" :key="item" :Info="item" class="skillCard" />
   </div>
 </template>
@@ -34,11 +34,11 @@ export default {
 </script>
 
 <style scoped>
-.skillCardContainer {
+.skillcardDiv {
   @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center;
   @apply max-w-sm sm:max-w-screen-sm lg:max-w-screen-lg ;
   @apply gap-5 px-5;
-  @apply w-full m-auto py-10 max-w-max;
+  @apply w-full mx-auto py-10 max-w-max;
 }
 
 </style>
