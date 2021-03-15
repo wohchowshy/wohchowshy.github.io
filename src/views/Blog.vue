@@ -1,45 +1,43 @@
 <template>
-    <div v-if="hasContent" :class="['blog', textColor]">
+    <div class="bigDiv">
+    <div v-if="hasContent" class="blog">
         <div v-if="isHome" class="homeDiv">
             <div v-for="(item, key) in folder" :key="item" class="eachFile">
-                <div class="homeHeader" @click="enterPage(key)">{{ item.Title }}</div>
-                <div class="homeTime">{{ item.PublishTime }}</div>
-                <div class="homeDescription">{{ item.Description }}</div>
+                <BlogPage :content="getHomeContent(item, key)"/>
             </div>
         </div>
         <div v-else class="contentDiv">
             <BlogPage :content="getContent"/>
-            <!-- <div class="title">{{ getTitle }}</div>
-            <div class="homeTime">{{ getDate }}</div>
-            <div class="sepLine"/>
-            <Hashtags :hashtags="getHashtag"/>
-            <Marked :content="getContent"/> -->
         </div>
     </div>
-    <div v-else class="text-center text-3xl text-light p-10" :class="[textColor]">To Be Published ASAP! </div>
+    <div v-else class="text-center text-3xl text-light p-10">To Be Published ASAP! </div>
+    </div>
 </template>
 
 <script>
-// import Marked from "@/components/Marked.vue"
-// import Hashtags from "@/components/Hashtags.vue"
 import BlogPage from "@/components/BlogPage.vue"
 import folder from "@/assets/blog/index.js"
 
 export default {
   components: {
-    //   Marked,
-    //   Hashtags
     BlogPage
   },
   methods: {
-      enterPage(page) {
-          this.$router.push("/blog/"+page);
-      },
+      getHomeContent(item, key) {
+          return  {
+            key: key,
+            Title: item.Title,
+            PublishTime: item.PublishTime,
+            Author: item.Author,
+            Subclass: item.Subclass,
+            Image: item.Image,
+            Description: item.Description,
+            Content: item.Content,
+            Hashtags: item.Hashtags,
+          }
+      }
   },
   computed: {
-      textColor() {
-          return this.$store.state.textColor;
-      },
       isHome() {
           return this.$route.params.file === ''? true:false;
       },
@@ -65,26 +63,19 @@ export default {
             Hashtags: file.Hashtags,
           }
       }
-    //   getTitle() {
-    //       return folder[this.$route.params.file].Title;
-    //   },
-    //   getDate() {
-    //       return folder[this.$route.params.file].PublishTime;
-    //   },
-    //   getHashtag() {
-    //       return folder[this.$route.params.file].Hashtag;
-    //   },
-    //   getContent() {
-    //       return folder[this.$route.params.file].Content;
-    //   }
+
   }
 }
 </script>
 
 <style scoped>
+.bigDiv {
+    @apply w-full h-full overflow-scroll;
+}
 .blog {
-    @apply max-w-screen-md;
-    @apply h-full w-full m-auto px-4;
+    @apply max-w-screen-md lg:max-w-screen-lg;
+    @apply m-auto px-4;
+    /* @apply w-full h-full overflow-scroll; */
 }
 .homeDiv {
 
@@ -109,8 +100,8 @@ export default {
 }
 
 .contentDiv {
-    @apply bg-white shadow-md w-full h-full break-words;
-    @apply p-4 overflow-scroll;
+    @apply bg-white shadow-md w-full break-words;
+    @apply p-10;
 }
 .title {
     @apply text-2xl text-gray-800;
