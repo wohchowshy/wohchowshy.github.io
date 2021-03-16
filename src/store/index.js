@@ -1,9 +1,13 @@
+// import { keyFor } from 'core-js/fn/symbol'
 import { createStore } from 'vuex'
-// import VuexPersistence from 'vuex-persist'
+import VuexPersistence from 'vuex-persist'
 
-// const vuexLocal = new VuexPersistence({
-//   storage: window.localStorage
-// })
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  reducer: (state) => ({
+    blogContents: state.blogContents,
+  }),
+})
 
 export default createStore({
   state: {
@@ -12,6 +16,16 @@ export default createStore({
     showNavSmall: false,
     scrolled: false,
     opacity: "1",
+    blogContents: {
+      Title: "",
+      PublishTime: "",
+      Author: "",
+      Subclass: "",
+      Image: "",
+      Description: "",
+      Content: "",
+      Hashtags: ['','','','','','','','','',''],
+    },
   },
   mutations: {
     CHANGE_PAGE(state, nowPage) {
@@ -31,6 +45,11 @@ export default createStore({
         state.showNavSmall = !state.showNavSmall
       }
     },
+    SET_BLOG_CONTENT(state, content) {
+      for (let key in content){
+        state.blogContents[key] = content[key]
+      }
+    }
   },
   actions: {
     changePage({commit}, page){
@@ -42,10 +61,13 @@ export default createStore({
       commit("CHANGE_SCROLL", [status, opacity])
     },
     ChangeNavSmall({commit}, status) {
-      commit("CHANGE_NAV_SMALL", status);
+      commit("CHANGE_NAV_SMALL", status)
     },
+    SetBlogContent({commit}, content) {
+      commit("SET_BLOG_CONTENT", content)
+    }
   },
   modules: {
   },
-  // plugins: [vuexLocal.plugin]
+  plugins: [vuexLocal.plugin]
 })

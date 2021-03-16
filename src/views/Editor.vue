@@ -63,8 +63,6 @@
 import BlogPage from "@/components/BlogPage.vue"
 export default {
     components: {
-        // Marked, 
-        // Hashtags,
         BlogPage
     },
     data() {
@@ -82,7 +80,9 @@ export default {
     },
     methods: {
         saveFile: function() {
-            const data = JSON.stringify({
+            let yesOrNo = confirm('存檔後，要一併清除 Editor 上的內容嗎？')
+            console.log(yesOrNo)
+            let data = JSON.stringify({
                 Title: this.Title,
                 PublishTime: this.PublishTime,
                 Author: this.Author,
@@ -92,14 +92,28 @@ export default {
                 Hashtags: this.Hashtags,
                 Image: this.Image,
             })
-            const blob = new Blob([data], {type: 'text/plain'})
-            const e = document.createEvent('MouseEvents'),
+            let blob = new Blob([data], {type: 'text/plain'})
+            let e = document.createEvent('MouseEvents'),
             a = document.createElement('a');
             a.download = this.Title + ".json";
             a.href = window.URL.createObjectURL(blob);
             a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
             e.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
             a.dispatchEvent(e);
+            // Clear localStorage cache if user want
+            if (yesOrNo){
+                this.$store.dispatch("SetBlogContent", {
+                    Title: "",
+                    PublishTime: "",
+                    Author: "",
+                    Subclass: "",
+                    Image: "",
+                    Description: "",
+                    Content: "",
+                    Hashtags: ['', '', '', '', '', '', '', '', '', ''],
+                })
+                this.refreshContent()
+            }
         },
         triggerInputFile: function() {
             this.$refs.file.click();
@@ -173,6 +187,17 @@ export default {
                 return
             }
             this.$refs.img.value = ""
+        },
+        refreshContent() {
+            let blogContents = this.$store.state.blogContents
+            this.Title = blogContents.Title
+            this.PublishTime = blogContents.PublishTime
+            this.Author = blogContents.Author
+            this.Subclass = blogContents.Subclass
+            this.Image = blogContents.Image
+            this.Description = blogContents.Description
+            this.Content = blogContents.Content
+            this.Hashtags = blogContents.Hashtags
         }
     },
     computed: {
@@ -200,8 +225,41 @@ export default {
                     '--rightPosition': "0",
                 }
             }
+        },
+        
+    },
+    watch: {
+        Title() {
+            this.$store.dispatch("SetBlogContent", {"Title": this.Title})
+        },
+        PublishTime() {
+            this.$store.dispatch("SetBlogContent", {"PublishTime": this.PublishTime})
+        },
+        Author() {
+            this.$store.dispatch("SetBlogContent", {"Author": this.Author})
+        },
+        Subclass() {
+            this.$store.dispatch("SetBlogContent", {"Subclass": this.Subclass})
+        },
+        Image() {
+            this.$store.dispatch("SetBlogContent", {"Image": this.Image})
+        },
+        Description() {
+            this.$store.dispatch("SetBlogContent", {"Description": this.Description})
+        },
+        Content() {
+            this.$store.dispatch("SetBlogContent", {"Content": this.Content})
+        },
+        Hashtags: {
+            handler: function() {
+                this.$store.dispatch("SetBlogContent", {"Hashtags": this.Hashtags})
+            },
+            deep: true, 
         }
     },
+    mounted() {
+        this.refreshContent()
+    }
 }
 </script>
 
