@@ -81,6 +81,9 @@ export default {
     @apply border-l-4 border-green-600;
     @apply bg-white shadow-lg;
 }
+.homeDiv {
+    @apply px-2;
+}
 
 .contentDiv {
     @apply bg-white shadow-md w-full break-words;
