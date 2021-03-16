@@ -319,6 +319,7 @@ label {
 }
 .leftButtonDiv {
     @apply flex-shrink items-center;
+    min-height: 2rem;
 }
 
 .uploadIcon {
@@ -330,5 +331,6 @@ label {
 
 .hashtagsGroup {
     @apply flex-grow overflow-y-scroll;
+    min-height: 9rem;
 }
 </style>
