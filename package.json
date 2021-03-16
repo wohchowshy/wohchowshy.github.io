@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint", 
-    "deploy": "zsh deploy.sh; git add .; git commit -m \"refactor: blog\"; git push;"  
+    "deploy": "zsh deploy.sh; git add .; git commit -m \"add: new blogs\"; git push;"  
   },
   "dependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.2",
