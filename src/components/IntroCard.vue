@@ -2,7 +2,7 @@
   <div class="introCard relative">
     <div class="introCard-col1">
       <img
-        src="@/assets/img/yizzy.pic.600.jpg"
+        src="@/assets/img/yizzy.pic.jpg"
         class="introCard-img"
         alt="Oops, picture flies out.."
       />
