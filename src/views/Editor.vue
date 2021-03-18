@@ -81,7 +81,7 @@ export default {
     methods: {
         saveFile: function() {
             let yesOrNo = confirm('存檔後，要一併清除 Editor 上的內容嗎？')
-            console.log(yesOrNo)
+            // console.log(yesOrNo)
             let data = JSON.stringify({
                 Title: this.Title,
                 PublishTime: this.PublishTime,
