@@ -7,9 +7,9 @@
                 <label for="Title">Title</label>
                 <input name="Title" class="titleArea" v-model="Title" required/>
                 <div class="sepDiv"/>
-                <label for="Time">Time</label>
+                <!-- <label for="Time">Time</label>
                 <input type="date" name="Time" class="dateArea" :class="[PublishTime === ''? '': 'text-black']" v-model="PublishTime" required/>
-                <div class="sepDiv"/>
+                <div class="sepDiv"/> -->
                 <label for="Author">Author</label>
                 <input name="Author" class="authorArea" v-model="Author" required>
                 <div class="sepDiv"/>
@@ -104,7 +104,7 @@ export default {
             if (yesOrNo){
                 this.$store.dispatch("SetBlogContent", {
                     Title: "",
-                    PublishTime: "",
+                    PublishTime: null,
                     Author: "",
                     Subclass: "",
                     Image: "",
@@ -259,6 +259,8 @@ export default {
     },
     mounted() {
         this.refreshContent()
+        this.PublishTime = Date.now()
+        // this.PublishTime = new Date().toLocaleString()
     }
 }
 </script>

@@ -2,8 +2,8 @@
     <div class="blogDiv HeaderMargin">
         <div v-if="hasContent" class="blog">
             <div v-if="isHome" class="homeDiv">
-                <div v-for="(item, key) in folder" :key="item" class="eachFile">
-                    <BlogPage :content="getHomeContent(item, key)"/>
+                <div v-for="item in getFolder" :key="item" class="eachFile">
+                    <BlogPage :content="getHomeContent(item)"/>
                 </div>
             </div>
             <div v-else class="contentDiv">
@@ -23,9 +23,9 @@ export default {
     BlogPage
   },
   methods: {
-      getHomeContent(item, key) {
+      getHomeContent(item) {
           return  {
-            key: key,
+            key: item.Title,
             Title: item.Title,
             PublishTime: item.PublishTime,
             Author: item.Author,
@@ -35,6 +35,11 @@ export default {
             Content: item.Content,
             Hashtags: item.Hashtags,
           }
+      },
+      compare(a, b){
+        if(a.PublishTime > b.PublishTime) return -1
+        if(a.PublishTime < b.PublishTime) return 1
+        return 0
       }
   },
   computed: {
@@ -44,8 +49,22 @@ export default {
       hasContent(){
           return Object.keys(folder).length == 0 ? false:true;
       },
-      folder(){
-          return folder;
+      getFolder(){
+          let items = Object.values(folder)
+          let query = this.$route.query
+          // Filter if `query`
+          if(query.class){
+              items = items.filter((item) => {
+                  return query.class == item.Subclass
+              })
+          }else if(query.tag){
+              items = items.filter((item) => {
+                  return item.Hashtags.includes(query.tag)
+              })
+          }
+          //  Sort By Date
+          items.sort(this.compare)
+          return items;
       },
       getFile(){
           return this.$route.params.file;

@@ -8,10 +8,12 @@
         <!-- Metadata -->
         <div :class="{'metadata':true, 'homeMetadata':content.key}">
             <div class="author" v-show="content.Author"><i class="far fa-user"></i> {{ content.Author }}</div>
-            <div class="date" v-show="content.PublishTime"><i class="far fa-clock"></i>{{ content.PublishTime }}</div>
+            <div class="date" v-show="content.PublishTime"><i class="far fa-clock"></i>{{ getPublishTime }}</div>
             <div class="subclass" v-show="content.Subclass">
                 <i class="far fa-folder"></i>
-                <router-link :to="genLink(content.Subclass)" class="classLink">{{ content.Subclass }}</router-link>
+                <router-link :to="'/blog'" class="classLink">Blog </router-link>
+                /
+                <router-link :to="genLink(content.Subclass, 'class')" class="classLink">{{ content.Subclass }}</router-link>
             </div>
         </div>
         <!-- Image Block -->
@@ -27,7 +29,7 @@
         <div class="hashtags">
             <i v-show="getCleanHashtags.length" class="fas fa-tags mr-2 my-auto"></i>
             <div v-for="(tag, idx) in getCleanHashtags" :key="tag+idx" v-show="tag" class="tags">
-                <router-link :to="genLink(tag)" class="classLink">{{ tag }}</router-link>
+                <router-link :to="genLink(tag, 'tag')" class="classLink">{{ tag }}</router-link>
             </div>
         </div>
     </div>
@@ -35,19 +37,17 @@
 
 <script>
 import Marked from "@/components/Marked.vue"
-// import Hashtags from "@/components/Hashtags.vue"
 
 export default {
     components: {
         Marked,
-        // Hashtags
     },
     props: {
         content: Object 
     },
     methods: {
-        genLink(link) {
-            return '/blog?class='+link;
+        genLink(link, key) {
+            return '/blog?'+key+'='+link;
         },
         enterPage(page) {
           this.$router.push("/blog/"+page);
@@ -60,6 +60,9 @@ export default {
                 newHashtags.pop()
             }
             return [...newHashtags]
+        },
+        getPublishTime() {
+            return new Date(this.content.PublishTime).toLocaleString()
         }
     }
     
