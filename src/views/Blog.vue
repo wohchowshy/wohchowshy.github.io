@@ -90,6 +90,7 @@ export default {
 <style scoped>
 .blogDiv {
     @apply w-full h-full overflow-scroll;
+    @apply pt-4 md:pt-8;
 }
 .blog {
     @apply max-w-screen-md lg:max-w-screen-lg;
