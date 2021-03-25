@@ -82,7 +82,6 @@ export default {
             Hashtags: file.Hashtags,
           }
       }
-
   }
 }
 </script>
