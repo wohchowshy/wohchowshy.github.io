@@ -24,7 +24,6 @@ export default {
     $route: {
       handler: function(){
         let page = this.$router.currentRoute._rawValue.fullPath.split('/')[1].split('?')[0];
-        console.log(page)
         this.$store.dispatch("changePage", page)
       }, 
       immediate: true,

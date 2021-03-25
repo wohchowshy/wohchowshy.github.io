@@ -11,7 +11,7 @@ const vuexLocal = new VuexPersistence({
 
 export default createStore({
   state: {
-    navigations: ['About', 'Blog', 'Projects', 'Skills', 'Editor'],
+    navigations: ['About', 'Blog', 'Projects', 'Skills'], //, 'Editor'],
     nowPage: 'About',
     showNavSmall: false,
     scrolled: false,
@@ -30,7 +30,6 @@ export default createStore({
   mutations: {
     CHANGE_PAGE(state, nowPage) {
       state.nowPage = nowPage
-      console.log('CHANGE PAGE!', state.nowPage)
     },
     CHANGE_SCROLL(state, [status, opacity]) {
       state.scrolled = status
